@@ -1,19 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controls the navigation between ambients. Use GoTo or GoToCoroutine to switch the current ambient.
+/// </summary>
 public class AmbientNavigation : MonoBehaviour {
     public AmbientInfo currentAmbient;
 
-    Dictionary<AmbientInfo, AsyncOperation> preloadedAmbients = new Dictionary<AmbientInfo, AsyncOperation>();
     Scene? currentScene;
     AsyncOperation loadingScene;
-    AmbientInfo loadingAmbient;
 
-    // In case a scene is unloading, stops the preloading process (because preload will get ) and saves preloads in buffer
-    bool canPreloadScenes = true;
-    List<AmbientInfo> preloadBuffer = new List<AmbientInfo>();
+    public System.Action<float> onAmbientLoadingProgress;
 
 
 
@@ -21,25 +19,6 @@ public class AmbientNavigation : MonoBehaviour {
         SceneManager.activeSceneChanged += HandleSceneChanged;
     }
 
-    /// <summary>
-    /// Called by TravelToAmbient on Start to preload the Ambient's scene.
-    /// </summary>
-    /// <param name="info">AmbientInfo with the scene to preload</param>
-    public void PreloadAmbient(AmbientInfo info) {
-        if (preloadedAmbients.ContainsKey(info)) {
-            return;
-        }
-
-        if (!canPreloadScenes && !preloadBuffer.Contains(info)) {
-            preloadBuffer.Add(info);
-            return;
-        }
-
-        AsyncOperation preloading = SceneManager.LoadSceneAsync(info.sceneName, LoadSceneMode.Additive);
-        preloading.allowSceneActivation = false;
-
-        preloadedAmbients.Add(info, preloading);
-    }
 
     /// <summary>
     /// Changes current ambient and unloads previous one. This function only starts the coroutine GoToCoroutine. For more control over when it finishes, call the coroutine directly.
@@ -59,35 +38,24 @@ public class AmbientNavigation : MonoBehaviour {
         
         Scene lastScene = currentScene.Value;
         currentScene = null;
-        
-        loadingAmbient = info;
 
-        if (preloadedAmbients.ContainsKey(info)) {
-            loadingScene = preloadedAmbients[info];
-            preloadedAmbients.Remove(info);
-            loadingScene.allowSceneActivation = true;
-        } else {
-            loadingScene = SceneManager.LoadSceneAsync(info.sceneName, LoadSceneMode.Additive);   
+        onAmbientLoadingProgress?.Invoke(0f);
+        yield return UIManager.instance.fade.FadeToBlackCoroutine();
+        
+        currentAmbient = info;
+        loadingScene = SceneManager.LoadSceneAsync(info.sceneName, LoadSceneMode.Additive);   
+
+        while (!loadingScene.isDone) { 
+            onAmbientLoadingProgress?.Invoke(loadingScene.progress);
+            yield return null;
         }
 
-        canPreloadScenes = false;
-        currentAmbient = info;
-
-        yield return new WaitUntil(() => loadingScene.isDone);
-
-        loadingAmbient = null;
+        onAmbientLoadingProgress?.Invoke(1f);
         loadingScene = null;
 
         yield return UnloadSceneCoroutine(lastScene);
 
-        canPreloadScenes = true;
-        if (preloadBuffer.Count > 0) {
-            foreach (AmbientInfo ambient in preloadBuffer) {
-                PreloadAmbient(ambient);
-            }
-
-            preloadBuffer.Clear();
-        }
+        yield return UIManager.instance.fade.FadeFromBlackCoroutine();
 
         
     }

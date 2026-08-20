@@ -6,7 +6,7 @@ public class AmbientInfo : ScriptableObject {
     public string ambientName;
 
     #if UNITY_EDITOR
-    // Allows drag-and-drop in the Unity editor window
+    // Allows drag and drop in the Unity editor window
     public UnityEditor.SceneAsset sceneAsset; 
     #endif
 
