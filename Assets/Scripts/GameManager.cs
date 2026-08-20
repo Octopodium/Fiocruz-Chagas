@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     
 
     public Player player;
+    public AmbientNavigation navigation;
 
     void Awake() {
         if (instance != null) {
