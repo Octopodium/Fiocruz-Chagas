@@ -24,7 +24,8 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
 
     public void OnPointerClick(PointerEventData eventData){
         if(beingDraged) return;
-        Debug.Log($"{nameText.text} card was clicked");
+        Debug.Log($"Asking for notes on {nameText.text}.");
+        InventoryManager.Instance.OpenCollectableNote(nameText.text);
     }
 
     public void OnBeginDrag(PointerEventData eventData){
