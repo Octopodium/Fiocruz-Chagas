@@ -14,6 +14,9 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
     private DampedFollower dampedFollower;
     private RectTransform rectTransform;
     private bool beingDraged = false;
+    
+    public System.Action<string, bool> OnDragStateChanged;
+
 
     private void Awake(){
         SetInteractable(false);
@@ -31,6 +34,7 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
     public void OnBeginDrag(PointerEventData eventData){
         dampedFollower.following = false;
         beingDraged = true;
+        OnDragStateChanged?.Invoke(nameID, beingDraged);
     }
 
     public void OnDrag(PointerEventData eventData){
@@ -40,6 +44,7 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
     public void OnEndDrag(PointerEventData eventData){
         dampedFollower.following = true;
         beingDraged = false;
+        OnDragStateChanged?.Invoke(nameID, beingDraged);
     }
 
     public void SetUpCard(Collectable collectable){

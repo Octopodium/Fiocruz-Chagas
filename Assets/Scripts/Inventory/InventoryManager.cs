@@ -62,4 +62,14 @@ public class InventoryManager : MonoBehaviour
             Debug.Log(collectable.GetName());
         }
     }
+
+    /// <summary>
+    /// Used by any other system that may require to know a collectable other than by it's nameId.
+    /// Alternatively, you can get the Collectable by using Resources.Load<Collectable>("Collectables/"+nameId).
+    /// </summary>
+    /// <param name="nameId">The Collectable's nameId. You can get a Collectable nameId by it's method GetName()</param>
+    /// <returns>Returns the stored Collectable with this nameId. If not found, returns null.</returns>
+    public Collectable GetCollectableById(string nameId) {
+        return lookupTable.ContainsKey(nameId) ? lookupTable[nameId] : null;
+    }
 }

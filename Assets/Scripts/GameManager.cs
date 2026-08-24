@@ -7,9 +7,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
     
-
+    // References
     public Player player;
     public AmbientNavigation navigation;
+
+    // Internal
+    // ...
 
     void Awake() {
         if (instance != null) {

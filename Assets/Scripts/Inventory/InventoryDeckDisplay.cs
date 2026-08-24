@@ -14,6 +14,8 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
     [SerializeField] private List<CollectableCard> cards = new List<CollectableCard>();
     private Vector2 dummyCardSize;
     private bool openDeck;
+    private string cardHeldId;
+    public System.Action<string> OnHeldCardChanged;
 
     private void Start(){
         dummyCardSize = cardPrefab.GetComponent<RectTransform>().sizeDelta;
@@ -62,6 +64,7 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         CollectableCard card = Instantiate(cardPrefab, deckCanvas.transform).GetComponent<CollectableCard>();
         card.SetUpCard(collectable);
         card.GetComponent<DampedFollower>().SetTarget(newDummyCard.transform);
+        card.OnDragStateChanged += HandleCardDragChanged;
         cards.Add(card);
         Debug.Log($"New card for {collectable.name} was created succesfully.");
     }
@@ -98,5 +101,22 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         cards.Clear();
         dummies.Clear();
         Debug.Log($"Inventory deck has been completely cleared.");
+    }
+
+    /// <summary>
+    /// Called by CollectableCard on start/end of dragging. Sets "cardHeldId" and calls OnHeldCardChanged.
+    /// </summary>
+    /// <param name="nameId">The nameId of the current CollectableCard. Identifies which Colletable the card refers to</param>
+    /// <param name="isDragging">True if the CollectableCard is being held by the player</param>
+    private void HandleCardDragChanged(string nameId, bool isDragging) {
+        if (nameId != cardHeldId) {
+            cardHeldId = nameId;
+        } else if (!isDragging) {
+            cardHeldId = "";
+        } else {
+            return;
+        }
+
+        OnHeldCardChanged?.Invoke(cardHeldId);
     }
 }

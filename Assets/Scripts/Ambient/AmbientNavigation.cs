@@ -11,8 +11,8 @@ public class AmbientNavigation : MonoBehaviour {
     Scene? currentScene;
     AsyncOperation loadingScene;
 
-    public System.Action<float> onAmbientLoadingProgress;
 
+    public System.Action<float> onAmbientLoadingProgress;
 
 
     void Awake() {

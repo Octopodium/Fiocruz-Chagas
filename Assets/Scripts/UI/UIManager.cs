@@ -7,8 +7,12 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
     public static UIManager instance;
     
-
+    // References
+    public InventoryDeckDisplay inventoryDeck;
     public FadeController fade;
+
+    // Internal
+    // ...
 
     void Awake() {
         if (instance != null) {

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TravelToAmbient : MonoBehaviour, IInteractable {
     public AmbientInfo ambient;

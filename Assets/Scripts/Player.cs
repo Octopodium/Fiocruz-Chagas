@@ -7,9 +7,21 @@ using UnityEngine.InputSystem;
 /// Works like a sub GameManager, for things related to the player (can store references)
 /// </summary>
 public class Player : MonoBehaviour {
+    // References
+    public InventoryManager inventory;
+
+
+    // Internal
     [HideInInspector] public IInteractable currentInteractable { get; private set; }
+    public Collectable collectableHeld;
+
     public Action<string> onHoverTextChange;
-    
+    public Action<Collectable> onCollectableHeldChanged;
+
+    void Awake() {
+        UIManager.instance.inventoryDeck.OnHeldCardChanged += HandleHeldCardChanged;
+    }
+
 
     void Update() {
         if (Mouse.current.leftButton.wasPressedThisFrame) {
@@ -31,6 +43,24 @@ public class Player : MonoBehaviour {
         }
     }
 
+
+    #region Inventory
+
+    /// <summary>
+    /// Handles InventoryDeckDisplay's OnHeldCardChanged.
+    /// Set collectableHeld as the current CollectableCard being held by the player. If none, then null.
+    /// </summary>
+    /// <param name="nameId">The current held Collectable nameId, or an empty string if none</param>
+    void HandleHeldCardChanged(string nameId) {
+        Collectable collectable = nameId == "" ? null : inventory.GetCollectableById(nameId);
+        if (collectableHeld == collectable)
+            return;
+        
+        collectableHeld = collectable;
+        onCollectableHeldChanged?.Invoke(collectableHeld);
+    }
+
+    #endregion
 
 
     #region Interact
@@ -56,7 +86,7 @@ public class Player : MonoBehaviour {
 
     /// <summary>
     /// Sets the current hovered interactable, which will be interacted with when the players performs a click.
-    /// Also calls 
+    /// Also triggers the event 'onHoverTextChange' with the Interactable's GetHoverText result, or with a empty string if null. 
     /// </summary>
     /// <param name="interactable"></param>
     void SetCurrentInteractable(IInteractable interactable) {
