@@ -14,6 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AmbientExamples/Scene3.unity
     guid: 41cd8be01d5f13044a7f1dcb76c6fefd
+  - enabled: 1
+    path: Assets/Scenes/Fases/FaseInterior.unity
+    guid: 9e530d0d882b4c3408c298ae895be977
+  - enabled: 1
+    path: Assets/Scenes/Fases/FaseExterior.unity
+    guid: b95a4ba95f306ac40996ba29c79e2c66
+  - enabled: 1
+    path: "Assets/Scenes/Fases/FasePra\xE7a.unity"
+    guid: 0c04e4f66f74a5a4dbf348239fc9381a
+  - enabled: 1
+    path: Assets/Scenes/Fases/MGBugCatch.unity
+    guid: 0631697fcc43fe040a405e3418bb0110
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
