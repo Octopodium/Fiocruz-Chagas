@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/AmbientExamples/Scene1.unity
+    path: Assets/Scenes/Examples/AmbientExamples/Scene1.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/AmbientExamples/Scene2.unity
+    path: Assets/Scenes/Examples/AmbientExamples/Scene2.unity
     guid: 5836bee67244867408294d21a3ea3a2f
   - enabled: 1
-    path: Assets/Scenes/AmbientExamples/Scene3.unity
+    path: Assets/Scenes/Examples/AmbientExamples/Scene3.unity
     guid: 41cd8be01d5f13044a7f1dcb76c6fefd
   - enabled: 1
     path: Assets/Scenes/Fases/FaseInterior.unity
