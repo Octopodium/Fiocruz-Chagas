@@ -15,4 +15,4 @@ MonoBehaviour:
   collectableID: 101
   collectableName: Percevejo
   description: Percevejo de Cama
-  sprite: {fileID: 21300000, guid: a852adfe4538e9344bf1205fafa29d23, type: 3}
+  sprite: {fileID: 21300000, guid: cfb60e4a6349fd140b7567210489998d, type: 3}
