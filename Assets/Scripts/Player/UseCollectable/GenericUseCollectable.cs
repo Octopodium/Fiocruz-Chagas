@@ -20,7 +20,7 @@ public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
         return "Usar " + collectableHover.GetName();
     }
 
-    public bool CanUse(Collectable collectableHover) {
-        return collectable == collectableHover;
+    public bool CanBeFound() {
+        return collectable == GameManager.instance.player.collectableHeld;
     }
 }

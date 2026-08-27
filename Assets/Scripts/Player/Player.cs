@@ -78,37 +78,25 @@ public class Player : MonoBehaviour {
 
 
     #region Interact
-    /// <summary>
-    /// Cache for optimatization. Used by 'CheckUnderMouse()' to store the last gameObject under the mouse (even if it isn't an IInteractable or IUseCollectable).
-    /// </summary>
-    public GameObject lastUnderMouseGameObject = null;
 
     /// <summary>
     /// This function is called every FixedUpdate to check for Interactables under the current mouse position.
-    /// If found, calls SetCurrentHoveredInteractable with the Interactable.
+    /// Calls SetCurrentInteractable and SetCurrentUseColletable with the value if found or null if didn't.
     /// </summary>
     void CheckUnderMouse() {
-        Vector2 mousePos = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        RaycastHit hit;
+        GameObject under = GameManager.instance.cam.CheckUnderMouse(out IUnderMouse underMouseInterface);
 
         IInteractable interactable = null;
         IUseCollectable useCollectable = null;
 
         bool isUsingCard = collectableHeld != null;
 
-        if (Physics.Raycast(ray, out hit)) {
-            GameObject underMouse = hit.transform.gameObject;
-            if (underMouse == lastUnderMouseGameObject) return;
-            lastUnderMouseGameObject = underMouse;
-
-            if (!isUsingCard) underMouse.TryGetComponent<IInteractable>(out interactable);
-            else {
-                underMouse.TryGetComponent<IUseCollectable>(out useCollectable);
-                if (useCollectable != null) useCollectable = useCollectable.CanUse(collectableHeld) ? useCollectable : null;
+        if (underMouseInterface != null) {
+            if ((underMouseInterface is IInteractable) && !isUsingCard) {
+                interactable = (IInteractable) underMouseInterface;
+            } else if ((underMouseInterface is IUseCollectable) && isUsingCard) {
+                useCollectable = (IUseCollectable) underMouseInterface;
             }
-        } else {
-            lastUnderMouseGameObject = null;
         }
 
         SetCurrentInteractable(interactable, !isUsingCard);
