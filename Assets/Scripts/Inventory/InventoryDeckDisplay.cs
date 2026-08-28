@@ -36,6 +36,9 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         else OpenDeck();
     }
 
+    /// <summary>
+    /// Opens the deck and sets the spacing of the cards to the openHandSpacing value. Also sets all cards to be interactable.
+    /// </summary>
     private void OpenDeck(){
         Debug.Log("Deck opens.");
         openDeck = true;
@@ -45,6 +48,9 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         }
     }
 
+    /// <summary>
+    /// Closes the deck and sets the spacing of the cards to the closedHandSpacing value. Also sets all cards to be non-interactable.
+    /// </summary>
     private void CloseDeck(){
         Debug.Log("Deck closes.");
         openDeck = false;
@@ -54,6 +60,10 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         }
     }
     
+    /// <summary>
+    /// Adds a new card to the deck based on the provided collectable item. Creates a dummy card for positioning and instantiates a CollectableCard prefab, setting it up with the collectable's information. Also sets up the DampedFollower to follow the dummy card and subscribes to the OnDragStateChanged event.
+    /// </summary>
+    /// <param name="collectable"></param>
     public void AddCard(Collectable collectable){
         GameObject newDummyCard = new GameObject("Dummy " + collectable.GetName(), typeof(RectTransform));
         newDummyCard.transform.SetParent(transform);
@@ -69,6 +79,10 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         Debug.Log($"New card for {collectable.name} was created succesfully.");
     }
 
+    /// <summary>
+    /// Removes a card from the deck based on the provided collectable item.
+    /// </summary>
+    /// <param name="collectable"></param>
     public void RemoveCard(Collectable collectable){
         for(int i = 0; i < cards.Count; i++){
             if(cards[i].nameID == collectable.GetName()){
@@ -85,7 +99,10 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
         }
         Debug.Log($"Collectable {collectable.GetName()} couldn't be found and removed.");
     }
-
+    /// <summary>
+    /// Initializes the deck with the current inventory from the InventoryManager. Creates a card for each collectable item in the inventory.
+    /// </summary>
+    /// <param name="inventory"></param>
     private void InitializeDeck(Collectable[] inventory){
         foreach(var collectable in inventory){
             AddCard(collectable);

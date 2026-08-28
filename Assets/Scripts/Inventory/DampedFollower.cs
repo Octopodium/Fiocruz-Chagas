@@ -8,6 +8,10 @@ public class DampedFollower : MonoBehaviour
     private Vector3 currentVelocity = Vector3.zero;
 
 
+    /// <summary>
+    /// Sets the target for the follower to follow.
+    /// </summary>
+    /// <param name="newTarget"></param>
     public void SetTarget(Transform newTarget){
         target = newTarget;
     }
@@ -18,6 +22,9 @@ public class DampedFollower : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the object towards the target position using a damped movement. The movement is smoothed over time based on the smoothTime value.
+    /// </summary>
     private void DampedMovement(){
         transform.position = Vector3.SmoothDamp(transform.position, target.position, ref currentVelocity, smoothTime);
     }

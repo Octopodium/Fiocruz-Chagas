@@ -47,6 +47,10 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
         OnDragStateChanged?.Invoke(beingDraged);
     }
 
+    /// <summary>
+    /// Sets up the card with the given collectable's information. This includes setting the icon image, name text, and nameID.
+    /// </summary>
+    /// <param name="collectable"></param>
     public void SetUpCard(Collectable collectable){
         iconImage.sprite = collectable.GetSprite();
         nameText.text = collectable.GetName();
@@ -54,6 +58,10 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
         Debug.Log($"Card for {collectable.GetName()} finished set up.");
     }
 
+    /// <summary>
+    /// Sets if the card is interactable or not. This affects the raycast target of the background and icon images, as well as the color of the background image.
+    /// </summary>
+    /// <param name="interactable"></param>
     public void SetInteractable(bool interactable){
         backgroundImage.raycastTarget = interactable;
         iconImage.raycastTarget = interactable;
