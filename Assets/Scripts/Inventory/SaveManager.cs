@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour{
     private string savePath = "PlayerSaveData.json";
@@ -9,6 +10,7 @@ public class SaveManager : MonoBehaviour{
     public class PlayerData{
         public string[] inventory;
         public string playerName;
+        public string playerLocation;
     }
 
     private void Awake(){
@@ -29,13 +31,17 @@ public class SaveManager : MonoBehaviour{
         return inventoryID;
     }
 
+    private string GetPlayerLocation(){
+        return SceneManager.GetActiveScene().name;
+    }
+
     public void SaveData(){
         Debug.Log("Saving player data...");
         PlayerData playerData = new PlayerData{
             inventory = GetInventory(),
-            playerName = "Rooty Tooty Fresh'n Fruity"
+            playerName = "Rooty Tooty Fresh'n Fruity",
+            playerLocation = GetPlayerLocation()
         };
-
         string jsonString = JsonUtility.ToJson(playerData, false);
         File.WriteAllText(savePath, jsonString);
         Debug.Log("Save complete!");

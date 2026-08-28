@@ -7,6 +7,10 @@ public class CardViewManager : MonoBehaviour
     [SerializeField] Text descriptionText, nameText;
     [SerializeField] private CanvasGroup canvasGroup;
 
+    private void Start(){
+        SetNoteOpen(false);
+    }
+
     public void SetUpNote(Collectable collectable){
         image.sprite = collectable.GetSprite();
         descriptionText.text = collectable.GetDescription();
