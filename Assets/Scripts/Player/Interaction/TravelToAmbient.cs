@@ -11,4 +11,8 @@ public class TravelToAmbient : MonoBehaviour, IInteractable {
         GameManager.instance.navigation.GoTo(ambient);
     }
 
+    public bool CanBeFound() {
+        return true;
+    }
+
 }

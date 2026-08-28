@@ -16,4 +16,8 @@ public class ItemPickup : MonoBehaviour, IInteractable {
         }
     }
 
+    public bool CanBeFound() {
+        return true;
+    }
+
 }
