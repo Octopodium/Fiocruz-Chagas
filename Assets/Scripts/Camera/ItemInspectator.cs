@@ -3,9 +3,15 @@ using DG.Tweening;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Controls the inspectator view.
+/// </summary>
 public class ItemInspectator : MonoBehaviour {
+    // References
     [SerializeField] GameObject inspectorLeaveTrigger;
     [SerializeField] GameObject inspectableHolder;
+
+
     public Inspectable currentInspectable {get; private set;}
     Sequence currentTweenSequence;
 
@@ -18,8 +24,20 @@ public class ItemInspectator : MonoBehaviour {
         inspectorLeaveTrigger.SetActive(false);
     }
 
+    /// <summary>
+    /// Called by Inspectable. Brings the object to front and allow the user to rotate and interact with it.
+    /// Will change it's rotation, position and parenting temporarily.
+    /// </summary>
+    /// <param name="inspectable">The Inspectable to inspect.</param>
     public void Inspect(Inspectable inspectable) {
+        if (inspectable == currentInspectable) return;
+        if (currentInspectable != null)
+            currentInspectable.SetBeingInspected(false);
+
         currentInspectable = inspectable;
+
+        currentInspectable.SetBeingInspected(true); // Makes sure to update it's internal variables if isn't
+        currentInspectable.onInspectingChanged += HandleOnInspectingChanged;
 
         previousState = GetPreviousState(inspectable.transform);
         inspectable.transform.SetParent(inspectableHolder.transform);
@@ -36,7 +54,20 @@ public class ItemInspectator : MonoBehaviour {
         enabled = true;
     }
 
-    public void StopInspecting() {
+    /// <summary>
+    /// Called when currentInspectable 'beingInspected' changes value.
+    /// </summary>
+    /// <param name="state">currentInspectable 'beingInspected' value</param>
+    void HandleOnInspectingChanged(bool state) {
+        if (!state)
+            StopInspecting();
+    }
+
+    /// <summary>
+    /// Called when currentInspectable 'beingInspected' is set to false (normally by clicking on inspectorLeaveTrigger).
+    /// Restore the currentInspectable state before being Inspected (rotation, position and parenting).
+    /// </summary>
+    void StopInspecting() {
         currentInspectable.transform.SetParent(previousState.parent);
 
         if (currentTweenSequence != null)
@@ -47,17 +78,20 @@ public class ItemInspectator : MonoBehaviour {
         currentTweenSequence.Join(currentInspectable.transform.DOLocalRotateQuaternion(previousState.rotation, positionTransitionTime));
         currentTweenSequence.OnComplete(TweenComplete);
 
-        currentInspectable.beingInspected = false;
+        currentInspectable.onInspectingChanged -= HandleOnInspectingChanged;
+        currentInspectable.SetBeingInspected(false); // Makes sure to update it's internal variables if isn't
 
         enabled = false;
         currentInspectable = null;
         inspectorLeaveTrigger.SetActive(false);
     }
 
+    /// <summary>
+    /// Internal use only. Called everytime a tween sequence ends.
+    /// </summary>
     void TweenComplete() {
         currentTweenSequence = null;
     }
-
 
     void Update() {
         if (Mouse.current.leftButton.wasPressedThisFrame) { // Pressed left button
@@ -72,6 +106,9 @@ public class ItemInspectator : MonoBehaviour {
         CheckForMovement();
     }
 
+    /// <summary>
+    /// Called every frame of FixedUpdate. If there's a currentInspectable being inspectated and the mouse is pressed, rotates the Inspectable based on mouseDelta.
+    /// </summary>
     void CheckForMovement() {
         if (!inspecting || !Mouse.current.leftButton.isPressed || currentInspectable == null) return;
         Vector2 delta = Mouse.current.delta.ReadValue();
@@ -80,14 +117,25 @@ public class ItemInspectator : MonoBehaviour {
         currentInspectable.transform.Rotate(Vector3.right, delta.y * rotateSpeed, Space.World);
     }
 
+    /// <summary>
+    /// Called on mouse pressed. Checks if a click happened on the Inspectable or the leave trigger.
+    /// If on the Inspectable, sets 'inspecting' as true. If on the leave trigger, calls currentInspectable 'SetBeingInspected' with false.
+    /// </summary>
     void CheckIfClickOnInspectable() {
         GameObject underMouse = GameManager.instance.cam.CheckUnderMouse(out IUnderMouse _);
-        inspecting = underMouse != null && IsPartOfInteractable(underMouse);
+        inspecting = underMouse != null && IsPartOfInspectable(underMouse);
 
-        if (underMouse == inspectorLeaveTrigger) StopInspecting();
+        if (underMouse == inspectorLeaveTrigger)
+            currentInspectable.SetBeingInspected(false);
     }
 
-    bool IsPartOfInteractable(GameObject clickedObject) {
+    /// <summary>
+    /// Internal use only. Check if gameObject is child of the currentInspectable.
+    /// This is used to consider a click in the currentInspectable's child as a click on itself.
+    /// </summary>
+    /// <param name="clickedObject"></param>
+    /// <returns></returns>
+    bool IsPartOfInspectable(GameObject clickedObject) {
         Transform iterator = clickedObject.transform;
 
         do {
@@ -111,6 +159,11 @@ public class ItemInspectator : MonoBehaviour {
 
     PreviousState previousState;
 
+    /// <summary>
+    /// Internal use only. Creates a struct with information of the previous state of an object. Called on Inspect and it's return is used by StopInspecting.
+    /// </summary>
+    /// <param name="obj">The object to save it's state.</param>
+    /// <returns>The struct of the object, to be used to restore it to a previous state.</returns>
     PreviousState GetPreviousState(Transform obj) {
         PreviousState previous = new PreviousState();
         previous.parent = obj.parent;

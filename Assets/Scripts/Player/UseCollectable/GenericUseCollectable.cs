@@ -16,8 +16,8 @@ public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
         onCollectableUsed?.Invoke();
     }
 
-    public string GetHoverText(Collectable collectableHover) {
-        return "Usar " + collectableHover.GetName();
+    public string GetHoverText() {
+        return "Usar " + GameManager.instance.player.collectableHeld.GetName();
     }
 
     public bool CanBeFound() {

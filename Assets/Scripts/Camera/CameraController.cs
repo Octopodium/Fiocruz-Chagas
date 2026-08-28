@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,7 +6,13 @@ using UnityEngine.InputSystem;
 /// Essa classe não está acabada, favor não utilizar por hora!
 /// </summary>
 public class CameraController : MonoBehaviour {
-    public Camera mainCamera;
+    Camera mainCamera;
+    CinemachineBrain cinemachine;
+
+    void Awake() {
+        mainCamera = Camera.main;
+        cinemachine = mainCamera.GetComponent<CinemachineBrain>();
+    }
 
 
     #region Check Under Mouse

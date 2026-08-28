@@ -132,7 +132,7 @@ public class Player : MonoBehaviour {
         
         currentUseCollectable = useCollectable;
 
-        string hoverText = currentUseCollectable != null ? currentUseCollectable.GetHoverText(collectableHeld) : "";
+        string hoverText = currentUseCollectable != null ? currentUseCollectable.GetHoverText() : "";
         if (updateHoverText) onHoverTextChange?.Invoke(hoverText);
     }
 
