@@ -62,6 +62,19 @@ public class InventoryManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Removes all items from inventory and inventory deck.
+    /// </summary>
+    private void ClearInventory()
+    {
+        while(inventory.Count > 0)
+        {
+            RemoveCollectable(inventory[0]);
+        }
+        inventory.Clear();
+        Debug.Log("Inventory was completely cleared.");
+    }
+
+    /// <summary>
     /// Opens the collectable note for the specified collectable by its nameID. This method retrieves the collectable from the lookup table and sets up the note view using the CardViewManager.
     /// </summary>
     /// <param name="nameID"></param>
@@ -77,6 +90,20 @@ public class InventoryManager : MonoBehaviour
     /// <returns></returns>
     public Collectable[] GetInventory(){
         return inventory.ToArray();
+    }
+
+    /// <summary>
+    /// After receiving an array containing the names of all items in the player's inventory, clears inventory and then adds all the collectables with names contained in the array.
+    /// </summary>
+    /// <param name="loadData"></param>
+    public void LoadInventory(string[] loadData)
+    {
+        ClearInventory();
+        foreach(var data in loadData)
+        {
+            AddCollectable(lookupTable[data]);
+        }
+        Debug.Log("Inventory succesfully loaded from player data.");
     }
 
     /// <summary>
