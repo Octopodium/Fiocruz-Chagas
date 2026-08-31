@@ -19,6 +19,11 @@ public class InventoryManager : MonoBehaviour
         InitializeLookupTable();
     }
 
+    private void Start()
+    {
+        LoadInventory();
+    }
+
     /// <summary>
     /// Loads all collectable assets from the "Collectables" folder in the Resources directory. This method is used to populate the allCollectables list with all available collectables in the game.
     /// </summary>
@@ -96,14 +101,22 @@ public class InventoryManager : MonoBehaviour
     /// After receiving an array containing the names of all items in the player's inventory, clears inventory and then adds all the collectables with names contained in the array.
     /// </summary>
     /// <param name="loadData"></param>
-    public void LoadInventory(string[] loadData)
+    public void LoadInventory()
     {
-        ClearInventory();
-        foreach(var data in loadData)
+        if(SaveManager.Instance.GetPlayerData(out PlayerData playerData))
         {
-            AddCollectable(lookupTable[data]);
+            string [] inventoryData = playerData.inventory;
+            ClearInventory();
+            foreach(var data in inventoryData)
+            {
+                AddCollectable(lookupTable[data]);
+            }
+            Debug.Log("Inventory succesfully loaded from player data.");
         }
-        Debug.Log("Inventory succesfully loaded from player data.");
+        else
+        {
+            Debug.Log($"<color=yellow>No inventory data was loaded.</color>");
+        }
     }
 
     /// <summary>

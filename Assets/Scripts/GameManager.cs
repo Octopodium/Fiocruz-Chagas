@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public AmbientNavigation navigation;
     public CameraController cam;
     public ItemInspectator inspectator;
+    public SaveManager saveManager;
 
     // Internal
     // ...

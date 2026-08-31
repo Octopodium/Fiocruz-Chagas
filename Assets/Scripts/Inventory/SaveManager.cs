@@ -5,17 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour{
     private string savePath = "PlayerSaveData.json";
-
-    [Serializable]
-    public class PlayerData{
-        public string[] inventory;
-        public string playerName;
-        public string playerLocation;
-    }
+    public static SaveManager Instance;
+    private PlayerData playerData;
+    private bool loadedData = false;
 
     private void Awake(){
+        if (Instance)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+
         savePath = Path.Combine(Application.persistentDataPath, savePath);
         Debug.Log($"Save file path : {savePath}");
+    }
+
+    private void Start()
+    {
+        LoadPlayerData();
     }
 
     /// <summary>
@@ -32,6 +39,16 @@ public class SaveManager : MonoBehaviour{
     }
 
     /// <summary>
+    /// Returns the currently loaded player data
+    /// </summary>
+    /// <returns></returns>
+    public bool GetPlayerData(out PlayerData data)
+    {
+        data = loadedData ? playerData : null;
+        return loadedData;
+    }
+
+    /// <summary>
     /// Gets the current player scene from the SceneManager and return its name.
     /// </summary>
     /// <returns></returns>
@@ -44,13 +61,16 @@ public class SaveManager : MonoBehaviour{
     /// </summary>
     public void SaveData(){
         Debug.Log("Saving player data...");
-        PlayerData playerData = new PlayerData{
-            inventory = GetInventory(),
-            playerName = "Rooty Tooty Fresh'n Fruity",
-            playerLocation = GetPlayerLocation()
-        };
-        string jsonString = JsonUtility.ToJson(playerData, false);
+        playerData = new PlayerData(
+            GetInventory(),
+            "Rooty Tooty Fresh'n Fruity",
+            GetPlayerLocation()
+        );
+        Debug.Log(playerData.playerName + ":" + playerData.playerLocation);
+        string jsonString = JsonUtility.ToJson(playerData, true);
+        Debug.Log(jsonString);
         File.WriteAllText(savePath, jsonString);
+        Debug.Log(File.ReadAllText(savePath));
         Debug.Log("Save complete!");
     }
 
@@ -60,11 +80,63 @@ public class SaveManager : MonoBehaviour{
     /// <returns></returns>
     public void LoadPlayerData()
     {
-        string content = File.ReadAllText(savePath);
-        PlayerData playerData = JsonUtility.FromJson<PlayerData>(content);
-        InventoryManager.Instance.LoadInventory(playerData.inventory);
-        Debug.Log($"Player location : {playerData.playerLocation}");
-        Debug.Log($"Player name : {playerData.playerName}");
+        if (File.Exists(savePath))
+        {
+            string content = File.ReadAllText(savePath);
+            playerData = JsonUtility.FromJson<PlayerData>(content);
+            Debug.Log($"Player location : {playerData.playerLocation}");
+            Debug.Log($"Player name : {playerData.playerName}");
+            loadedData = true;
+        }
+        else
+        {
+            loadedData = false;
+            Debug.Log($"<color=yellow>No save data found</color>");
+        }
     }
 
+}
+
+[Serializable]
+public class PlayerData{
+    [SerializeField] private string[] _inventory;
+    public string[] inventory {
+        get{
+            return _inventory;
+        } 
+        private set
+        {
+            _inventory = value;
+        }
+    }
+    [SerializeField] private string _playerName;
+    public string playerName
+    {
+        get
+        {
+            return _playerName;   
+        } 
+        private set
+        {
+            _playerName = value;
+        }
+    }
+    [SerializeField] private string _playerLocation;
+    public string playerLocation
+    {
+        get
+        {
+            return _playerLocation;
+        } 
+        private set
+        {
+            _playerLocation = value;
+        }
+    }
+    public PlayerData(string[] inventory, string playerName, string playerLocation)
+    {
+        this.inventory = inventory;
+        this.playerName = playerName;
+        this.playerLocation = playerLocation;
+    }
 }
