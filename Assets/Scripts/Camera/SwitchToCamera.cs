@@ -22,7 +22,15 @@ public class SwitchToCamera : MonoBehaviour, IInteractable {
     /// </summary>
     public GameObject[] onlyEnableWhenOnCamera;
 
+    Collider[] colliders;
+
+    void Awake() {
+        colliders = GetComponents<Collider>();
+    }
+
     void Start() {
+        GameManager.instance.cam.onCurrentCameraChange += HandleCameraChanged;
+
         bool isCurrent = GameManager.instance.cam.currentCamera == cam;
         isOnCamera = !isCurrent;
         SetIsOnCamera(isCurrent);
@@ -39,16 +47,10 @@ public class SwitchToCamera : MonoBehaviour, IInteractable {
 
     public void HandleInteract() {
         GameManager.instance.cam.GoToCamera(cam, addToStack);
-        SetIsOnCamera(true);
-
-        GameManager.instance.cam.onCurrentCameraChange += HandleCameraChanged;
     }
 
     void HandleCameraChanged(CinemachineCamera camera) {
-        if (camera != cam) {
-            GameManager.instance.cam.onCurrentCameraChange -= HandleCameraChanged;
-            SetIsOnCamera(false);
-        }
+        SetIsOnCamera(camera == cam);
     }
 
     void SetIsOnCamera(bool is_it) {
@@ -58,6 +60,10 @@ public class SwitchToCamera : MonoBehaviour, IInteractable {
 
         foreach (GameObject obj in onlyEnableWhenOnCamera) {
             obj.SetActive(is_it);
+        }
+
+        foreach (Collider col in colliders) {
+            col.enabled = !is_it;
         }
     }
 

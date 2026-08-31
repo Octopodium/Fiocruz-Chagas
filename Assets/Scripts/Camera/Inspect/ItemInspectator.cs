@@ -113,8 +113,8 @@ public class ItemInspectator : MonoBehaviour {
         if (!inspecting || !Mouse.current.leftButton.isPressed || currentInspectable == null) return;
         Vector2 delta = Mouse.current.delta.ReadValue();
 
-        currentInspectable.transform.Rotate(Vector3.down, delta.x * rotateSpeed, Space.World);
-        currentInspectable.transform.Rotate(Vector3.right, delta.y * rotateSpeed, Space.World);
+        currentInspectable.transform.Rotate(-Camera.main.transform.up, delta.x * rotateSpeed, Space.World);
+        currentInspectable.transform.Rotate(Camera.main.transform.right, delta.y * rotateSpeed, Space.World);
     }
 
     /// <summary>
