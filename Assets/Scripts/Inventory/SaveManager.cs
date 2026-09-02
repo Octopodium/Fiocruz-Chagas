@@ -90,8 +90,8 @@ public class SaveManager : MonoBehaviour{
         }
         else
         {
-            loadedData = false;
             Debug.Log($"<color=yellow>No save data found</color>");
+            loadedData = true;
         }
     }
 

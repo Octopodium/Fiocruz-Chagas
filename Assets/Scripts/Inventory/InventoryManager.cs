@@ -98,12 +98,23 @@ public class InventoryManager : MonoBehaviour
     }
 
     /// <summary>
-    /// After receiving an array containing the names of all items in the player's inventory, clears inventory and then adds all the collectables with names contained in the array.
+    /// Waits for SaveManager to finish loading player data, then proceeds to either convert the inventory data loaded, or initiate inventory without any data.
     /// </summary>
     /// <param name="loadData"></param>
-    public void LoadInventory()
+    public async void LoadInventory()
     {
-        if(SaveManager.Instance.GetPlayerData(out PlayerData playerData))
+        if (!SaveManager.Instance)
+        {
+            Debug.LogWarning("No SaveManager Instance was found. initializing inventory without player data.");
+            return;
+        }
+        PlayerData playerData;
+        while(!SaveManager.Instance.GetPlayerData(out playerData))
+        {
+            Debug.Log($"<color=yellow>Awaiting for player data.</color>");
+            await Awaitable.NextFrameAsync();
+        }
+        if(playerData != null)
         {
             string [] inventoryData = playerData.inventory;
             ClearInventory();
