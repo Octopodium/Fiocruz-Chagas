@@ -32,6 +32,7 @@ public class ItemPickup : MonoBehaviour, IInteractable {
     {
         if (InventoryManager.Instance.InventoryContainsCollectable(collectable))
         {
+            Debug.Log("Inseto no inventário");
             Destroy(gameObject);
         }
     }

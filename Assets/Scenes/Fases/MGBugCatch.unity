@@ -697,6 +697,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4255287486320539079, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: 'inventory.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
+    - target: {fileID: 4916971418387521278, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6521927374707840347, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.86524
@@ -1193,7 +1201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1527560758}
   - component: {fileID: 1527560757}
-  - component: {fileID: 1527560756}
   - component: {fileID: 1527560759}
   m_Layer: 0
   m_Name: Main Camera
@@ -1202,14 +1209,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1527560756
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527560755}
-  m_Enabled: 1
 --- !u!20 &1527560757
 Camera:
   m_ObjectHideFlags: 0
