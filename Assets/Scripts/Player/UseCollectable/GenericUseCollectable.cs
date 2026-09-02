@@ -7,11 +7,6 @@ public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
     public UnityEvent onCollectableUsed;
 
 
-    private void Start()
-    {
-        DestroyIfInInventory();
-    }
-
     public void HandleCollectable(Collectable collectableHover) {
         print("Usando " + collectableHover.GetName());
         if (consumeOnUse) {
@@ -27,16 +22,5 @@ public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
 
     public bool CanBeFound() {
         return collectable == GameManager.instance.player.collectableHeld;
-    }
-
-    /// <summary>
-    /// If linked collectable is already in inventory, destroy collectable.
-    /// </summary>
-    private void DestroyIfInInventory()
-    {
-        if (InventoryManager.Instance.InventoryContainsCollectable(collectable))
-        {
-            Destroy(gameObject);
-        }
     }
 }

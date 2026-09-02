@@ -4,6 +4,11 @@ public class ItemPickup : MonoBehaviour, IInteractable {
     public Collectable collectable;
     public bool destroyOnPicked = true;
 
+    private void Start()
+    {
+        DestroyIfInInventory();
+    }
+
     public string GetHoverText() {
         return "Pegar " + collectable.GetName();
     }
@@ -18,6 +23,17 @@ public class ItemPickup : MonoBehaviour, IInteractable {
 
     public bool CanBeFound() {
         return true;
+    }
+
+    /// <summary>
+    /// If linked collectable is already in inventory, destroy collectable.
+    /// </summary>
+    private void DestroyIfInInventory()
+    {
+        if (InventoryManager.Instance.InventoryContainsCollectable(collectable))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
