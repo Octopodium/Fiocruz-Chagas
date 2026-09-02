@@ -66,6 +66,11 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public bool InventoryContainsCollectable(Collectable collectable)
+    {
+        return inventory.Contains(collectable);
+    }
+
     /// <summary>
     /// Removes all items from inventory and inventory deck.
     /// </summary>
