@@ -36,7 +36,7 @@ public class Inspectable : MonoBehaviour, IInteractable {
     public void StopInspecting() => SetBeingInspected(false);
 
     /// <summary>
-    /// Sets internally if the Inspectable is being inspected.
+    /// Sets if the Inspectable is being inspected.
     /// </summary>
     /// <param name="is_it"></param>
     public void SetBeingInspected(bool is_it) {
@@ -51,6 +51,10 @@ public class Inspectable : MonoBehaviour, IInteractable {
         onInspectingChanged?.Invoke(beingInspected);
     }
 
+    /// <summary>
+    /// Internal use only. Updates the children IUnderMouse enabled state, so they are only enabled while inspecting.
+    /// </summary>
+    /// <param name="active">Value to set every IUnderMouse enabled state to.</param>
     void SetChildrenUnderMouseState(bool active) {
         for (int i = childrenUnderMouse.Count - 1; i > 0; i--) {
             IUnderMouse child = childrenUnderMouse[i];

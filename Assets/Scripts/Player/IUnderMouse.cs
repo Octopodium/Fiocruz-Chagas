@@ -6,12 +6,12 @@ public interface IUnderMouse {
     /// <summary>
     /// Defines the text shown when hovering. It will only be called if CanBeFound return true.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>A small description of the object or the action you can perform with it.</returns>
     string GetHoverText();
 
     /// <summary>
-    /// 
+    /// Defines if this object can be found by the camera rasycast. In certain cases, the object may want to stay hidden for a time.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>True if will be detected by the camera raycast.</returns>
     bool CanBeFound();
 }

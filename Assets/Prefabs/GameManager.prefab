@@ -1368,9 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14df51b3c464c24b8360fb2aa3bd69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
-  inventory:
-  - {fileID: 11400000, guid: 1468b33ccf8033942bdc62a0642623a0, type: 2}
-  - {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
+  inventory: []
   allCollectables: []
   cardViewManager: {fileID: 2414469414490867851}
 --- !u!1 &5259741580512767963

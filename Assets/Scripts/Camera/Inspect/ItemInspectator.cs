@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// Controls the inspectator view.
+/// Controls the inspectator view. Called by Inspectable.
 /// </summary>
 public class ItemInspectator : MonoBehaviour {
     // References

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Essa classe não está acabada, favor não utilizar por hora!
+/// Performs raycasts with 'CheckUnderMouse' and allows to switch between virtual cameras using the camera stack with 'GoToCamera' and 'GoBack'.
 /// </summary>
 public class CameraController : MonoBehaviour {
     // References

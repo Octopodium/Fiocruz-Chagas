@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// A generic UseCollectable that triggers an event when player drags and drop a specific collectable card over it.
+/// </summary>
 public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
     public Collectable collectable;
     public bool consumeOnUse = true;
     public UnityEvent onCollectableUsed;
 
-
-    private void Start()
-    {
-        DestroyIfInInventory();
-    }
 
     public void HandleCollectable(Collectable collectableHover) {
         print("Usando " + collectableHover.GetName());
@@ -27,16 +25,5 @@ public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
 
     public bool CanBeFound() {
         return collectable == GameManager.instance.player.collectableHeld;
-    }
-
-    /// <summary>
-    /// If linked collectable is already in inventory, destroy collectable.
-    /// </summary>
-    private void DestroyIfInInventory()
-    {
-        if (InventoryManager.Instance.InventoryContainsCollectable(collectable))
-        {
-            Destroy(gameObject);
-        }
     }
 }
