@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// A generic UseCollectable that triggers an event when player drags and drop a specific collectable card over it.
+/// </summary>
 public class GenericUseCollectable : MonoBehaviour, IUseCollectable {
     public Collectable collectable;
     public bool consumeOnUse = true;

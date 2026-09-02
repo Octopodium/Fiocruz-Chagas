@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// Controls the navigation between ambients. Use GoTo or GoToCoroutine to switch the current ambient.
 /// </summary>
 public class AmbientNavigation : MonoBehaviour {
-    public AmbientInfo currentAmbient;
+    public AmbientInfo currentAmbient {get; private set;}
 
     Scene? currentScene;
     AsyncOperation loadingScene;
@@ -59,6 +59,15 @@ public class AmbientNavigation : MonoBehaviour {
 
         
     }
+
+    /// <summary>
+    /// Immediately changes scene to the ambient passed. Will not make any smooth transition nor call onAmbientLoadingProgress.
+    /// </summary>
+    /// <param name="info">AmbientInfo of the ambient to change to</param>
+    public static void StartAtAmbient(AmbientInfo info) {
+        SceneManager.LoadScene(info.sceneName);   
+    }
+
 
     /// <summary>
     /// Internal use only. Simple coroutine that unloads a scene.

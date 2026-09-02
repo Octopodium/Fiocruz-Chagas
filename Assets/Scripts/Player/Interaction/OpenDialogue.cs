@@ -1,5 +1,9 @@
 using UnityEngine;
 using Yarn.Unity;
+
+/// <summary>
+/// Interactable that triggers a dialogue when interacted.
+/// </summary>
 public class OpenDialogue : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueRunner dialogueRunner;

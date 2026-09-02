@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Interactable used for picking collectables in the enviroment. Normally destroys itself (destroyOnPicked) after picking it.
+/// </summary>
 public class ItemPickup : MonoBehaviour, IInteractable {
     public Collectable collectable;
     public bool destroyOnPicked = true;

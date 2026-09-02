@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Interactable used to switch ambients on click. Normally used at doors.
+/// </summary>
 public class TravelToAmbient : MonoBehaviour, IInteractable {
     public AmbientInfo ambient;
 
