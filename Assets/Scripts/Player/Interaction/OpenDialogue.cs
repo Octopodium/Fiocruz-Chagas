@@ -17,9 +17,6 @@ public class OpenDialogue : MonoBehaviour, IInteractable
     
     public void HandleInteract() 
     {
-        //if (dialogueRunner.IsDialogueRunning) Debug.Log("tarodano"); return;
-
-        //Debug.Log("ta tentatno roda");
         dialogueRunner.StartDialogue(startNode); 
     }
 
