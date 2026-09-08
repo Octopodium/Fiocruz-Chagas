@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[CreateAssetMenu(fileName = "NewAmbient", menuName = "Game Data/Ambient", order = 1)]
+[CreateAssetMenu(fileName = "NewAmbient", menuName = "Scriptable Objects/Ambient", order = 1)]
 public class AmbientInfo : ScriptableObject {
     public string ambientName;
 

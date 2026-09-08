@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour {
     // References
     public InventoryManager inventory;
+    public QuestControl quest;
 
 
     // Internal
