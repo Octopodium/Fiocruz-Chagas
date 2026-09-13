@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 8534c8cf3dbd8634b930f7b2731e74eb
+guid: b728af47d8743e54c9df0e1c7432bf0e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ArvorePlane
-    second: {fileID: 2100000, guid: c78c56a2eacd42e4888814e205221377, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
