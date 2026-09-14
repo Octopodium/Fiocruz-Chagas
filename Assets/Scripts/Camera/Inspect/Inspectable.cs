@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 /// Used on itens that can be brought to the front of the camera and rotated.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class Inspectable : MonoBehaviour, IInteractable {
+public class Inspectable : IInteractable {
     public String itemName = "item";
     public bool beingInspected {get; private set;} = false;
 
@@ -23,15 +23,15 @@ public class Inspectable : MonoBehaviour, IInteractable {
         SetChildrenUnderMouseState(false);
     }
 
-    public string GetHoverText() {
+    public override string GetHoverText() {
         return "Inspecionar " + itemName;
     }
 
-    public bool CanBeFound() {
+    public override bool CanBeFound() {
         return !beingInspected;
     }
 
-    public void HandleInteract() => Inspect();
+    public override void HandleInteract() => Inspect();
     public void Inspect() => SetBeingInspected(true);
     public void StopInspecting() => SetBeingInspected(false);
 

@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Interactable used for picking collectables in the enviroment. Normally destroys itself (destroyOnPicked) after picking it.
 /// </summary>
-public class ItemPickup : MonoBehaviour, IInteractable {
+public class ItemPickup : IInteractable {
     public Collectable collectable;
     public bool destroyOnPicked = true;
 
@@ -12,11 +12,11 @@ public class ItemPickup : MonoBehaviour, IInteractable {
         DestroyIfInInventory();
     }
 
-    public string GetHoverText() {
+    public override string GetHoverText() {
         return "Pegar " + collectable.GetName();
     }
     
-    public void HandleInteract() {
+    public override void HandleInteract() {
         GameManager.instance.player.inventory.AddCollectable(collectable);
 
         if (destroyOnPicked) {
@@ -24,7 +24,7 @@ public class ItemPickup : MonoBehaviour, IInteractable {
         }
     }
 
-    public bool CanBeFound() {
+    public override bool CanBeFound() {
         return true;
     }
 

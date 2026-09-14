@@ -4,23 +4,23 @@ using Yarn.Unity;
 /// <summary>
 /// Interactable that triggers a dialogue when interacted.
 /// </summary>
-public class OpenDialogue : MonoBehaviour, IInteractable
+public class OpenDialogue : IInteractable
 {
     [SerializeField] private DialogueRunner dialogueRunner;
     [SerializeField] private string NPCName = "Dona Neuza"; //temp
     [SerializeField] private string startNode = "TestAnaScript"; //temp
     
-    public string GetHoverText() 
+    public override string GetHoverText() 
     {
         return "Conversar com " + NPCName;
     }
     
-    public void HandleInteract() 
+    public override void HandleInteract() 
     {
         dialogueRunner.StartDialogue(startNode); 
     }
 
-    public bool CanBeFound() 
+    public override bool CanBeFound() 
     {
         return true;
     }

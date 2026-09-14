@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352b2ae9b80042c4e900fee233a7172a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
+  conditions: []
   ambient: {fileID: 11400000, guid: 6fbce11d62f413c4f9ee25a169420e27, type: 2}
 --- !u!65 &119879491
 BoxCollider:
@@ -619,6 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74641541dfa725145a0143bfb0d25725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
+  conditions: []
   collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
   destroyOnPicked: 1
 --- !u!212 &404214724
@@ -837,13 +839,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConditionsChecker
   conditionals:
-  - referenceType: 1
-    gameObjectReferenced: {fileID: 1104057675}
-    componentType: GameObject
-    functionName: active
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: flag_example_1
     functionParameter:
-      type: 1
-      intValue: 5
+      type: 0
+      intValue: 0
       floatValue: 0
       stringValue: 
       boolValue: 0
@@ -851,11 +853,11 @@ MonoBehaviour:
     compareOptions: 0
     compareValue:
       type: 4
-      intValue: 4
+      intValue: 0
       floatValue: 0
-      stringValue: tetete
-      boolValue: 1
-      objectRefValue: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
 --- !u!4 &437819216
 Transform:
   m_ObjectHideFlags: 0
@@ -1269,6 +1271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 0}
+  flags: {fileID: 0}
   navigation: {fileID: 0}
   cam: {fileID: 0}
   inspectator: {fileID: 0}
@@ -1642,6 +1645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e57ea549bcc594b8dac24b8025bdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenericUseCollectable
+  conditions: []
   collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
   consumeOnUse: 1
   onCollectableUsed:
@@ -1916,6 +1920,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece4178dcf106a428238df1ed9f9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: saveManager
+    functionName: flag_example_2
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
   itemName: item
 --- !u!54 &1774207441
 Rigidbody:
@@ -2044,6 +2068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74641541dfa725145a0143bfb0d25725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
+  conditions: []
   collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
   destroyOnPicked: 1
 --- !u!54 &2052430638

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     
     // References
     public Player player;
+    public FlagsSystem flags;
     public AmbientNavigation navigation;
     public CameraController cam;
     public ItemInspectator inspectator;

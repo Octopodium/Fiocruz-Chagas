@@ -92,7 +92,7 @@ public class CameraController : MonoBehaviour {
 
             if (under == lastUnderMouseGameObject) {
                 underMouse = lastUnderMouseInterface;
-                if (underMouse != null) underMouse = underMouse.CanBeFound() ? underMouse : null;
+                if (underMouse != null) underMouse = (underMouse.CanBeFound() && underMouse.CheckConditions()) ? underMouse : null;
 
                 return lastUnderMouseGameObject;
             }
@@ -102,7 +102,7 @@ public class CameraController : MonoBehaviour {
             lastUnderMouseGameObject = under;
             lastUnderMouseInterface = underMouse;
 
-            if (underMouse != null) underMouse = underMouse.CanBeFound() ? underMouse : null;
+            if (underMouse != null) underMouse = (underMouse.CanBeFound() && underMouse.CheckConditions()) ? underMouse : null;
 
         } else {
             lastUnderMouseGameObject = null;

@@ -19,8 +19,8 @@ using UnityEngine.UIElements;
 /// </summary>
 [Serializable]
 public class ConditionDescription {
-    public enum ReferenceType {ObjectReference, GameManager, PlayerReference}
-    public ReferenceType referenceType = ReferenceType.ObjectReference;
+    public enum ReferenceType {Flags, ObjectReference, GameManager, PlayerReference}
+    public ReferenceType referenceType = ReferenceType.Flags;
     public GameObject gameObjectReferenced;
     public string componentType;
     public string functionName;
@@ -38,8 +38,44 @@ public class ConditionDescription {
     /// </summary>
     /// <returns>The result of the condition.</returns>
     public bool GetValue() {
-        object obj;
-        GameObject gameObject = GetObject();
+        object resultValue;
+        
+        if (referenceType == ReferenceType.Flags) {
+            // if (!GameManager.instance.flags.IsFlagSetted(functionName)) return false;
+            resultValue = GameManager.instance.flags.GetFlag(functionName);
+        }
+        else if (!TryGetComponentObjectResult(out resultValue)) return false;
+
+        object comparisonValue = compareValue.GetValue();
+        bool v = CheckCondition(resultValue, compareOptions, comparisonValue);
+
+        return v;
+    }
+
+    /// <summary>
+    /// Internal use only. Returns the gameObjectReferenced or gets the gameObject related with the referenceType.
+    /// </summary>
+    /// <returns>Returns the gameObject related with the component in which will check the condition.</returns>
+    GameObject GetGameObject() {
+        if (referenceType == ReferenceType.ObjectReference) return gameObjectReferenced;
+        if (referenceType == ReferenceType.Flags) return GameManager.instance.flags.gameObject;
+        if (referenceType == ReferenceType.GameManager) return GameManager.instance.gameObject;
+        return GameManager.instance.player.gameObject;
+    }
+
+    /// <summary>
+    /// Internal use only. Tries to extract a value from the referenced component.
+    /// When 'referenceType' setted to 'Flags', will always return false, since Flags works in a different way.
+    /// </summary>
+    /// <param name="resultValue">Outs the result if the return is true. If false, will be null.</param>
+    /// <returns>If it was able to extract a value (stored in it's out parameter).</returns>
+    bool TryGetComponentObjectResult(out object resultValue) {
+        object obj = null;
+        resultValue = null;
+
+        if (referenceType == ReferenceType.Flags) return false;
+
+        GameObject gameObject = GetGameObject();
         if (gameObject == null) return false;
 
         if (componentType == typeof(GameObject).Name) {
@@ -54,7 +90,7 @@ public class ConditionDescription {
 
         if (obj == null) return false;
 
-        object resultValue = GetPropertyValue(obj, functionName);
+        resultValue = GetPropertyValue(obj, functionName);
         if (typeof(MulticastDelegate).IsAssignableFrom(resultValue.GetType())) {
             object parameter = functionParameter.GetValue();
             
@@ -62,21 +98,7 @@ public class ConditionDescription {
             else resultValue = ((Delegate) resultValue).DynamicInvoke(parameter);
         }
 
-
-        object comparisonValue = compareValue.GetValue();
-        bool v = CheckCondition(resultValue, compareOptions, comparisonValue);
-
-        return v;
-    }
-
-    /// <summary>
-    /// Internal use only. Returns the gameObjectReferenced or gets the gameObject related with the referenceType.
-    /// </summary>
-    /// <returns>Returns the gameObject related with the component in which will check the condition.</returns>
-    GameObject GetObject() {
-        if (referenceType == ReferenceType.ObjectReference) return gameObjectReferenced;
-        if (referenceType == ReferenceType.GameManager) return GameManager.instance.gameObject;
-        return GameManager.instance.player.gameObject;
+        return true;
     }
 
     /// <summary>
@@ -261,14 +283,14 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
         content.Add(componentField);
 
         SerializedProperty functionProperty = property.FindPropertyRelative("functionName");
+        VisualElement functionField = null;
 
-        if (referenceType != ConditionDescription.ReferenceType.ObjectReference || hasObject) {
+        if (hasObject || referenceType == ConditionDescription.ReferenceType.GameManager ||  referenceType == ConditionDescription.ReferenceType.PlayerReference) {
             SerializedProperty componentProperty = property.FindPropertyRelative("componentType");
             string componentName = componentProperty.stringValue;
             Type componentType = componentName != null ? GetComponentType(property, referenceType, componentName) : null;
 
             SortedDictionary<string, object> data = componentType != null ? GetTypeFunctions(componentType) : new SortedDictionary<string, object>();
-            VisualElement functionField;
 
             if (data.Count > 0) {
                 functionField = CreatePopup(property, functionProperty, data);
@@ -277,9 +299,19 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
                 functionField.SetEnabled(false);
             }
 
+        } else if (referenceType == ConditionDescription.ReferenceType.Flags) {
+            SortedDictionary<string, object> data = new SortedDictionary<string, object>();
+
+            foreach (FlagDescriptor descriptor in FlagsRegister.instance.availableFlags) {
+                data[descriptor.name + ": " + descriptor.readableType] = descriptor.name;
+            }
+
+            functionField = CreatePopup(property, functionProperty, data);
+        }
+
+        if (functionField != null) {
             functionField.TrackPropertyValue(functionProperty, RebuildUI);
             content.Add(functionField);
-
         }
 
         return content;
@@ -307,9 +339,12 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
         } else if(referenceType == ConditionDescription.ReferenceType.PlayerReference) {
             SortedDictionary<string, object> systemsData = GetTypeSystems(typeof(Player));
             container = CreatePopup(property, componentProperty, systemsData);
-        } else {
+        } else if(referenceType == ConditionDescription.ReferenceType.GameManager){
             SortedDictionary<string, object> systemsData = GetTypeSystems(typeof(GameManager));
             container = CreatePopup(property, componentProperty, systemsData);
+        } else if(referenceType == ConditionDescription.ReferenceType.Flags) {
+            container = CreatePopup(property, componentProperty, new SortedDictionary<string, object>{{"Flag System", ""}});
+            container.SetEnabled(false);
         }
 
         container.TrackPropertyValue(componentProperty, RebuildUI);
@@ -332,13 +367,18 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
         rightRow.style.width = Length.Percent(70);
 
 
+        
 
         // Function parameter
+        MethodInfo method = null;
+        Type type = null;
         string componentName = property.FindPropertyRelative("componentType").stringValue;
         string functionName = property.FindPropertyRelative("functionName").stringValue;
 
-        Type type = GetComponentType(property, referenceType, componentName);
-        MethodInfo method = type != null ? type.GetMethodFromUnique(functionName) : null;
+        if (referenceType != ConditionDescription.ReferenceType.Flags) {
+            type = GetComponentType(property, referenceType, componentName);
+            method = type != null ? type.GetMethodFromUnique(functionName) : null;
+        }
 
         if (method != null) {
             ParameterInfo[] parameters = method.GetParameters();
@@ -368,7 +408,11 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
         leftRow.Add(comparisonOptionField);
 
         Type returnType;
-        if (method != null) returnType = method.ReturnType;
+        if (referenceType == ConditionDescription.ReferenceType.Flags) {
+            FlagDescriptor descriptor = FlagsRegister.instance.GetDescriptorByName(functionName);
+            returnType = descriptor != null ? FlagDescriptor.GetTypeByFlagTypes(descriptor.type) : null;
+
+        } else if (method != null) returnType = method.ReturnType;
         else returnType = GetFieldOrPropertyType(type, functionName);
 
         SerializedProperty compareValueProperty = property.FindPropertyRelative("compareValue");

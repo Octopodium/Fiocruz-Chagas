@@ -5,7 +5,7 @@ using UnityEngine;
 /// Interactable used to switch between cameras. Most cases of use is to get close to an area of the same ambient.
 /// This interactable allows to "change the principal camera" by using 'addToStack' as false and being in the peek of the stack.
 /// </summary>
-public class SwitchToCamera : MonoBehaviour, IInteractable {
+public class SwitchToCamera : IInteractable {
 
     public string areaName = "area";
     public CinemachineCamera cam;
@@ -36,16 +36,16 @@ public class SwitchToCamera : MonoBehaviour, IInteractable {
         SetIsOnCamera(isCurrent);
     }
     
-    public string GetHoverText() {
+    public override string GetHoverText() {
         return "Ver " + areaName;
     }
 
-    public bool CanBeFound() {
+    public override bool CanBeFound() {
         return !isOnCamera;
     }
 
 
-    public void HandleInteract() {
+    public override void HandleInteract() {
         GameManager.instance.cam.GoToCamera(cam, addToStack);
     }
 

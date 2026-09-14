@@ -4,18 +4,18 @@ using UnityEngine;
 /// <summary>
 /// Interactable used to go back in the cameraStack.
 /// </summary>
-public class GoBackToCamera : MonoBehaviour, IInteractable {
+public class GoBackToCamera : IInteractable {
 
-    public string GetHoverText() {
+    public override string GetHoverText() {
         return "Voltar";
     }
 
-    public bool CanBeFound() {
+    public override bool CanBeFound() {
         return true;
     }
 
 
-    public void HandleInteract() {
+    public override void HandleInteract() {
         GameManager.instance.cam.GoBack();
     }
 }
