@@ -31,6 +31,9 @@ public class ConditionDescription {
     public CompareOptions compareOptions = CompareOptions.Equals;
     public GenericValue compareValue;
 
+    // Runtime only
+    object cacheComponent;
+
 
 
     /// <summary>
@@ -78,7 +81,9 @@ public class ConditionDescription {
         GameObject gameObject = GetGameObject();
         if (gameObject == null) return false;
 
-        if (componentType == typeof(GameObject).Name) {
+        if (cacheComponent != null) {
+            obj = cacheComponent;
+        } else if (componentType == typeof(GameObject).Name) {
             obj = gameObject;
         } else if (referenceType == ReferenceType.ObjectReference) {
             obj = gameObject.GetComponent(componentType);
@@ -87,6 +92,8 @@ public class ConditionDescription {
             if (componentType == "this") obj = system;
             else obj = GetPropertyValue(system, componentType);
         }
+
+        cacheComponent = obj;
 
         if (obj == null) return false;
 

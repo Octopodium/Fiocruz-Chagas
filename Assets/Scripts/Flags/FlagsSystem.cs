@@ -17,7 +17,17 @@ public class FlagsSystem : MonoBehaviour {
         register = FlagsRegister.instance;
     }
 
-    
+    void Start() {
+        GameManager.instance.player.inventory.OnAddToInventory += HandleCollectableAdded;
+        GameManager.instance.player.inventory.OnRemoveFromInventory += HandleCollectableRemoved;
+    }
+
+    void OnDestroy() {
+        GameManager.instance.player.inventory.OnAddToInventory -= HandleCollectableAdded;
+        GameManager.instance.player.inventory.OnRemoveFromInventory -= HandleCollectableRemoved;
+    }
+
+
     /// <summary>
     /// Sets a flag with a value.
     /// </summary>
@@ -82,7 +92,6 @@ public class FlagsSystem : MonoBehaviour {
         return (bool) flags[flagName];
     }
 
-
     /// <summary>
     /// Checks if a flag is setted (has any value stored).
     /// </summary>
@@ -121,4 +130,33 @@ public class FlagsSystem : MonoBehaviour {
     }
     #endregion
 
+
+
+    #region Auto Flag Setters
+
+    void HandleCollectableAdded(Collectable collectable) {
+        string flag = collectable.GetRelatedFlag();
+        if (string.IsNullOrEmpty(flag)) return;
+        if (!IsValidFlag(flag)) {
+            Debug.LogWarning("Flag \"" + flag + "\" not setted on FlagsRegister!");
+            return;
+        }
+
+        SetFlag(flag, true);
+    }
+
+    void HandleCollectableRemoved(Collectable collectable) {
+        string flag = collectable.GetRelatedFlag();
+        if (string.IsNullOrEmpty(flag)) return;
+        if (!IsValidFlag(flag)) {
+            Debug.LogWarning("Flag \"" + flag + "\" not setted on FlagsRegister!");
+            return;
+        }
+
+        if (GameManager.instance.player.inventory.InventoryContainsCollectable(collectable)) return;
+
+        SetFlag(flag, false);
+    }
+
+    #endregion
 }

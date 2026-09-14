@@ -17,3 +17,7 @@ MonoBehaviour:
     type: 0
   - name: flag_example_2
     type: 0
+  - name: has_barbeiro
+    type: 0
+  - name: has_percevejo
+    type: 0

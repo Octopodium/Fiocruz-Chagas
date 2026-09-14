@@ -23,6 +23,8 @@ public abstract class IUnderMouse: MonoBehaviour{
     /// </summary>
     /// <returns>Returns true if every condition is true (or if there is no condition to be checked)</returns>
     public bool CheckConditions() {
+        if (conditions == null || conditions.Length == 0) return true;
+
         foreach (ConditionDescription condition in conditions)
             if (!condition.GetValue()) return false;
         return true;
