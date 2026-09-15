@@ -9,4 +9,8 @@ public class Quest : ScriptableObject {
     [TextArea] public string title;
     public QuestStep[] steps;
     public Quest unlockNextQuest;
+
+    public static Quest GetQuestByName(string name) {
+        return Resources.Load<Quest>("Quests/" + name);
+    }
 }

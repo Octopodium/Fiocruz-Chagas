@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -37,7 +38,6 @@ public class FlagsSystem : MonoBehaviour {
     public bool SetFlag(string flagName, object value) {
         if (!flags.ContainsKey(flagName) && !IsValidFlag(flagName)) return false;
         flags[flagName] = value;
-
         OnFlagChanged?.Invoke(flagName, value);
         return true;
     }
@@ -130,6 +130,65 @@ public class FlagsSystem : MonoBehaviour {
     }
     #endregion
 
+    /// <summary>
+    /// Returns the save data. Used for saving the current flag state.
+    /// </summary>
+    /// <returns></returns>
+    public FlagsSaveData Save() {
+        Dictionary<string, bool> boolDictionary = new Dictionary<string, bool>();
+        Dictionary<string, int> intDictionary = new Dictionary<string, int>();
+        Dictionary<string, float> floatDictionary = new Dictionary<string, float>();
+        Dictionary<string, string> stringDictionary = new Dictionary<string, string>();
+
+        foreach (string flagName in flags.Keys) {
+            FlagType? type = GetFlagType(flagName);
+            switch (type) {
+                case FlagType.BOOL:
+                    boolDictionary[flagName] = (bool) flags[flagName];
+                    break;
+                case FlagType.INT:
+                    intDictionary[flagName] = (int) flags[flagName];
+                    break;
+                case FlagType.FLOAT:
+                    floatDictionary[flagName] = (float) flags[flagName];
+                    break;
+                case FlagType.STRING:
+                    stringDictionary[flagName] = (string) flags[flagName];
+                    break;
+            }
+        }
+
+        FlagsSaveData data = new FlagsSaveData();
+        data.SetBool(boolDictionary.Keys.ToArray(), boolDictionary.Values.ToArray());
+        data.SetInt(intDictionary.Keys.ToArray(), intDictionary.Values.ToArray());
+        data.SetFloat(floatDictionary.Keys.ToArray(), floatDictionary.Values.ToArray());
+        data.SetString(stringDictionary.Keys.ToArray(), stringDictionary.Values.ToArray());
+        return data;
+
+    }
+
+    /// <summary>
+    /// Clears the current setted flags and sets flags from save. Used to Load saved flags state from 'Save' method.
+    /// </summary>
+    public void Load(FlagsSaveData data) {
+        flags.Clear();
+
+        foreach (KeyValuePair<string, bool> values in data.GetBool()) {
+            SetFlag(values.Key, values.Value);
+        }
+
+        foreach (KeyValuePair<string, int> values in data.GetInt()) {
+            SetFlag(values.Key, values.Value);
+        }
+
+        foreach (KeyValuePair<string, float> values in data.GetFloat()) {
+            SetFlag(values.Key, values.Value);
+        }
+
+        foreach (KeyValuePair<string, string> values in data.GetString()) {
+            SetFlag(values.Key, values.Value);
+        }
+    }
 
 
     #region Auto Flag Setters
@@ -159,4 +218,50 @@ public class FlagsSystem : MonoBehaviour {
     }
 
     #endregion
+}
+
+[Serializable]
+public struct FlagsSaveData {
+    public string[] boolFlags;
+    public bool[] boolValues;
+
+    public string[] intFlags;
+    public int[] intValues;
+
+    public string[] floatFlags;
+    public float[] floatValues;
+
+    public string[] stringFlags;
+    public string[] stringValues;
+
+    public void SetBool(string[] flagNames, bool[] values) {
+        boolFlags = flagNames;
+        boolValues = values;
+    }
+
+    public void SetInt(string[] flagNames, int[] values) {
+        intFlags = flagNames;
+        intValues = values;
+    }
+
+    public void SetFloat(string[] flagNames, float[] values) {
+        floatFlags = flagNames;
+        floatValues = values;
+    }
+
+    public void SetString(string[] flagNames, string[] values) {
+        stringFlags = flagNames;
+        stringValues = values;
+    }
+
+    IEnumerable<KeyValuePair<T0, T1>> IterateArrays<T0,T1>(T0[] arr1, T1[] arr2) {
+        for (int i = 0; i < arr1.Length; i++) {
+            yield return KeyValuePair.Create(arr1[i], arr2[i]);
+        }
+    }
+
+    public IEnumerable<KeyValuePair<string, bool>> GetBool() => IterateArrays(boolFlags, boolValues);
+    public IEnumerable<KeyValuePair<string, int>> GetInt() => IterateArrays(intFlags, intValues);
+    public IEnumerable<KeyValuePair<string, float>> GetFloat() => IterateArrays(floatFlags, floatValues);
+    public IEnumerable<KeyValuePair<string, string>> GetString() => IterateArrays(stringFlags, stringValues);
 }

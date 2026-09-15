@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +14,7 @@ public class QuestControl : MonoBehaviour {
     // Internal
     public Quest currentQuest {get; protected set;}
     public QuestStep currentStep {get; protected set;}
+    HashSet<string> finishedQuests = new HashSet<string>();
     int questStepIndex = -1;
 
     void Start() {
@@ -22,7 +26,10 @@ public class QuestControl : MonoBehaviour {
     /// Starts a quest (and it's first step). If another quest happening, force stops it.
     /// </summary>
     /// <param name="questToStart">The quest to be started</param>
-    public void StartQuest(Quest questToStart) {
+    /// <param name="startFromIndex">Optional parameter. Start quest from step with index. Most times leave it -1 or empty. Useful set for Load data.</param>
+    public void StartQuest(Quest questToStart, int startFromIndex = 0) {
+        if (finishedQuests.Contains(questToStart.name)) return;
+
         if (currentQuest == questToStart) return;
         else if (currentQuest != null) ForceStopQuest(currentQuest, false);
 
@@ -30,7 +37,7 @@ public class QuestControl : MonoBehaviour {
 
         OnQuestStarted?.Invoke(currentQuest);
 
-        questStepIndex = -1;
+        questStepIndex = startFromIndex - 1;
         currentStep = null;
         NextStep();
     }
@@ -74,6 +81,8 @@ public class QuestControl : MonoBehaviour {
         Quest lastQuest = currentQuest;
         currentQuest = null;
 
+        finishedQuests.Add(lastQuest.name);
+
         if (canCallNextQuest && lastQuest.unlockNextQuest != null) {
             StartQuest(lastQuest.unlockNextQuest);
         }
@@ -90,6 +99,7 @@ public class QuestControl : MonoBehaviour {
 
         if (currentStep != null) {
             currentStep.Stop();
+            currentStep.OnFinished -= NextStep;
             currentStep = null;
         }
 
@@ -105,4 +115,52 @@ public class QuestControl : MonoBehaviour {
     void FixedUpdate() {
         if (currentStep != null) currentStep.HandleFixedUpdate();
     }
+
+
+    public QuestSaveData Save() {
+        QuestSaveData data = new QuestSaveData();
+        data.currentQuest = currentQuest != null ? currentQuest.name : "";
+        data.currentStep = questStepIndex;
+        data.finishedQuests = finishedQuests.ToArray();
+        return data;
+    }
+
+    public void Load(QuestSaveData data) {
+        finishedQuests = data.finishedQuests.ToHashSet();
+        questStepIndex = data.currentStep;
+
+        bool dataHasCurrentQuest = !string.IsNullOrEmpty(data.currentQuest);
+
+        if (currentQuest != null) {
+            Quest runningNow = currentQuest;
+
+            if (dataHasCurrentQuest && runningNow.name == data.currentQuest) {
+                if (questStepIndex == data.currentStep) return;
+                currentStep.Stop();
+                currentStep.OnFinished -= NextStep;
+                currentStep = null;
+                questStepIndex = data.currentStep - 1;
+                NextStep();
+                return;
+            }
+
+            bool wasFinished = finishedQuests.Contains(runningNow.name);
+            ForceStopQuest(currentQuest, false);
+            if (!wasFinished) finishedQuests.Remove(runningNow.name);
+            runningNow = null;
+        }
+
+        if (dataHasCurrentQuest) {
+            Quest toStart = Quest.GetQuestByName(data.currentQuest);
+            StartQuest(toStart, Mathf.Max(0, data.currentStep));
+        }
+    }
+
+}
+
+[Serializable]
+public struct QuestSaveData {
+    public string currentQuest;
+    public int currentStep;
+    public string[] finishedQuests;
 }
