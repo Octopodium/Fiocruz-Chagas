@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -71,7 +72,7 @@ public class CameraController : MonoBehaviour {
     /// Cache for optimatization. Used by 'CheckUnderMouse()' to store the last gameObject under the mouse.
     /// </summary>
     public GameObject lastUnderMouseGameObject {get; private set;} = null;
-    public IUnderMouse lastUnderMouseInterface {get; private set;} = null;
+    public IUnderMouse[] lastUnderMouses {get; private set;} = null;
 
     
     /// <summary>
@@ -79,8 +80,9 @@ public class CameraController : MonoBehaviour {
     /// Called every frame by Player
     /// </summary>
     /// <param name="underMouse">Outs the IUnderMouse if it was found, if not, will be null.</param>
+    /// <param name="specificType">Optional parameter. Defines a search for an specific type (ex: IInteractable or IUseCollectable).</param>
     /// <returns></returns>
-    public GameObject CheckUnderMouse(out IUnderMouse underMouse) {
+    public GameObject CheckUnderMouse(out IUnderMouse underMouse, Type specificType = null) {
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit hit;
@@ -91,25 +93,33 @@ public class CameraController : MonoBehaviour {
             GameObject under = hit.transform.gameObject;
 
             if (under == lastUnderMouseGameObject) {
-                underMouse = lastUnderMouseInterface;
-                if (underMouse != null) underMouse = (underMouse.CanBeFound() && underMouse.CheckConditions()) ? underMouse : null;
-
+                underMouse = GetSingleValidUnderMouse(lastUnderMouses, specificType);
                 return lastUnderMouseGameObject;
             }
 
-            underMouse = under.GetComponent<IUnderMouse>();
-
             lastUnderMouseGameObject = under;
-            lastUnderMouseInterface = underMouse;
+            lastUnderMouses = under.GetComponents<IUnderMouse>();
 
-            if (underMouse != null) underMouse = (underMouse.CanBeFound() && underMouse.CheckConditions()) ? underMouse : null;
+            underMouse = GetSingleValidUnderMouse(lastUnderMouses, specificType);
 
         } else {
             lastUnderMouseGameObject = null;
-            lastUnderMouseInterface = null;
+            lastUnderMouses = null;
         }
 
         return lastUnderMouseGameObject;
+    }
+
+    IUnderMouse GetSingleValidUnderMouse(IUnderMouse[] options, Type limitByType = null) {
+        if (options == null) return null;
+        if (limitByType == null) limitByType = typeof(IUnderMouse);
+
+        foreach (IUnderMouse option in options) {
+            if (!limitByType.IsInstanceOfType(option)) continue;
+            if (option.CanBeFound() && option.CheckConditions()) return option;
+        }
+
+        return null;
     }
     
     #endregion

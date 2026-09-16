@@ -1,0 +1,20 @@
+﻿title: RosaTexto1
+---
+
+<<declare $temp_entregou_barbeiro = false>>
+<<declare $has_barbeiro = false>>
+<<declare $has_percevejo = false>>
+
+<<if $temp_entregou_barbeiro>>
+    Rosa: Ei, obrigado pelo barbeiro. Criei um paralelepípedo mágico que pode te teletransportar pra fora desse lugar.
+<<else>>
+    <<if $has_barbeiro>>
+    Rosa: Isso que você tem aí parece um barbeiro. Tem como me entregar?
+    <<elseif $has_percevejo>>
+    Rosa: Isso que você tem aí é um percevejo, uma pena. Procuro por um barbeiro.
+    <<else>>
+    Rosa: Sou o Cap. Rosa, quero analisar barbeiros.
+    <<endif>>
+<<endif>>
+
+===

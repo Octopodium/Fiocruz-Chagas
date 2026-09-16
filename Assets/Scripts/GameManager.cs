@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yarn.Unity;
 
 /// <summary>
 /// GameManager is the main Singleton of the game and wraps all big systems in a single place of reference.
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public AmbientNavigation navigation;
     public CameraController cam;
     public ItemInspectator inspectator;
+    public DialogueRunner dialogue;
     public SaveManager saveManager;
 
     // Internal

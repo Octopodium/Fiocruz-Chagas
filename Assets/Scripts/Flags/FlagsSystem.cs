@@ -19,13 +19,15 @@ public class FlagsSystem : MonoBehaviour {
     }
 
     void Start() {
-        GameManager.instance.player.inventory.OnAddToInventory += HandleCollectableAdded;
-        GameManager.instance.player.inventory.OnRemoveFromInventory += HandleCollectableRemoved;
+        SetAutoFlags();
     }
 
     void OnDestroy() {
-        GameManager.instance.player.inventory.OnAddToInventory -= HandleCollectableAdded;
-        GameManager.instance.player.inventory.OnRemoveFromInventory -= HandleCollectableRemoved;
+        UnsetAutoFlags();
+    }
+
+    void FixedUpdate() {
+        flagsAutoSettedThisFrame.Clear();
     }
 
 
@@ -43,6 +45,32 @@ public class FlagsSystem : MonoBehaviour {
     }
 
     /// <summary>
+    /// Sets a bool flag as true.
+    /// </summary>
+    /// <param name="flagName">The flag's name. It must be stored in the FlagsRegister.</param>
+    /// <returns>Returns true if the flag was setted. If the 'flagName' is invalid, will return false.</returns>
+    public bool CheckFlag(string flagName) {
+        if (GetFlagType(flagName) != FlagType.BOOL) return false;
+        flags[flagName] = true;
+        OnFlagChanged?.Invoke(flagName, true);
+        return true;
+    }
+
+    /// <summary>
+    /// Sets a bool flag as false.
+    /// </summary>
+    /// <param name="flagName">The flag's name. It must be stored in the FlagsRegister.</param>
+    /// <returns>Returns true if the flag was setted. If the 'flagName' is invalid, will return false.</returns>
+    public bool UncheckFlag(string flagName) {
+        if (GetFlagType(flagName) != FlagType.BOOL) return false;
+        flags[flagName] = false;
+        OnFlagChanged?.Invoke(flagName, false);
+        return true;
+    }
+
+
+
+    /// <summary>
     /// Gets a setted flag's value (regardless of the type).
     /// </summary>
     /// <param name="flagName">The flag's name</param>
@@ -50,6 +78,20 @@ public class FlagsSystem : MonoBehaviour {
     public object GetFlag(string flagName) {
         if (!flags.ContainsKey(flagName)) return null;
         return flags[flagName];
+    }
+
+    /// <summary>
+    /// Gets a setted flag's value (regardless of the type).
+    /// </summary>
+    /// <param name="flagName">The flag's name</param>
+    /// <param name="getDefaultValueInstead">Optional parameter. If true, when flag not set, will return default value of same type, else returns null.</param>
+    /// <returns>Returns the flag's value as an object type. </returns>
+    public object GetFlag(string flagName, bool getDefaultValueInstead) {
+        object result = GetFlag(flagName);
+        if (result != null) return result;
+        if (!getDefaultValueInstead) return null;
+        FlagType? flagType = GetFlagType(flagName);
+        return flagType == null ? null : GetDefaultTypeOf(FlagDescriptor.GetTypeByFlagTypes((FlagType) flagType));
     }
     
     /// <summary>
@@ -128,6 +170,13 @@ public class FlagsSystem : MonoBehaviour {
 
         return null;
     }
+
+    object GetDefaultTypeOf(Type t) {
+        if (t.IsValueType)
+            return Activator.CreateInstance(t);
+        return null;
+    }
+
     #endregion
 
     /// <summary>
@@ -193,6 +242,30 @@ public class FlagsSystem : MonoBehaviour {
 
     #region Auto Flag Setters
 
+    IDisposable autoFlagDialogueDisposable;
+    HashSet<string> flagsAutoSettedThisFrame = new HashSet<string>();
+
+    void SetAutoFlags() {
+        GameManager.instance.player.inventory.OnAddToInventory += HandleCollectableAdded;
+        GameManager.instance.player.inventory.OnRemoveFromInventory += HandleCollectableRemoved;
+
+        autoFlagDialogueDisposable = GameManager.instance.dialogue.VariableStorage.AddChangeListener(HandleDialogueVariableChange);
+        OnFlagChanged += HandleFlagChanged;
+
+    }
+
+    void UnsetAutoFlags() {
+        GameManager.instance.player.inventory.OnAddToInventory -= HandleCollectableAdded;
+        GameManager.instance.player.inventory.OnRemoveFromInventory -= HandleCollectableRemoved;
+
+        if (autoFlagDialogueDisposable != null) {
+            autoFlagDialogueDisposable.Dispose();
+            autoFlagDialogueDisposable = null;
+        }
+
+        OnFlagChanged -= HandleFlagChanged;
+    }
+
     void HandleCollectableAdded(Collectable collectable) {
         string flag = collectable.GetRelatedFlag();
         if (string.IsNullOrEmpty(flag)) return;
@@ -215,6 +288,22 @@ public class FlagsSystem : MonoBehaviour {
         if (GameManager.instance.player.inventory.InventoryContainsCollectable(collectable)) return;
 
         SetFlag(flag, false);
+    }
+
+    void HandleFlagChanged(string name, object value) {
+        string dialogueName = "$" + name;
+
+        if (flagsAutoSettedThisFrame.Contains(name)) return;
+        flagsAutoSettedThisFrame.Add(name);
+
+        if (value.GetType() == typeof(bool)) GameManager.instance.dialogue.VariableStorage.SetValue(dialogueName, (bool) value);
+        else if (value.GetType() == typeof(int) || value.GetType() == typeof(float)) GameManager.instance.dialogue.VariableStorage.SetValue(dialogueName,  Convert.ToSingle(value));
+        else if (value.GetType() == typeof(string)) GameManager.instance.dialogue.VariableStorage.SetValue(dialogueName, (string) value);
+    }
+
+    void HandleDialogueVariableChange(string name, object value) {
+        string flagName = name.StartsWith("$") ? name.Substring(1) : name;
+        if (IsValidFlag(flagName)) SetFlag(flagName, value);
     }
 
     #endregion

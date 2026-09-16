@@ -44,8 +44,11 @@ public class ConditionDescription {
         object resultValue;
         
         if (referenceType == ReferenceType.Flags) {
-            // if (!GameManager.instance.flags.IsFlagSetted(functionName)) return false;
-            resultValue = GameManager.instance.flags.GetFlag(functionName);
+            if (!GameManager.instance.flags.IsFlagSetted(functionName)) {
+                resultValue = GetDefaultTypeOf(GenericValue.GetType(compareValue.type));
+            } else {
+                resultValue = GameManager.instance.flags.GetFlag(functionName); 
+            }
         }
         else if (!TryGetComponentObjectResult(out resultValue)) return false;
 
@@ -155,7 +158,11 @@ public class ConditionDescription {
         
     }
 
-
+    object GetDefaultTypeOf(Type t) {
+        if (t.IsValueType)
+            return Activator.CreateInstance(t);
+        return null;
+    }
     
 }
 

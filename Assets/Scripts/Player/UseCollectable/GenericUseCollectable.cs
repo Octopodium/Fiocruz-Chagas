@@ -11,7 +11,6 @@ public class GenericUseCollectable : IUseCollectable {
 
 
     public override void HandleCollectable(Collectable collectableHover) {
-        print("Usando " + collectableHover.GetName());
         if (consumeOnUse) {
             GameManager.instance.player.inventory.RemoveCollectable(collectable);
         }
@@ -26,4 +25,8 @@ public class GenericUseCollectable : IUseCollectable {
     public override bool CanBeFound() {
         return collectable == GameManager.instance.player.collectableHeld;
     }
+
+
+    public void CheckFlag(string flag) => GameManager.instance.flags.CheckFlag(flag);
+    public void UncheckFlag(string flag) => GameManager.instance.flags.UncheckFlag(flag);
 }

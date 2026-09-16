@@ -1,0 +1,15 @@
+﻿title: RosaTexto2
+---
+<<if $temp_entregou_barbeiro == false>>
+    <<if $has_barbeiro == false>>
+        Rosa: Ei, pode ficar com esse inseto, eu não quero um percevejo. Tô procurando um barbairo.
+        Rosa: **barbeiro, mals escrevi errado.
+    <<else>>
+        Rosa: Vi que tu tem um barbeiro ai no seu inventário. Tu acha que eu sou bobo?
+        Rosa: ...
+        Rosa: Tá, eu sou um pouco bobo por parte de pai. Mas eu quero um barbeiro, não um percevejo.
+    <<endif>>
+<<else>>
+    Rosa: Cara, eu já recebi o barbeiro... O que você tá fazendo?
+<<endif>>
+===

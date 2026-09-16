@@ -6,7 +6,6 @@ using Yarn.Unity;
 /// </summary>
 public class OpenDialogue : IInteractable
 {
-    [SerializeField] private DialogueRunner dialogueRunner;
     [SerializeField] private string NPCName = "Dona Neuza"; //temp
     [SerializeField] private string startNode = "TestAnaScript"; //temp
     
@@ -17,7 +16,7 @@ public class OpenDialogue : IInteractable
     
     public override void HandleInteract() 
     {
-        dialogueRunner.StartDialogue(startNode); 
+        GameManager.instance.dialogue.StartDialogue(startNode); 
     }
 
     public override bool CanBeFound() 

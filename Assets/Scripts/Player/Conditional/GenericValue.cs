@@ -85,8 +85,8 @@ public struct GenericValue {
     /// <summary>
     /// Gets the GenericType enum related to the Type. Can be used to check if a certain value is supported by the struct, as if it's not, will return GenericType.NULL.
     /// </summary>
-    /// <param name="convertType">The enum associated with the type or GenericType.NULL if unsupported.</param>
-    /// <returns></returns>
+    /// <param name="convertType"></param>
+    /// <returns>The enum associated with the type or GenericType.NULL if unsupported.</returns>
     public static GenericType GetGenericType(Type convertType) {
         if (convertType == typeof(int)) {
             return GenericType.INT;
@@ -101,6 +101,29 @@ public struct GenericValue {
         }
 
         return GenericType.NULL;
+    }
+
+    /// <summary>
+    /// Gets the Type related to the GenericType enum.
+    /// </summary>
+    /// <param name="convertType"></param>
+    /// <returns>The type associated with the enum.</returns>
+    public static Type GetType(GenericType convertType) {
+        switch (convertType) {
+            case GenericType.NULL:
+                return null;
+            case GenericType.INT:
+                return typeof(int);
+            case GenericType.FLOAT:
+                return typeof(float);
+            case GenericType.STRING:
+                return typeof(string);
+            case GenericType.BOOL:
+                return typeof(bool);
+            case GenericType.OBJECT:
+                return typeof(UnityEngine.Object);
+        }
+        return null;
     }
 }
 

@@ -85,12 +85,14 @@ public class Player : MonoBehaviour {
     /// Calls SetCurrentInteractable and SetCurrentUseColletable with the value if found or null if didn't.
     /// </summary>
     void CheckUnderMouse() {
-        GameObject under = GameManager.instance.cam.CheckUnderMouse(out IUnderMouse underMouseInterface);
+        bool isUsingCard = collectableHeld != null;
+        Type searchFor = isUsingCard ? typeof(IUseCollectable) : typeof(IInteractable);
+
+        GameObject under = GameManager.instance.cam.CheckUnderMouse(out IUnderMouse underMouseInterface, searchFor);
 
         IInteractable interactable = null;
         IUseCollectable useCollectable = null;
 
-        bool isUsingCard = collectableHeld != null;
 
         if (underMouseInterface != null) {
             if ((underMouseInterface is IInteractable) && !isUsingCard) {
