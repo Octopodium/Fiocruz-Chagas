@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class AudioPlayer
 {
-    public void Play(
-        AudioSource source,
+    public AudioHandle Play(
+        PooledAudioSource pooledSource,
         AudioEvent audioEvent)
     {
         if (audioEvent == null)
-            return;
+            return null;
 
         AudioClip clip = audioEvent.GetClip();
 
         if (clip == null)
-            return;
+            return null;
+
+        AudioSource source = pooledSource.Source;
+
+        int playbackId = pooledSource.BeginPlayback();
 
         source.clip = clip;
         source.volume = audioEvent.GetVolume();
@@ -21,5 +25,9 @@ public class AudioPlayer
         source.outputAudioMixerGroup = audioEvent.Output;
 
         source.Play();
+
+        return new AudioHandle(
+            pooledSource,
+            playbackId);
     }
 }

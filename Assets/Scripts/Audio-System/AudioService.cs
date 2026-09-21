@@ -6,6 +6,7 @@ public class AudioService : MonoBehaviour
 
     private AudioSourcePool pool;
     private AudioPlayer player;
+
     private void Awake()
     {
         if (Instance != null)
@@ -22,25 +23,28 @@ public class AudioService : MonoBehaviour
         player = new AudioPlayer();
     }
 
-    public void Play(AudioEvent audioEvent)
+    public AudioHandle Play(AudioEvent audioEvent)
     {
-        AudioSource source = pool.Get();
+        PooledAudioSource pooledSource = pool.Get();
 
-        source.spatialBlend = 0f;
+        pooledSource.Source.spatialBlend = 0f;
 
-        player.Play(source, audioEvent);
+        return player.Play(
+            pooledSource,
+            audioEvent);
     }
 
-    public void Play(
+    public AudioHandle Play(
         AudioEvent audioEvent,
         Vector3 position)
     {
-        AudioSource source = pool.Get();
+        PooledAudioSource pooledSource = pool.Get();
 
-        source.transform.position = position;
-        source.spatialBlend = 1f;
+        pooledSource.Source.transform.position = position;
+        pooledSource.Source.spatialBlend = 1f;
 
-        player.Play(source, audioEvent);
+        return player.Play(
+            pooledSource,
+            audioEvent);
     }
-
 }

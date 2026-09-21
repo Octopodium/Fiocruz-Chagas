@@ -4,36 +4,41 @@ using UnityEngine;
 public class AudioSourcePool
 {
     private readonly Transform parent;
-    private readonly List<AudioSource> sources = new();
+
+    private readonly List<PooledAudioSource> sources = new();
 
     public AudioSourcePool(Transform parent)
     {
         this.parent = parent;
     }
 
-    public AudioSource Get()
+    public PooledAudioSource Get()
     {
-        foreach (AudioSource source in sources)
+        foreach (PooledAudioSource pooledSource in sources)
         {
-            if (!source.isPlaying)
-                return source;
+            if (!pooledSource.Source.isPlaying)
+                return pooledSource;
         }
 
         return CreateSource();
     }
 
-    private AudioSource CreateSource()
+    private PooledAudioSource CreateSource()
     {
         GameObject obj = new GameObject("Pooled Audio Source");
 
         obj.transform.SetParent(parent);
 
-        AudioSource source = obj.AddComponent<AudioSource>();
+        AudioSource audioSource =
+            obj.AddComponent<AudioSource>();
 
-        source.playOnAwake = false;
+        audioSource.playOnAwake = false;
 
-        sources.Add(source);
+        PooledAudioSource pooledSource =
+            new PooledAudioSource(audioSource);
 
-        return source;
+        sources.Add(pooledSource);
+
+        return pooledSource;
     }
 }
