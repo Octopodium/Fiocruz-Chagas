@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Responsible to control Quests and it's QuestSteps.  
 /// </summary>
-public class QuestControl : MonoBehaviour {
+public class QuestControl : MonoBehaviour, ISaveable {
     public Quest startingQuest;
     public System.Action<Quest> OnQuestStarted, OnQuestFinished;
     public System.Action<Quest,QuestStep> OnQuestStepStarted, OnQuestStepEnded;
@@ -16,6 +16,14 @@ public class QuestControl : MonoBehaviour {
     public QuestStep currentStep {get; protected set;}
     HashSet<string> finishedQuests = new HashSet<string>();
     int questStepIndex = -1;
+
+    void Awake() {
+        GameManager.instance.saveManager.AddSaveable(this);
+    }
+
+    void OnDestroy() {
+        GameManager.instance?.saveManager.RemoveSaveable(this);
+    }
 
     void Start() {
         if (startingQuest != null)
@@ -117,29 +125,33 @@ public class QuestControl : MonoBehaviour {
     }
 
 
-    public QuestSaveData Save() {
-        QuestSaveData data = new QuestSaveData();
-        data.currentQuest = currentQuest != null ? currentQuest.name : "";
-        data.currentStep = questStepIndex;
-        data.finishedQuests = finishedQuests.ToArray();
+    public PlayerData Save(PlayerData data) {
+        QuestSaveData questData = new QuestSaveData();
+        questData.currentQuest = currentQuest != null ? currentQuest.name : "";
+        questData.currentStep = questStepIndex;
+        questData.finishedQuests = finishedQuests.ToArray();
+
+        data.quests = questData;
         return data;
     }
 
-    public void Load(QuestSaveData data) {
-        finishedQuests = data.finishedQuests.ToHashSet();
-        questStepIndex = data.currentStep;
+    public void Load(PlayerData data) {
+        QuestSaveData questData = data.quests;
 
-        bool dataHasCurrentQuest = !string.IsNullOrEmpty(data.currentQuest);
+        finishedQuests = questData.finishedQuests.ToHashSet();
+        questStepIndex = questData.currentStep;
+
+        bool dataHasCurrentQuest = !string.IsNullOrEmpty(questData.currentQuest);
 
         if (currentQuest != null) {
             Quest runningNow = currentQuest;
 
-            if (dataHasCurrentQuest && runningNow.name == data.currentQuest) {
-                if (questStepIndex == data.currentStep) return;
+            if (dataHasCurrentQuest && runningNow.name == questData.currentQuest) {
+                if (questStepIndex == questData.currentStep) return;
                 currentStep.Stop();
                 currentStep.OnFinished -= NextStep;
                 currentStep = null;
-                questStepIndex = data.currentStep - 1;
+                questStepIndex = questData.currentStep - 1;
                 NextStep();
                 return;
             }
@@ -151,8 +163,8 @@ public class QuestControl : MonoBehaviour {
         }
 
         if (dataHasCurrentQuest) {
-            Quest toStart = Quest.GetQuestByName(data.currentQuest);
-            StartQuest(toStart, Mathf.Max(0, data.currentStep));
+            Quest toStart = Quest.GetQuestByName(questData.currentQuest);
+            StartQuest(toStart, Mathf.Max(0, questData.currentStep));
         }
     }
 

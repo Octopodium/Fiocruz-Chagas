@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "NewAmbient", menuName = "Scriptable Objects/Ambient", order = 1)]
 public class AmbientInfo : ScriptableObject {
+    public static string folderPath = "Ambients/";
     public string ambientName;
 
     #if UNITY_EDITOR
@@ -21,5 +22,14 @@ public class AmbientInfo : ScriptableObject {
             sceneName = sceneAsset.name;
         }
         #endif
+    }
+
+
+    public static AmbientInfo GetAmbient(string ambientName) {
+        return Resources.Load<AmbientInfo>(folderPath + ambientName);
+    }
+
+    public static AmbientInfo[] GetAmbients() {
+        return Resources.LoadAll<AmbientInfo>(folderPath);
     }
 }

@@ -2,12 +2,18 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SaveManager : MonoBehaviour{
     private string savePath = "PlayerSaveData.json";
     public static SaveManager Instance;
     private PlayerData playerData;
     private bool loadedData = false;
+
+    public Action<PlayerData> OnSaved;
+    public Action<PlayerData> OnLoaded;
+    List<ISaveable> saveables = new List<ISaveable>();
+
 
     private void Awake(){
         if (Instance)
@@ -22,20 +28,7 @@ public class SaveManager : MonoBehaviour{
 
     private void Start()
     {
-        LoadPlayerData();
-    }
-
-    /// <summary>
-    /// Based on the player inventory contained in the InventoryManager, creates an array with all of the inventory's collectables nameIDs.
-    /// </summary>
-    /// <returns></returns>
-    private string[] GetInventory(){
-        Collectable[] inventory = InventoryManager.Instance.GetInventory();
-        string[] inventoryID = new string[inventory.Length];
-        for(int i = 0; i < inventory.Length; i++){
-            inventoryID[i] = inventory[i].GetName();
-        }
-        return inventoryID;
+        // LoadPlayerData();
     }
 
     /// <summary>
@@ -48,30 +41,44 @@ public class SaveManager : MonoBehaviour{
         return loadedData;
     }
 
-    /// <summary>
-    /// Gets the current player scene from the SceneManager and return its name.
-    /// </summary>
-    /// <returns></returns>
-    private string GetPlayerLocation(){
-        return SceneManager.GetActiveScene().name;
+    public void AddSaveable(ISaveable saveable) {
+        if (saveables.Contains(saveable)) return;
+        saveables.Add(saveable);
     }
+
+    public void RemoveSaveable(ISaveable saveable) {
+        if (!saveables.Contains(saveable)) return;
+        saveables.Remove(saveable);
+    }
+
 
     /// <summary>
     /// Creates a new PlayerData and saves all relevant data into it. Then, writes this data into a Json file in the savePath file location.
     /// </summary>
     public void SaveData(){
         Debug.Log("Saving player data...");
-        playerData = new PlayerData(
-            GetInventory(),
-            "Rooty Tooty Fresh'n Fruity",
-            GetPlayerLocation()
-        );
+        playerData = new PlayerData {
+            playerName = "Rooty Tooty Fresh'n Fruity"
+        };
+
+        foreach (ISaveable saveable in saveables) {
+            if (saveable == null) continue;
+            PlayerData dataReturned = saveable.Save(playerData);
+            if (dataReturned == null) continue;
+            playerData = dataReturned;
+        }
+
+
         Debug.Log(playerData.playerName + ":" + playerData.playerLocation);
         string jsonString = JsonUtility.ToJson(playerData, true);
         Debug.Log(jsonString);
         File.WriteAllText(savePath, jsonString);
         Debug.Log(File.ReadAllText(savePath));
         Debug.Log("Save complete!");
+
+
+
+        OnSaved?.Invoke(playerData);
     }
 
     /// <summary>
@@ -87,6 +94,13 @@ public class SaveManager : MonoBehaviour{
             Debug.Log($"Player location : {playerData.playerLocation}");
             Debug.Log($"Player name : {playerData.playerName}");
             loadedData = true;
+
+            foreach (ISaveable saveable in saveables) {
+                if (saveable == null) continue;
+                saveable.Load(playerData);
+            }
+
+            OnLoaded?.Invoke(playerData);
         }
         else
         {
@@ -95,48 +109,26 @@ public class SaveManager : MonoBehaviour{
         }
     }
 
-}
 
-[Serializable]
-public class PlayerData{
-    [SerializeField] private string[] _inventory;
-    public string[] inventory {
-        get{
-            return _inventory;
-        } 
-        private set
-        {
-            _inventory = value;
-        }
-    }
-    [SerializeField] private string _playerName;
-    public string playerName
+    /// <summary>
+    /// Creates a new blank PlayerData and writes this data into a Json file in the savePath file location.
+    /// Then, proceeds to load said PlayerData.
+    /// </summary>
+    public void ResetPlayerData()
     {
-        get
-        {
-            return _playerName;   
-        } 
-        private set
-        {
-            _playerName = value;
-        }
+        playerData = new PlayerData {
+            playerName = "Rooty Tooty Fresh'n Fruity"
+        };
+
+        string jsonString = JsonUtility.ToJson(playerData, true);
+        Debug.Log(jsonString);
+        File.WriteAllText(savePath, jsonString);
+        Debug.Log(File.ReadAllText(savePath));
+        Debug.Log("Save reseted!");
+
+        LoadPlayerData();
+
+        Debug.Log("Full reset complete!");
     }
-    [SerializeField] private string _playerLocation;
-    public string playerLocation
-    {
-        get
-        {
-            return _playerLocation;
-        } 
-        private set
-        {
-            _playerLocation = value;
-        }
-    }
-    public PlayerData(string[] inventory, string playerName, string playerLocation)
-    {
-        this.inventory = inventory;
-        this.playerName = playerName;
-        this.playerLocation = playerLocation;
-    }
+
 }

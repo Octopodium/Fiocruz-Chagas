@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, ISaveable
 {
     public static InventoryManager Instance;
     [SerializeField] private List<Collectable> inventory = new List<Collectable>();
@@ -12,17 +12,22 @@ public class InventoryManager : MonoBehaviour
     public Action<Collectable> OnAddToInventory, OnRemoveFromInventory;
 
     private void Awake(){
-        if(Instance) Destroy(gameObject);
+        if(Instance){
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         
         allCollectables = new List<Collectable>(LoadCollectableList());
         InitializeLookupTable();
+
+        GameManager.instance.saveManager.AddSaveable(this);
     }
 
-    private void Start()
-    {
-        LoadInventory();
+    void OnDestroy(){
+        GameManager.instance?.saveManager.RemoveSaveable(this);
     }
+
 
     /// <summary>
     /// Loads all collectable assets from the "Collectables" folder in the Resources directory. This method is used to populate the allCollectables list with all available collectables in the game.
@@ -106,19 +111,8 @@ public class InventoryManager : MonoBehaviour
     /// Waits for SaveManager to finish loading player data, then proceeds to either convert the inventory data loaded, or initiate inventory without any data.
     /// </summary>
     /// <param name="loadData"></param>
-    public async void LoadInventory()
+    public void Load(PlayerData playerData)
     {
-        if (!SaveManager.Instance)
-        {
-            Debug.LogWarning("No SaveManager Instance was found. initializing inventory without player data.");
-            return;
-        }
-        PlayerData playerData;
-        while(!SaveManager.Instance.GetPlayerData(out playerData))
-        {
-            Debug.Log($"<color=yellow>Awaiting for player data.</color>");
-            await Awaitable.NextFrameAsync();
-        }
         if(playerData != null)
         {
             string [] inventoryData = playerData.inventory;
@@ -133,6 +127,21 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.Log($"<color=yellow>No inventory data was loaded.</color>");
         }
+    }
+
+    /// <summary>
+    /// Based on the player inventory contained in the InventoryManager, creates an array with all of the inventory's collectables nameIDs.
+    /// </summary>
+    /// <returns></returns>
+    public PlayerData Save(PlayerData data){
+        Collectable[] inventory = GetInventory();
+        string[] inventoryID = new string[inventory.Length];
+        for(int i = 0; i < inventory.Length; i++){
+            inventoryID[i] = inventory[i].GetName();
+        }
+
+        data.inventory = inventoryID;
+        return data;
     }
 
     /// <summary>

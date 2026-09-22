@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// The flag control system. Stores every setted flag value. Used for setting and getting flags.
 /// </summary>
-public class FlagsSystem : MonoBehaviour {
+public class FlagsSystem : MonoBehaviour, ISaveable {
     public static FlagsSystem instance => GameManager.instance.flags;
     FlagsRegister register;
     Dictionary<string, object> flags = new Dictionary<string, object>();
@@ -16,14 +16,15 @@ public class FlagsSystem : MonoBehaviour {
 
     void Awake() {
         register = FlagsRegister.instance;
-    }
-
-    void Start() {
         SetAutoFlags();
+
+        GameManager.instance.saveManager.AddSaveable(this);
     }
 
     void OnDestroy() {
         UnsetAutoFlags();
+
+        GameManager.instance?.saveManager.RemoveSaveable(this);
     }
 
     void FixedUpdate() {
@@ -183,7 +184,7 @@ public class FlagsSystem : MonoBehaviour {
     /// Returns the save data. Used for saving the current flag state.
     /// </summary>
     /// <returns></returns>
-    public FlagsSaveData Save() {
+    public PlayerData Save(PlayerData data) {
         Dictionary<string, bool> boolDictionary = new Dictionary<string, bool>();
         Dictionary<string, int> intDictionary = new Dictionary<string, int>();
         Dictionary<string, float> floatDictionary = new Dictionary<string, float>();
@@ -207,11 +208,13 @@ public class FlagsSystem : MonoBehaviour {
             }
         }
 
-        FlagsSaveData data = new FlagsSaveData();
-        data.SetBool(boolDictionary.Keys.ToArray(), boolDictionary.Values.ToArray());
-        data.SetInt(intDictionary.Keys.ToArray(), intDictionary.Values.ToArray());
-        data.SetFloat(floatDictionary.Keys.ToArray(), floatDictionary.Values.ToArray());
-        data.SetString(stringDictionary.Keys.ToArray(), stringDictionary.Values.ToArray());
+        FlagsSaveData flagsData = new FlagsSaveData();
+        flagsData.SetBool(boolDictionary.Keys.ToArray(), boolDictionary.Values.ToArray());
+        flagsData.SetInt(intDictionary.Keys.ToArray(), intDictionary.Values.ToArray());
+        flagsData.SetFloat(floatDictionary.Keys.ToArray(), floatDictionary.Values.ToArray());
+        flagsData.SetString(stringDictionary.Keys.ToArray(), stringDictionary.Values.ToArray());
+
+        data.flags = flagsData;
         return data;
 
     }
@@ -219,22 +222,24 @@ public class FlagsSystem : MonoBehaviour {
     /// <summary>
     /// Clears the current setted flags and sets flags from save. Used to Load saved flags state from 'Save' method.
     /// </summary>
-    public void Load(FlagsSaveData data) {
+    public void Load(PlayerData data) {
         flags.Clear();
 
-        foreach (KeyValuePair<string, bool> values in data.GetBool()) {
+        FlagsSaveData flagsData = data.flags;
+
+        foreach (KeyValuePair<string, bool> values in flagsData.GetBool()) {
             SetFlag(values.Key, values.Value);
         }
 
-        foreach (KeyValuePair<string, int> values in data.GetInt()) {
+        foreach (KeyValuePair<string, int> values in flagsData.GetInt()) {
             SetFlag(values.Key, values.Value);
         }
 
-        foreach (KeyValuePair<string, float> values in data.GetFloat()) {
+        foreach (KeyValuePair<string, float> values in flagsData.GetFloat()) {
             SetFlag(values.Key, values.Value);
         }
 
-        foreach (KeyValuePair<string, string> values in data.GetString()) {
+        foreach (KeyValuePair<string, string> values in flagsData.GetString()) {
             SetFlag(values.Key, values.Value);
         }
     }
@@ -245,6 +250,9 @@ public class FlagsSystem : MonoBehaviour {
     IDisposable autoFlagDialogueDisposable;
     HashSet<string> flagsAutoSettedThisFrame = new HashSet<string>();
 
+    /// <summary>
+    /// Setup of events that sets auto-flags on the system. Called on awake (as it only sets event calls and doesn't actually changes the state of anything).
+    /// </summary>
     void SetAutoFlags() {
         GameManager.instance.player.inventory.OnAddToInventory += HandleCollectableAdded;
         GameManager.instance.player.inventory.OnRemoveFromInventory += HandleCollectableRemoved;
@@ -254,6 +262,9 @@ public class FlagsSystem : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Unset auto-flags events setted by SetAutoFlags. Called on destroy.
+    /// </summary>
     void UnsetAutoFlags() {
         GameManager.instance.player.inventory.OnAddToInventory -= HandleCollectableAdded;
         GameManager.instance.player.inventory.OnRemoveFromInventory -= HandleCollectableRemoved;
@@ -266,6 +277,10 @@ public class FlagsSystem : MonoBehaviour {
         OnFlagChanged -= HandleFlagChanged;
     }
 
+    /// <summary>
+    /// Called everytime a Collectable is added to the inventory. If Collectable has a related flag, will set it as true if valid.
+    /// </summary>
+    /// <param name="collectable">Collectable just added on inventory.</param>
     void HandleCollectableAdded(Collectable collectable) {
         string flag = collectable.GetRelatedFlag();
         if (string.IsNullOrEmpty(flag)) return;
@@ -277,6 +292,11 @@ public class FlagsSystem : MonoBehaviour {
         SetFlag(flag, true);
     }
 
+    /// <summary>
+    /// Called everytime a Collectable is removed from the inventory.
+    /// If Collectable has a related flag, and there's no more of the same Collectable on the inventory, will set the flag as false if valid.
+    /// </summary>
+    /// <param name="collectable"></param>
     void HandleCollectableRemoved(Collectable collectable) {
         string flag = collectable.GetRelatedFlag();
         if (string.IsNullOrEmpty(flag)) return;
@@ -290,6 +310,11 @@ public class FlagsSystem : MonoBehaviour {
         SetFlag(flag, false);
     }
 
+    /// <summary>
+    /// Called everytime a flag is changed. This method is used to update the Yarn variable storage to share the same value as the flags.
+    /// </summary>
+    /// <param name="name">Flag name</param>
+    /// <param name="value">Flag value</param>
     void HandleFlagChanged(string name, object value) {
         string dialogueName = "$" + name;
 
@@ -301,12 +326,18 @@ public class FlagsSystem : MonoBehaviour {
         else if (value.GetType() == typeof(string)) GameManager.instance.dialogue.VariableStorage.SetValue(dialogueName, (string) value);
     }
 
+    /// <summary>
+    /// Called everytime a Yarn variable is changed. This method is used to update a related flag (if valid) with it's value in the Yarn variable storage.
+    /// </summary>
+    /// <param name="name">Yarn variable name</param>
+    /// <param name="value">Yarn variable value</param>
     void HandleDialogueVariableChange(string name, object value) {
         string flagName = name.StartsWith("$") ? name.Substring(1) : name;
         if (IsValidFlag(flagName)) SetFlag(flagName, value);
     }
 
     #endregion
+
 }
 
 [Serializable]

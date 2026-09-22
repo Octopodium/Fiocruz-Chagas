@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Controls the navigation between ambients. Use GoTo or GoToCoroutine to switch the current ambient.
 /// </summary>
-public class AmbientNavigation : MonoBehaviour {
+public class AmbientNavigation : MonoBehaviour, ISaveable {
     public AmbientInfo currentAmbient {get; private set;}
 
     Scene? currentScene;
@@ -17,6 +17,14 @@ public class AmbientNavigation : MonoBehaviour {
 
     void Awake() {
         SceneManager.activeSceneChanged += HandleSceneChanged;
+
+        if (currentAmbient == null) currentAmbient = GetCurrentSceneAmbient();
+
+        GameManager.instance.saveManager.AddSaveable(this);
+    }
+
+    void OnDestroy(){
+        GameManager.instance?.saveManager.RemoveSaveable(this);
     }
 
 
@@ -82,5 +90,29 @@ public class AmbientNavigation : MonoBehaviour {
 
     void HandleSceneChanged(Scene current, Scene next) {
         currentScene = next;
+    }
+
+
+    AmbientInfo GetCurrentSceneAmbient() {
+        string currentScene = SceneManager.GetActiveScene().name;
+        foreach (AmbientInfo ambient in AmbientInfo.GetAmbients()) {
+            if (ambient.sceneName == currentScene) return ambient;
+        }
+
+        return null;
+    }
+
+
+    public PlayerData Save(PlayerData data) {
+        data.playerLocation = currentAmbient.name;
+        return data;
+    }
+
+    public void Load(PlayerData data) {
+        string ambientName = data.playerLocation;
+        AmbientInfo ambient = AmbientInfo.GetAmbient(ambientName);
+        if (ambient == null) return;
+
+        GoTo(ambient);
     }
 }
