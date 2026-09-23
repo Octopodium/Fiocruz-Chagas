@@ -29,8 +29,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 65472
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.9622642, g: 0.81648064, b: 0.013616921, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -81,14 +81,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorAdjustments
   active: 1
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.61
   contrast:
     m_OverrideState: 1
-    m_Value: 16.9
+    m_Value: -3.2
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.9875, b: 0.95, a: 1}
+    m_Value: {r: 1, g: 0.77651244, b: 0.6556604, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.5
   vignetteEffect:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   startingPosition:
     m_OverrideState: 0
@@ -145,17 +145,17 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1.5
   streaksIntensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.52
   streaksLength:
-    m_OverrideState: 0
-    m_Value: 0.5
+    m_OverrideState: 1
+    m_Value: 0.288
   streaksOrientation:
     m_OverrideState: 0
     m_Value: 0
   streaksThreshold:
-    m_OverrideState: 0
-    m_Value: 0.25
+    m_OverrideState: 1
+    m_Value: 0.222
   resolution:
     m_OverrideState: 0
     m_Value: 4

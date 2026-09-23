@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6011241525054785838
+--- !u!1001 &655397042142974174
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,28 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.75718
+      value: 3.5725381
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76
+      value: 0.0010558757
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.4408774
+      value: -3.6157582
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,10 +47,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 9ed71c974d724e541a20cc00c4a47175, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
