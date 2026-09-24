@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
+  conditions: []
 --- !u!65 &183311723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -374,8 +375,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 39228933207526309, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 572360637715633893, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291397453647999641, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291397453647999641, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291397453647999641, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291397453647999641, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291397453647999641, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291397453647999641, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2863352142423444737, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
@@ -428,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.315548
+      value: -56.6875
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -452,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23.545244
+      value: -23.625
       objectReference: {fileID: 0}
     - target: {fileID: 5993259185684408428, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -524,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.225059
+      value: -13.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -578,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc0f0630773c514499b99a4f815906f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchToCamera
+  conditions: []
   areaName: outro lado
   cam: {fileID: 371077050}
   addToStack: 0
@@ -707,6 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc0f0630773c514499b99a4f815906f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchToCamera
+  conditions: []
   areaName: outro lado
   cam: {fileID: 476315851}
   addToStack: 0
@@ -1327,6 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
+  conditions: []
 --- !u!65 &950057135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1393,6 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
+  conditions: []
 --- !u!65 &972628877
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2038,6 +2071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
+  conditions: []
 --- !u!65 &1161036292
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2644,6 +2678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352b2ae9b80042c4e900fee233a7172a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
+  conditions: []
   ambient: {fileID: 11400000, guid: 6fbce11d62f413c4f9ee25a169420e27, type: 2}
 --- !u!65 &1777641346
 BoxCollider:
