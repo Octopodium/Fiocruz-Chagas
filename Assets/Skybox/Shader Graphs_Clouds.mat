@@ -51,7 +51,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 0.5
     - _AlphaClipThreshold: 0.076
+    - _Edge: 0.1
     - _NoiseMovementSpeed: 0.00037
     - _NoiseMovementSpeed2: 0.0005
     - _NoiseScale: 30
