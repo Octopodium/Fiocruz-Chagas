@@ -501,6 +501,7 @@ MonoBehaviour:
   noteDatabase:
   - {fileID: 11400000, guid: cd8120c64ac54384c9b1224051ffdb67, type: 2}
   loadFromResources: 0
+  defaultUnlockedNotes: []
   closeNotebookButton: {fileID: 394668985756937576}
   hudOpenButton: {fileID: 999292745760751761}
   gridPanel: {fileID: 553418729131688677}
@@ -734,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.89664, y: -22.915253}
+  m_AnchoredPosition: {x: 112.89664, y: -22.0625}
   m_SizeDelta: {x: 209.79327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7902516927879924570
@@ -1552,7 +1553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.89664, y: -54.033894}
+  m_AnchoredPosition: {x: 112.89664, y: -51.84375}
   m_SizeDelta: {x: 209.79327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945474385157401730
@@ -2018,7 +2019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.89664, y: -12.203389}
+  m_AnchoredPosition: {x: 112.89664, y: -11.71875}
   m_SizeDelta: {x: 193.79327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8000416509925271777
@@ -2935,7 +2936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3170847634022902276
 RectTransform:
   m_ObjectHideFlags: 0

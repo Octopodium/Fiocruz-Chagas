@@ -19,7 +19,7 @@ public abstract class IInteractable: IUnderMouse {
         Gizmos.color *= new Color(1, 1, 1, 0.2f);
         Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.DrawCube(collider.center , collider.size * 1.05f);
-    }*/
+    }
     #endif
 
 }
