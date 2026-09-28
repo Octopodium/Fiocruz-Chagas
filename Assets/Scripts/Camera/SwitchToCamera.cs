@@ -6,68 +6,50 @@ using UnityEngine;
 /// This interactable allows to "change the principal camera" by using 'addToStack' as false and being in the peek of the stack.
 /// </summary>
 public class SwitchToCamera : IInteractable {
+    public CameraArea area;
 
-    public string areaName = "area";
-    public CinemachineCamera cam;
-    /// <summary>
-    /// If true, the camera will be added to the cameraStack. Using the GoBack method will go to the previous camera.
-    /// If false, this camera will replace the previous camera on the cameraStack. If you are not sure, leave it as true.
-    /// </summary>
-    public bool addToStack = true;
-    bool isOnCamera = false;
-
-    /// <summary>
-    /// An array of GameObjects that will stays unactive until the camera changes to this area.
-    /// When the camera leaves, it will return to be unactive.
-    /// </summary>
-    public GameObject[] onlyEnableWhenOnCamera;
 
     Collider[] colliders;
 
     void Awake() {
         colliders = GetComponents<Collider>();
+        GameManager.instance.cam.onCurrentCameraAreaChange += HandleCameraChanged;
     }
 
-    void Start() {
-        GameManager.instance.cam.onCurrentCameraChange += HandleCameraChanged;
-
-        bool isCurrent = GameManager.instance.cam.currentCamera == cam;
-        isOnCamera = !isCurrent;
+    async void Start() {
+        await Awaitable.EndOfFrameAsync();
+        bool isCurrent = GameManager.instance.cam.currentCameraArea == area;
         SetIsOnCamera(isCurrent);
     }
     
     public override string GetHoverText() {
-        return "Ver " + areaName;
+        return "Ver " + area.areaName;
     }
 
     public override bool CanBeFound() {
-        return !isOnCamera;
+        return area != null ? !area.isOnCamera : false;
     }
 
 
     public override void HandleInteract() {
-        GameManager.instance.cam.GoToCamera(cam, addToStack);
+        GameManager.instance.cam.GoToCamera(area);
     }
 
-    void HandleCameraChanged(CinemachineCamera camera) {
-        SetIsOnCamera(camera == cam);
+    void HandleCameraChanged(CameraArea camArea) {
+        SetIsOnCamera(camArea == area || area.HasChildArea(camArea));
     }
 
     void SetIsOnCamera(bool is_it) {
-        if (is_it == isOnCamera) return;
-
-        isOnCamera = is_it;
-
-        foreach (GameObject obj in onlyEnableWhenOnCamera) {
-            obj.SetActive(is_it);
-        }
-
         foreach (Collider col in colliders) {
             col.enabled = !is_it;
         }
     }
 
-    void OnDestroy() {
-        GameManager.instance.cam.onCurrentCameraChange -= HandleCameraChanged;
+
+    void OnDrawGizmosSelected() {
+        if (area == null) return;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, area.transform.position);
     }
 }

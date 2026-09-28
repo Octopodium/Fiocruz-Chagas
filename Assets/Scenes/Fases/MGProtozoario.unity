@@ -128,10 +128,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 252857}
+  - component: {fileID: 252858}
   m_Layer: 0
   m_Name: Cube2Area
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -153,6 +154,23 @@ Transform:
   - {fileID: 1161036290}
   m_Father: {fileID: 1853358910}
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+--- !u!114 &252858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a266406b0fb84895471f10880acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraArea
+  cam: {fileID: 1811548258}
+  areaName: cubo
+  onlyEnableOnArea:
+  - {fileID: 1161036289}
+  childAreas: []
 --- !u!1 &95666233
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,10 +270,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172132717}
+  - component: {fileID: 172132718}
   m_Layer: 0
   m_Name: Lado1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -278,6 +297,24 @@ Transform:
   - {fileID: 1777641344}
   m_Father: {fileID: 634683984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &172132718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172132716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a266406b0fb84895471f10880acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraArea
+  cam: {fileID: 371077050}
+  areaName: outro lado
+  onlyEnableOnArea:
+  - {fileID: 330409229}
+  childAreas:
+  - {fileID: 870351346}
 --- !u!1 &183311720
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.6875
+      value: -56.375
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -553,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.4375
+      value: -13.124999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -608,10 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchToCamera
   conditions: []
-  areaName: outro lado
-  cam: {fileID: 371077050}
-  addToStack: 0
-  onlyEnableWhenOnCamera: []
+  area: {fileID: 172132718}
 --- !u!65 &262527694
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -738,10 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchToCamera
   conditions: []
-  areaName: outro lado
-  cam: {fileID: 476315851}
-  addToStack: 0
-  onlyEnableWhenOnCamera: []
+  area: {fileID: 1517658397}
 --- !u!65 &330409232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1091,6 +1122,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1853358910}
     m_Modifications:
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: area
+      value: 
+      objectReference: {fileID: 1853358911}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: areaName
       value: mesa
       objectReference: {fileID: 0}
@@ -1208,6 +1243,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8573143252654859328, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
   m_PrefabInstance: {fileID: 815499988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &815499990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 144957921289619502, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+  m_PrefabInstance: {fileID: 815499988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,10 +1312,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 870351345}
+  - component: {fileID: 870351346}
   m_Layer: 0
-  m_Name: FocusableArea
+  m_Name: QuadroArea
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1291,6 +1338,23 @@ Transform:
   - {fileID: 972628875}
   m_Father: {fileID: 172132717}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &870351346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870351344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a266406b0fb84895471f10880acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraArea
+  cam: {fileID: 7008863252568744253}
+  areaName: quadro
+  onlyEnableOnArea:
+  - {fileID: 972628874}
+  childAreas: []
 --- !u!1 &950057131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,10 +2271,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517658396}
+  - component: {fileID: 1517658397}
   m_Layer: 0
   m_Name: Lado2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2234,6 +2299,24 @@ Transform:
   - {fileID: 1190922127}
   m_Father: {fileID: 634683984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517658397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517658395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a266406b0fb84895471f10880acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraArea
+  cam: {fileID: 476315851}
+  areaName: outro lado
+  onlyEnableOnArea:
+  - {fileID: 262527691}
+  childAreas:
+  - {fileID: 1853358911}
 --- !u!1 &1554480858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2793,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 252857}
     m_Modifications:
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: area
+      value: 
+      objectReference: {fileID: 252858}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: areaName
       value: cubo
       objectReference: {fileID: 0}
@@ -2827,6 +2914,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8573143252654859328, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
   m_PrefabInstance: {fileID: 1811548256}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1811548258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 144957921289619502, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+  m_PrefabInstance: {fileID: 1811548256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &1853358909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,10 +2934,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1853358910}
+  - component: {fileID: 1853358911}
   m_Layer: 0
   m_Name: MesaArea
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2862,6 +2961,25 @@ Transform:
   - {fileID: 252857}
   m_Father: {fileID: 1517658396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853358911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853358909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a266406b0fb84895471f10880acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraArea
+  cam: {fileID: 815499990}
+  areaName: mesa
+  onlyEnableOnArea:
+  - {fileID: 183311720}
+  childAreas:
+  - {fileID: 1881571369}
+  - {fileID: 252858}
 --- !u!1001 &1860481286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2870,6 +2988,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1881571368}
     m_Modifications:
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: area
+      value: 
+      objectReference: {fileID: 1881571369}
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: areaName
       value: cubo
@@ -2988,6 +3110,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8573143252654859328, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
   m_PrefabInstance: {fileID: 1860481286}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1860481288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 144957921289619502, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+  m_PrefabInstance: {fileID: 1860481286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &1881571367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,10 +3130,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1881571368}
+  - component: {fileID: 1881571369}
   m_Layer: 0
   m_Name: Cube1Area
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3022,6 +3156,23 @@ Transform:
   - {fileID: 950057132}
   m_Father: {fileID: 1853358910}
   m_LocalEulerAnglesHint: {x: 0, y: -21.584, z: 0}
+--- !u!114 &1881571369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881571367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97a266406b0fb84895471f10880acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraArea
+  cam: {fileID: 1860481288}
+  areaName: cubo
+  onlyEnableOnArea:
+  - {fileID: 950057131}
+  childAreas: []
 --- !u!1001 &7008863252568744251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3030,6 +3181,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 870351345}
     m_Modifications:
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: area
+      value: 
+      objectReference: {fileID: 870351346}
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: areaName
       value: quadro
@@ -3112,6 +3267,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8573143252654859328, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
   m_PrefabInstance: {fileID: 7008863252568744251}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7008863252568744253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 144957921289619502, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+  m_PrefabInstance: {fileID: 7008863252568744251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
