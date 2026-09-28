@@ -9,4 +9,5 @@ public class PlayerData{
     public string playerLocation;
     public FlagsSaveData flags;
     public QuestSaveData quests;
+    public NotebookSaveData notebook;
 }

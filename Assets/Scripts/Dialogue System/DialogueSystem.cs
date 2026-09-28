@@ -579,6 +579,13 @@ public class DialogueSystem : MonoBehaviour
             case "unlock":
                 SetCondition(parameter, true);
                 break;
+            case "unlocknote":
+            case "notebook":
+                if (NotebookManager.Instance != null)
+                {
+                    NotebookManager.Instance.UnlockNote(parameter);
+                }
+                break;
             default:
                 OnCommandTriggered?.Invoke(action, parameter);
                 break;

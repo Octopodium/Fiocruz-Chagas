@@ -3199,6 +3199,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7089881435815903163, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089881435815903163, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089881435815903163, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartAtAmbient
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089881435815903163, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AmbientNavigation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089881435815903163, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ffa6afcda215934188b73f5e5182b1e, type: 2}
+    - target: {fileID: 7089881435815903163, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: AmbientInfo, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7345948799906919575, guid: d12a76d20cc92e741a05fd5469a600b0, type: 3}
       propertyPath: m_Name
       value: Start

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf6b118e72a9a34a97bd0d9eac5b998, type: 3}
+  m_Name: Nota_DonaNeuza
+  m_EditorClassIdentifier: Assembly-CSharp::NoteData
+  noteId: dona_neuza
+  title: Dona Neuza
+  buttonLabel: Dona Neuza
+  buttonIcon: {fileID: 0}
+  category: 
+  bulletPoints:
+  - Teste de nota 01
+  - Nota de teste 02
+  noteImage: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  preserveImageAspect: 1

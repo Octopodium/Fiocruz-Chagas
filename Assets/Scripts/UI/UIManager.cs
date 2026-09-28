@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour {
     // References
     public InventoryDeckDisplay inventoryDeck;
     public FadeController fade;
+    public NotebookManager notebook;
 
     // Internal
     // ...

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public ItemInspectator inspectator;
     public DialogueRunner dialogue;
     public SaveManager saveManager;
+    public NotebookManager notebook;
 
     // Internal
     // ...
