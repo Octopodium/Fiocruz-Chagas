@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 /// <summary>
@@ -12,9 +11,10 @@ public abstract class IInteractable: IUnderMouse {
     public abstract void HandleInteract();
 
     #if UNITY_EDITOR
-    protected virtual void OnDrawGizmos()
-    {
+    protected virtual void OnDrawGizmos() {
         BoxCollider collider = GetComponent<BoxCollider>();
+        if (collider == null) return;
+
         Gizmos.color = CanBeFound() ? Color.cyan : Color.red;
         Gizmos.color *= new Color(1, 1, 1, 0.2f);
         Gizmos.matrix = transform.localToWorldMatrix;

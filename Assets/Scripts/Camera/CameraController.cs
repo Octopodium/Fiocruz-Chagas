@@ -13,12 +13,13 @@ public class CameraController : MonoBehaviour {
     CinemachineBrain cinemachine;
 
     // Internal
-    Stack<CinemachineCamera> cameraStack = new Stack<CinemachineCamera>();
-    public CinemachineCamera currentCamera {
-        get{ return cameraStack.Count > 0 ? cameraStack.Peek() : null;}
-    }
+    Stack<CameraArea> cameraStack = new Stack<CameraArea>();
 
-    public System.Action<CinemachineCamera> onCurrentCameraChange;
+    public CameraArea currentCameraArea => cameraStack.Count > 0 ? cameraStack.Peek() : null;
+    public CinemachineCamera currentCamera => currentCameraArea?.cam;
+
+
+    public System.Action<CameraArea> onCurrentCameraAreaChange;
 
 
     void Awake() {
@@ -27,43 +28,62 @@ public class CameraController : MonoBehaviour {
     }
 
     void Start() {
-        if (cinemachine != null && cameraStack.Count == 0 && cinemachine.ActiveVirtualCamera is CinemachineCamera)
-            cameraStack.Push((CinemachineCamera) cinemachine.ActiveVirtualCamera);
+        if (cinemachine != null && cameraStack.Count == 0 && cinemachine.ActiveVirtualCamera is CinemachineCamera) {
+            CameraArea area = GetCinemachinesCameraArea((CinemachineCamera) cinemachine.ActiveVirtualCamera);
+            if (area != null) GoToCamera(area);
+        }
     }
 
     /// <summary>
-    /// Sets the current camera and put it on the cameraStack.
+    /// Sets the current camera area and put it on the cameraStack. The camera area's camera will be activated with Priority 10, and the previous one with -1.
+    /// If the camArea is not a child of the current camArea, will replace it's position on the stack.
     /// </summary>
-    /// <param name="camera">The new current camera.</param>
-    /// <param name="addToStack">If true, the camera will be added to the cameraStack. If false, this camera will replace the previous camera on the cameraStack.</param>
-    public void GoToCamera(CinemachineCamera camera, bool addToStack = true) {
-        if (cameraStack.Count > 0 && camera == cameraStack.Peek()) return;
+    /// <param name="camArea">The new current camera area.</param>
+    public void GoToCamera(CameraArea camArea) {
+        CameraArea currentArea = currentCameraArea;
+        if (camArea == currentArea) return;
 
         if (currentCamera != null) currentCamera.Priority = -1;
 
-        if (!addToStack && cameraStack.Count > 0) {
+        bool isChild = currentArea == null ? false : currentArea.HasChildArea(camArea);
+
+        if (!isChild && cameraStack.Count > 0) {
             cameraStack.Pop(); // Remove the Peek to substitute for the current camera
         }
 
-        cameraStack.Push(camera);
-        camera.Priority = 10;
+        cameraStack.Push(camArea);
+        camArea.cam.Priority = 10;
 
-        onCurrentCameraChange?.Invoke(camera);
+        onCurrentCameraAreaChange?.Invoke(camArea);
     }
 
     /// <summary>
-    /// If the stack has at least 2 cameras, removes the current camera and makes the previous the new current.
+    /// If the stack has at least 2 cameraAreas, removes the current cameraArea and makes the previous the new current.
     /// </summary>
     public void GoBack() {
         if (cameraStack.Count <= 1) return;
         
-        CinemachineCamera previous = cameraStack.Pop();
-        previous.Priority = -1;
+        CameraArea previous = cameraStack.Pop();
+        previous.cam.Priority = -1;
 
-        CinemachineCamera current = cameraStack.Peek();
-        current.Priority = 10;
+        CameraArea current = cameraStack.Peek();
+        current.cam.Priority = 10;
 
-        onCurrentCameraChange?.Invoke(current);
+        onCurrentCameraAreaChange?.Invoke(current);
+    }
+
+    /// <summary>
+    /// Internal use only. Finds a cameraArea related with a cinemachineCamera. Used on Start to set current camera.
+    /// </summary>
+    /// <param name="cinemachineCamera"></param>
+    /// <returns>The CameraArea related to the camera, or null if not found.</returns>
+    CameraArea GetCinemachinesCameraArea(CinemachineCamera cinemachineCamera) {
+        CameraArea[] areas = GameObject.FindObjectsByType<CameraArea>(FindObjectsSortMode.None);
+        foreach (CameraArea area in areas) {
+            if (area.cam == cinemachineCamera) return area;
+        }
+
+        return null;
     }
 
 
