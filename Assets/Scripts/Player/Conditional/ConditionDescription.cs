@@ -401,6 +401,7 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
 
                 Label functionParameterLabel = new Label("Parameter:");
                 functionParameterLabel.style.height = Length.Pixels(20);
+                functionParameterLabel.style.marginLeft = Length.Pixels(3);
                 functionParameterLabel.style.unityTextAlign = TextAnchor.MiddleLeft;
                 leftRow.Add(functionParameterLabel);
 

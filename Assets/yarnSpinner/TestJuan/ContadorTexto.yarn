@@ -1,0 +1,14 @@
+﻿title: ContadorTexto
+---
+<<declare $temp_contador = 0>>
+
+Contador: Olá, eu sou o contador!
+
+<<if $temp_contador == 1>>
+    Contador: Essa é a primeira vez que você fala comigo! Tente falar comigo outra vez e logo mais meu nome fará sentido.
+<<else>>
+    Contador: Essa é a {$temp_contador}ª vez que você fala comigo! Entendeu? Eu sou um contador!
+    Contador: Olhe minha Extra Action e tudo fará sentido! (apesar que você conseguiria fazer isso direto no Yarn também)
+<<endif>>
+
+===

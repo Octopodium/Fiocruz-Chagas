@@ -42,6 +42,7 @@ public class Player : MonoBehaviour {
     void HandleMouseClicked() {
         if (currentInteractable != null) {
             currentInteractable.HandleInteract();
+            currentInteractable.RunActions();
         }
     }
 
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour {
     void HandleHeldCardReleaded() {
         if (currentUseCollectable != null && collectableHeld != null) {
             currentUseCollectable.HandleCollectable(collectableHeld);
+            currentUseCollectable.RunActions();
         }
     }
 

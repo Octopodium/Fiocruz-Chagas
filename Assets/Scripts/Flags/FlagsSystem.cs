@@ -144,6 +144,21 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
         return flags.ContainsKey(flagName);
     }
 
+    /// <summary>
+    /// Checks if a certain type can be assign to a certain flag
+    /// </summary>
+    /// <param name="name">The flag's name.</param>
+    /// <param name="valueType">The checked type</param>
+    /// <returns>True only if the value can be assigned to the flag</returns>
+    public bool IsTypeValidForFlag(string name, Type valueType) {
+        FlagType? flagFlagType = GetFlagType(name);
+        if (flagFlagType == null) return false;
+
+        Type flagType = FlagDescriptor.GetTypeByFlagTypes((FlagType) flagFlagType);
+
+        return valueType.IsAssignableFrom(flagType);
+    }
+
 
     #region Utils
     /// <summary>
@@ -173,6 +188,7 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
     }
 
     object GetDefaultTypeOf(Type t) {
+        if (t == typeof(string)) return "";
         if (t.IsValueType)
             return Activator.CreateInstance(t);
         return null;
@@ -197,7 +213,7 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
                     boolDictionary[flagName] = (bool) flags[flagName];
                     break;
                 case FlagType.INT:
-                    intDictionary[flagName] = (int) flags[flagName];
+                    intDictionary[flagName] = (int) Convert.ChangeType(flags[flagName], typeof(int));
                     break;
                 case FlagType.FLOAT:
                     floatDictionary[flagName] = (float) flags[flagName];
@@ -259,8 +275,14 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
 
         autoFlagDialogueDisposable = GameManager.instance.dialogue.VariableStorage.AddChangeListener(HandleDialogueVariableChange);
         OnFlagChanged += HandleFlagChanged;
-
+        //OnFlagChanged += SimpleDebugger;
     }
+
+/*
+    void SimpleDebugger(string name, object value) {
+        Debug.Log("[FLAG CHANGED] " + name + ": " + value);
+    }
+*/
 
     /// <summary>
     /// Unset auto-flags events setted by SetAutoFlags. Called on destroy.

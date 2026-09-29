@@ -2976,6 +2976,7 @@ MonoBehaviour:
   inspectator: {fileID: 5019991662970167620}
   dialogue: {fileID: 4951904949898895369}
   saveManager: {fileID: 2923959541700869071}
+  notebook: {fileID: 0}
 --- !u!1 &6745010013517927427
 GameObject:
   m_ObjectHideFlags: 0

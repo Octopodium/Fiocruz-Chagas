@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -5,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public abstract class IUnderMouse: MonoBehaviour{
     public ConditionDescription[] conditions;
+    public ActionDescription[] extraActions;
 
     /// <summary>
     /// Defines the text shown when hovering. It will only be called if CanBeFound return true.
@@ -22,11 +24,21 @@ public abstract class IUnderMouse: MonoBehaviour{
     /// Checks every condition set in 'conditions'.
     /// </summary>
     /// <returns>Returns true if every condition is true (or if there is no condition to be checked)</returns>
-    public bool CheckConditions() {
+    public virtual bool CheckConditions() {
         if (conditions == null || conditions.Length == 0) return true;
 
         foreach (ConditionDescription condition in conditions)
             if (!condition.GetValue()) return false;
         return true;
+    }
+
+    /// <summary>
+    /// Tries to run every action set in 'extraActions'. If one action throws an error, will Debug.LogError it and continue to the next one (won't stop the flow).
+    /// </summary>
+    public virtual void RunActions() {
+        if (extraActions == null || extraActions.Length == 0) return;
+
+        foreach (ActionDescription action in extraActions)
+            try { action.RunAction(); } catch (Exception e) { Debug.LogError (e);}
     }
 }

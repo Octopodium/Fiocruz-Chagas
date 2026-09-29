@@ -104,7 +104,7 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
 
 
     public PlayerData Save(PlayerData data) {
-        data.playerLocation = currentAmbient.name;
+        data.playerLocation = currentAmbient != null ? currentAmbient.name : "";
         return data;
     }
 

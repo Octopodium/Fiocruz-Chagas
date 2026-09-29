@@ -23,3 +23,5 @@ MonoBehaviour:
     type: 0
   - name: temp_entregou_barbeiro
     type: 0
+  - name: temp_contador
+    type: 1
