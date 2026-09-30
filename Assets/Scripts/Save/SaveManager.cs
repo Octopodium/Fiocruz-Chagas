@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class SaveManager : MonoBehaviour{
-    private string savePath = "PlayerSaveData.json";
+    private static string relativeSavePath = "PlayerSaveData.json";
+    private static string savePath => Path.Combine(Application.persistentDataPath, relativeSavePath);
+
     public static SaveManager Instance;
     private PlayerData playerData;
     private bool loadedData = false;
@@ -21,8 +23,6 @@ public class SaveManager : MonoBehaviour{
             Destroy(gameObject);
         }
         Instance = this;
-
-        savePath = Path.Combine(Application.persistentDataPath, savePath);
         Debug.Log($"Save file path : {savePath}");
     }
 
@@ -114,21 +114,47 @@ public class SaveManager : MonoBehaviour{
     /// Creates a new blank PlayerData and writes this data into a Json file in the savePath file location.
     /// Then, proceeds to load said PlayerData.
     /// </summary>
-    public void ResetPlayerData()
-    {
-        playerData = new PlayerData {
+    public void ResetPlayerData() {
+        playerData = ResetSaveData();
+        Debug.Log("Save reseted!");
+
+        LoadPlayerData();
+        Debug.Log("Full reset complete!");
+    }
+
+    /// <summary>
+    /// Tries to get the saved PlayerData and out it. Won't call any events nor ISaveables.
+    /// </summary>
+    /// <param name="data">The fetched PlayerData or an empty PlayerData if not found.</param>
+    /// <returns>True if the save exists, false if it doesn't.</returns>
+    public static bool TryGetSaveData(out PlayerData data) {
+        if (File.Exists(savePath)) {
+            string content = File.ReadAllText(savePath);
+            data = JsonUtility.FromJson<PlayerData>(content);
+            return true;
+        }
+        
+        data = new PlayerData();
+        return false;
+    }
+
+    /// <summary>
+    /// Creates a new blank PlayerData and writes this data into a Json file in the savePath file location.
+    /// Won't Load it automatically.
+    /// </summary>
+    /// <returns>Returns the new blank PlayerData.</returns>
+    public static PlayerData ResetSaveData() {
+        PlayerData playerData = new PlayerData {
             playerName = "Rooty Tooty Fresh'n Fruity"
         };
 
         string jsonString = JsonUtility.ToJson(playerData, true);
-        Debug.Log(jsonString);
         File.WriteAllText(savePath, jsonString);
         Debug.Log(File.ReadAllText(savePath));
         Debug.Log("Save reseted!");
-
-        LoadPlayerData();
-
         Debug.Log("Full reset complete!");
+
+        return playerData;
     }
 
 }
