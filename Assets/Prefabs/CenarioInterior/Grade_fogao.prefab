@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4392113801016931308
+--- !u!1 &3303736241856361244
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8052322145803030167}
-  - component: {fileID: 4478947665470182417}
-  - component: {fileID: 4937083736286726385}
+  - component: {fileID: 2779541443023137190}
+  - component: {fileID: 1242203646155941379}
+  - component: {fileID: 3952408863059284681}
   m_Layer: 0
-  m_Name: Grade_fogao
+  m_Name: 'Grade_fogao '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &8052322145803030167
+--- !u!4 &2779541443023137190
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4392113801016931308}
+  m_GameObject: {fileID: 3303736241856361244}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,21 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9172526920094042027}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4478947665470182417
+--- !u!33 &1242203646155941379
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4392113801016931308}
+  m_GameObject: {fileID: 3303736241856361244}
   m_Mesh: {fileID: 3199784143071335625, guid: 601d3c516aa6e35448152cd0266e35df, type: 3}
---- !u!23 &4937083736286726385
+--- !u!23 &3952408863059284681
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4392113801016931308}
+  m_GameObject: {fileID: 3303736241856361244}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dbddabf460f858c4e83bca7e39709dac, type: 2}
+  - {fileID: 2100000, guid: 7fdba5d3c140dd44292cb58d8b8f5bd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,6 +119,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8052322145803030167}
+  - {fileID: 2779541443023137190}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
