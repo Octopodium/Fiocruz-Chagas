@@ -7,6 +7,8 @@ using System.Collections.Generic;
 public class SaveManager : MonoBehaviour{
     private static string relativeSavePath = "PlayerSaveData.json";
     private static string savePath => Path.Combine(Application.persistentDataPath, relativeSavePath);
+    public static bool comingFromMenu = false;
+
 
     public static SaveManager Instance;
     private PlayerData playerData;
@@ -17,7 +19,7 @@ public class SaveManager : MonoBehaviour{
     List<ISaveable> saveables = new List<ISaveable>();
 
 
-    private void Awake(){
+    private void Awake() {
         if (Instance)
         {
             Destroy(gameObject);
@@ -26,9 +28,11 @@ public class SaveManager : MonoBehaviour{
         Debug.Log($"Save file path : {savePath}");
     }
 
-    private void Start()
-    {
-        // LoadPlayerData();
+    private void Start() {
+        if (comingFromMenu) {
+            LoadPlayerData();
+            comingFromMenu = false;
+        }
     }
 
     /// <summary>

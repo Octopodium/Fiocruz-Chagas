@@ -23,11 +23,13 @@ public class MenuOptions : MonoBehaviour {
     public void RequestNewGame() => fade.FadeToBlack(NewGame);
     void NewGame() {
         SaveManager.ResetSaveData();
+        SaveManager.comingFromMenu = true;
         AmbientNavigation.StartAtAmbient(firstAmbient);
     }
 
     public void RequestContinueGame() => fade.FadeToBlack(ContinueGame);
     void ContinueGame() {
+        SaveManager.comingFromMenu = true;
         if (saveDataLoaded != null && saveDataLoaded.playerLocation != "") {
             AmbientInfo ambientInfo = AmbientInfo.GetAmbient(saveDataLoaded.playerLocation);
             if (ambientInfo != null) {
