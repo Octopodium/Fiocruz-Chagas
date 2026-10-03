@@ -57,9 +57,6 @@ public class NoteData : ScriptableObject
         return sb.ToString();
     }
 
-    /// <summary>
-    /// Returns all bullet points formatted as a single multi-line string.
-    /// </summary>
     public string GetFormattedBulletPoints(string bulletSymbol = "- ")
     {
         return GetFormattedBulletPoints(0, bulletPoints != null ? bulletPoints.Count : 0, bulletSymbol);

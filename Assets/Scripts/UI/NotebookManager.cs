@@ -15,9 +15,6 @@ public class NotebookManager : MonoBehaviour, ISaveable
     [SerializeField] private List<NoteData> noteDatabase = new List<NoteData>();
     [SerializeField] private bool loadFromResources = false;
 
-    [Tooltip("Optional notes that start unlocked immediately (useful for testing)")]
-    [SerializeField] private List<NoteData> defaultUnlockedNotes = new List<NoteData>();
-
     [Header("Notebook Canvas & Navigation")]
     [SerializeField] private Button closeNotebookButton;
     [SerializeField] private Button hudOpenButton;
@@ -30,7 +27,6 @@ public class NotebookManager : MonoBehaviour, ISaveable
     [Header("Detail View")]
     [SerializeField] private NoteDetailView detailView;
 
-    // Runtime state
     private readonly HashSet<string> unlockedNoteIds = new HashSet<string>();
     private readonly Dictionary<string, NoteData> notesLookup = new Dictionary<string, NoteData>();
     private readonly List<NotebookSubjectButton> spawnedButtons = new List<NotebookSubjectButton>();
@@ -53,9 +49,9 @@ public class NotebookManager : MonoBehaviour, ISaveable
 
         InitializeDatabase();
 
-        foreach (NoteData note in defaultUnlockedNotes)
+        if (detailView == null)
         {
-            if (note != null) UnlockNote(note);
+            detailView = GetComponentInChildren<NoteDetailView>(true);
         }
 
         if (closeNotebookButton != null)
@@ -81,7 +77,7 @@ public class NotebookManager : MonoBehaviour, ISaveable
             GameManager.instance.saveManager.AddSaveable(this);
         }
 
-        CloseNotebook();
+        UpdateHudButtonVisibility();
     }
 
     private void OnDestroy()
@@ -101,8 +97,6 @@ public class NotebookManager : MonoBehaviour, ISaveable
             hudOpenButton.onClick.RemoveListener(OpenNotebook);
         }
     }
-
-    #region Database Initialization
 
     private void InitializeDatabase()
     {
@@ -135,10 +129,6 @@ public class NotebookManager : MonoBehaviour, ISaveable
             }
         }
     }
-
-    #endregion
-
-    #region Note Unlocking & Management
 
     /// <summary>
     /// Unlocks a note by its unique NoteId and updates the UI grid.
@@ -183,6 +173,7 @@ public class NotebookManager : MonoBehaviour, ISaveable
             Debug.Log($"[NotebookManager] Unlocked note: '{note.Title}' (ID: {noteId})");
             OnNoteUnlocked?.Invoke(note);
             RefreshGrid();
+            UpdateHudButtonVisibility();
         }
     }
 
@@ -210,6 +201,7 @@ public class NotebookManager : MonoBehaviour, ISaveable
         if (unlockedNoteIds.Remove(noteId))
         {
             RefreshGrid();
+            UpdateHudButtonVisibility();
         }
     }
 
@@ -222,16 +214,13 @@ public class NotebookManager : MonoBehaviour, ISaveable
     {
         unlockedNoteIds.Clear();
         RefreshGrid();
+        UpdateHudButtonVisibility();
     }
 
     public NoteData GetNoteById(string noteId)
     {
         return notesLookup.TryGetValue(noteId, out NoteData note) ? note : null;
     }
-
-    #endregion
-
-    #region UI & Navigation
 
     public void ToggleNotebook()
     {
@@ -256,6 +245,12 @@ public class NotebookManager : MonoBehaviour, ISaveable
     public void CloseNotebook()
     {
         isNotebookOpen = false;
+
+        if (detailView == null)
+        {
+            detailView = GetComponentInChildren<NoteDetailView>(true);
+        }
+
         if (detailView != null)
         {
             detailView.Hide();
@@ -266,9 +261,20 @@ public class NotebookManager : MonoBehaviour, ISaveable
 
     public void ShowGrid()
     {
+        if (gridPanel == null)
+        {
+            Transform foundGrid = transform.Find("Grid") ?? transform.Find("GridPanel");
+            if (foundGrid != null) gridPanel = foundGrid.gameObject;
+        }
+
         if (gridPanel != null)
         {
             gridPanel.SetActive(true);
+        }
+
+        if (detailView == null)
+        {
+            detailView = GetComponentInChildren<NoteDetailView>(true);
         }
 
         if (detailView != null)
@@ -281,7 +287,22 @@ public class NotebookManager : MonoBehaviour, ISaveable
 
     public void OpenNoteDetail(NoteData note)
     {
-        if (note == null) return;
+        if (note == null)
+        {
+            Debug.LogWarning("[NotebookManager] OpenNoteDetail called with null note.");
+            return;
+        }
+
+        if (detailView == null)
+        {
+            detailView = GetComponentInChildren<NoteDetailView>(true);
+        }
+
+        if (gridPanel == null)
+        {
+            Transform foundGrid = transform.Find("Grid") ?? transform.Find("GridPanel");
+            if (foundGrid != null) gridPanel = foundGrid.gameObject;
+        }
 
         if (gridPanel != null)
         {
@@ -291,6 +312,10 @@ public class NotebookManager : MonoBehaviour, ISaveable
         if (detailView != null)
         {
             detailView.DisplayNote(note, onBack: ShowGrid);
+        }
+        else
+        {
+            Debug.LogError("[NotebookManager] Cannot open note detail: NoteDetailView reference is missing!");
         }
 
         OnNoteOpened?.Invoke(note);
@@ -346,6 +371,11 @@ public class NotebookManager : MonoBehaviour, ISaveable
 
     private void SetNotebookUIVisible(bool isVisible)
     {
+        if (transform.parent != null && isVisible && !transform.parent.gameObject.activeSelf)
+        {
+            transform.parent.gameObject.SetActive(true);
+        }
+
         if (TryGetComponent<CanvasGroup>(out var canvasGroup))
         {
             canvasGroup.alpha = isVisible ? 1f : 0f;
@@ -358,10 +388,6 @@ public class NotebookManager : MonoBehaviour, ISaveable
         }
     }
 
-    #endregion
-
-    #region ISaveable Implementation
-
     public PlayerData Save(PlayerData data)
     {
         if (data == null) return data;
@@ -372,7 +398,6 @@ public class NotebookManager : MonoBehaviour, ISaveable
         };
 
         data.notebook = save;
-        Debug.Log($"[NotebookManager] Saved {unlockedNoteIds.Count} unlocked notes.");
         return data;
     }
 
@@ -389,15 +414,33 @@ public class NotebookManager : MonoBehaviour, ISaveable
                     unlockedNoteIds.Add(id);
                 }
             }
-            Debug.Log($"[NotebookManager] Loaded {unlockedNoteIds.Count} unlocked notes from save data.");
         }
-        else
-        {
-            Debug.Log("[NotebookManager] No notebook save data found or data is empty.");
-        }
-
+        
         RefreshGrid();
+        UpdateHudButtonVisibility();
     }
+    
+    public bool HasUnlockedNotes() => unlockedNoteIds.Count > 0;
+    public int UnlockedNotesCount => unlockedNoteIds.Count;
 
-    #endregion
+    /// <summary>
+    /// Updates the HUD "Notes" button visibility based on whether any note is currently unlocked.
+    /// </summary>
+    public void UpdateHudButtonVisibility()
+    {
+        if (hudOpenButton == null)
+        {
+            GameObject notesObj = GameObject.Find("Notes");
+            if (notesObj != null)
+            {
+                hudOpenButton = notesObj.GetComponent<Button>();
+            }
+        }
+
+        if (hudOpenButton != null)
+        {
+            bool hasNotes = HasUnlockedNotes();
+            hudOpenButton.gameObject.SetActive(hasNotes);
+        }
+    }
 }

@@ -44,6 +44,17 @@ public class NotebookSubjectButton : MonoBehaviour
         currentNote = noteData;
         onClickCallback = onClick;
 
+        if (button == null)
+        {
+            button = GetComponent<Button>();
+        }
+
+        if (button != null)
+        {
+            button.onClick.RemoveListener(HandleClick);
+            button.onClick.AddListener(HandleClick);
+        }
+
         if (currentNote == null) return;
 
         string label = currentNote.ButtonLabel;

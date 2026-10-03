@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 112525037152787823}
   - component: {fileID: 3081063260541155319}
   - component: {fileID: 7555062557465570831}
-  - component: {fileID: 8362677256369391987}
   m_Layer: 5
   m_Name: Notebook
   m_TagString: Untagged
@@ -486,28 +485,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8362677256369391987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152572039000877113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f67679b02abf14f9e64a15d43e152c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NotebookManager
-  noteDatabase:
-  - {fileID: 11400000, guid: cd8120c64ac54384c9b1224051ffdb67, type: 2}
-  loadFromResources: 0
-  defaultUnlockedNotes: []
-  closeNotebookButton: {fileID: 394668985756937576}
-  hudOpenButton: {fileID: 999292745760751761}
-  gridPanel: {fileID: 553418729131688677}
-  gridContainer: {fileID: 4428694779139572740}
-  subjectButtonPrefab: {fileID: -4862893831154582976, guid: 988d76af5de35904ea7e8f2db7023190, type: 3}
-  detailView: {fileID: 4892982713897645614}
 --- !u!1 &1231557933373754712
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.89664, y: -23.625}
+  m_AnchoredPosition: {x: 112.89664, y: -22.0625}
   m_SizeDelta: {x: 209.79327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7902516927879924570
@@ -1553,7 +1530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.89664, y: -56.375}
+  m_AnchoredPosition: {x: 112.89664, y: -51.84375}
   m_SizeDelta: {x: 209.79327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945474385157401730
@@ -2019,7 +1996,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.89664, y: -13.124999}
+  m_AnchoredPosition: {x: 112.89664, y: -11.71875}
   m_SizeDelta: {x: 193.79327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8000416509925271777

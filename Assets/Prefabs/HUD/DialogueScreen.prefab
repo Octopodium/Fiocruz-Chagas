@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2334702736062018589}
   - component: {fileID: 4680783069033864773}
   - component: {fileID: 1465472019580230216}
+  - component: {fileID: 7912480315729104821}
   m_Layer: 5
   m_Name: DialogueScreen
   m_TagString: Untagged
@@ -873,3 +874,33 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7912480315729104821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136978115811818920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7192a54e9bc4d6a8f1011e0c8b99142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 1162880995751394627}
+  characterArea: {fileID: 5851952159965830276}
+  char1Image: {fileID: 4712796981679848004}
+  char2Image: {fileID: 2948181447259490639}
+  textBox: {fileID: 8719815266314903337}
+  spriteLibrary:
+  - id: background_placeholder
+    sprite: {fileID: 21300000, guid: 1134b953967be5f42ab410d8643d2db7, type: 3}
+  - id: sprite_1
+    sprite: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  - id: sprite_2
+    sprite: {fileID: 21300000, guid: ae869c5b654eb3d4e8e031bdbc251fa5, type: 3}
+  - id: textBox
+    sprite: {fileID: 21300000, guid: 2b9e769be9b79004891fa44bd1ceeef2, type: 3}
+  defaultBackgroundActive: 0
+  defaultCharacterAreaActive: 0
+  defaultTextBoxActive: 1
+  resetVisualsOnDialogueEnd: 1

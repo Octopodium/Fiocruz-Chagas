@@ -1,10 +1,33 @@
-title: DonaNeuza
+﻿title: DonaNeuza
 ---
+// EXEMPLO DE COMANDOS DE BACKGROUND / CHARACTER
+// 1. Ativa a imagem de fundo do diálogo e define o sprite
+<<set_background true background_placeholder>>
+
+// 2. Ativa a área de personagens e passa os sprites (Char1: Dona Neuza, Char2: Jogador)
+<<set_characters true sprite_1 sprite_2>>
+
+// 3. Garante que a caixa de texto padrão está ativa com fundo
+<<set_text_background true>>
+
 Dona Neuza: Identificamos uma nova molécula promissora contra o Trypanosoma cruzi nos testes de laboratório.
 
+// 4. Exemplo mudar apenas o sprite do char
+<<set_char2 barbeiro>>
 Você: Isso é excelente.
 
-Dona Neuza: Vamos adiantar os testes agora. Vou deixar anotado os detalhes principais para você consultar.
+// 5. Exemplo de toggle do background da caixa de texto (desativando para texto flutuante/narrativo)
+<<set_text_background false>>
+Dona Neuza: (Ela se aproxima da bancada com entusiasmo enquanto ajusta o microscópio...)
+
+// 6. Reativando o fundo da caixa de texto para a fala seguinte
+<<set_text_background true>>
+Dona Neuza: Vamos adiantar os testes agora. Vou deixar anotado os detalhes principais para você consultar no seu caderno.
 
 <<unlock_note dona_neuza>>
+
+// 7. Exemplo de encerramento: desativa os retratos e o background da tela
+<<set_characters false>>
+<<set_background false>>
 ===
+

@@ -16,9 +16,7 @@ public class NoteDetailView : MonoBehaviour
     [SerializeField] private int bulletPointsPerPage = 4;
 
     [SerializeField] private Button prevPageButton;
-
     [SerializeField] private Button nextPageButton;
-
     [SerializeField] private Button backButton;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GameObject panelRoot;
@@ -79,19 +77,15 @@ public class NoteDetailView : MonoBehaviour
         currentPageIndex = 0;
         onBackRequested = onBack;
 
-        // Set Title
+        SetVisible(true);
+
         if (titleTmpText != null)
         {
             titleTmpText.text = currentNote.Title;
         }
 
-        // Set Image
         SetupImage(currentNote.NoteImage, currentNote.PreserveImageAspect);
-
-        // Render Page Content
         UpdatePageDisplay();
-
-        SetVisible(true);
     }
 
     /// <summary>
@@ -148,13 +142,11 @@ public class NoteDetailView : MonoBehaviour
         int perPage = Mathf.Max(1, bulletPointsPerPage);
         int startIndex = currentPageIndex * perPage;
 
-        // Update Bullets for this page slice
         if (bulletPointsTmpText != null)
         {
             bulletPointsTmpText.text = currentNote.GetFormattedBulletPoints(startIndex, perPage, "- ");
         }
 
-        // Update Pagination Controls
         bool hasMultiplePages = totalPages > 1;
 
         if (prevPageButton != null)
@@ -208,15 +200,27 @@ public class NoteDetailView : MonoBehaviour
             canvasGroup.interactable = isVisible;
             canvasGroup.blocksRaycasts = isVisible;
         }
-        else if (panelRoot != null)
+        else
         {
-            panelRoot.SetActive(isVisible);
+            GameObject target = panelRoot != null ? panelRoot : gameObject;
+            target.SetActive(isVisible);
         }
     }
 
-    private void HandleBackClick()
+    /// <summary>
+    /// Closes the note detail view and reopens the notebook grid.
+    /// </summary>
+    public void HandleBackClick()
     {
         Hide();
-        onBackRequested?.Invoke();
+
+        if (NotebookManager.Instance != null)
+        {
+            NotebookManager.Instance.ShowGrid();
+        }
+        else
+        {
+            onBackRequested?.Invoke();
+        }
     }
 }
