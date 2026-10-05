@@ -1,0 +1,25 @@
+title: SuaCama
+---
+-> Travesseiro <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump SuaCama>>
+-> Colchão <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump SuaCama>>
+-> Coberta <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump SuaCama>>
+-> Olhar embaixo da cama <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump SuaCama>>
+-> Voltar
+    <<jump Casa>>
+===

@@ -1,0 +1,102 @@
+title: Q1
+position: 51,-713
+---
+<<once>>
+Doutor Torres: Antes de começarmos a testar os espécimes, gostaria de relembrar alguns fatos sobre cada um.
+Doutor Torres: Poderemos economizar tempo e esforço se reduzirmos o número de suspeitos.
+Doutor Torres: Analisando cada um dos insetos e as informações que obtivemos até então, podemos eliminar aqueles pouco prováveis de picar Dona Neusa ou de gerar o inchaço.
+Doutor Torres: Vamos começar relembrando o básico!
+Doutor Torres: Dada a irritação na pele da sua mãe, é possível, senão provável, que ela tenha sido alvo de um inseto que se alimenta de sangue animal.
+<<endonce>>
+Doutor Torres: Qual é a denominação de um percevejo que se alimenta de sangue?
+-> Hematófago
+    Doutor Torres: Perfeito! 
+    Doutor Torres: Os insetos que se alimentam de sangue recebem a denominação de "hematófagos".
+    Doutor Torres: "Hemato-" remete a "haîma" ou "sangue" em grego.
+    <<jump Q2>>
+-> Fitófago
+    Doutor Torres: Hmm... valeu a tentativa, mas você está incorreto.
+    Doutor Torres: Os fitófagos são insetos que se alimentam da seiva de plantas. O radical "fito-" deriva da palavra grega "phytón", que pode ser traduzida como "planta" ou "vegetal".
+-> Entomófago
+    Doutor Torres: Os entomófagos se alimentam de outros animais, de fato, mas não do nosso sangue. 
+    Doutor Torres: Eles se alimentam de outros insetos. Na palavra "entomófago", o radical "entomo-" vem da palavra para inseto em grego, "éntomon".
+<<jump Q1>>
+===
+
+title: Q2
+position: 48,-301
+---
+<<declare $hematophagesSelected = 0>>
+Doutor Torres: Agora vamos determinar quais dos insetos que encontramos pertencem ao grupo dos hematófagos.
+
+-> Euschistus heros <<once>>
+    Doutor Torres: Hmm... você disse que encontrou o espécime em uma planta próxima à sua casa, correto?
+    Doutor Torres: O Euschistus heros, ou maria-fedida, é conhecido por sua proliferação em plantações, especialmente de soja.
+    Doutor Torres: Além disso, a sua probóscide alongada e reta é perfeita para a perfuração de plantas e extração da seiva...
+    Doutor Torres: Estas são características de um fitófago! Portanto, não acho que este seja o nosso culpado.
+    <<jump Q2>>
+-> Cimex lectularius <<once>>
+    Doutor Torres: Muito perspicaz! O Cimex lectularius se alimenta do sangue de animais.
+    Doutor Torres: Ele costuma encontrar o local de descanso de um animal de sangue quente e esperar que ele durma para, então, picá-lo e extrair seu alimento.
+    Doutor Torres: A saliva anestésica e anticoagulante, junta à sua probóscide reta e mais curta que a de outros percevejos, facilita que ele se alimente sem que o animal perceba a sua presença.
+    Doutor Torres: Além disso, a localização do local de descanso do animal permite que ele tenha uma fonte de alimento previsível e recorrente.
+    Doutor Torres: Certamente um hematófago e um forte suspeito. 
+    <<set $hematophagesSelected += 1>>
+    <<if $hematophagesSelected < 2>>
+        <<jump Q2>>
+    <<endif>>
+-> Panstrongylus megistus <<once>>
+    Doutor Torres: Perfeito!
+    Doutor Torres: A observação cuidadosa dos espécimes revela a presença de uma probóscide reta e curta, perfeita para perfuração do couro ou da pele.
+    Doutor Torres: Além disso, os locais em que foram encontrados os dois espécimes são extremamente incriminatórios!
+    Doutor Torres: O galinheiro, onde teria acesso frequente às galinhas para extração de sangue, e o interior da sua casa, onde você e sua mãe seriam alvos fáceis!
+    Doutor Torres: Apesar da sua semelhança com alguns percevejos do grupo dos entomófagos, seus hábitos e o formato da sua probóscide entregam o Panstrongylus megistus como um hematófago de carteirinha.
+    <<set $hematophagesSelected += 1>>
+    <<if $hematophagesSelected < 2>>
+        <<jump Q2>>
+    <<endif>>
+-> Zelus leucogrammus <<once>>
+    Doutor Torres: De fato, o Zelus leucogrammus não tem uma cara particularmente amistosa.
+    Doutor Torres: Sua longa probóscide em formato de anzol passa a imagem de um perigoso predador...
+    <<wait 1>>
+    Doutor Torres: Porém, é exatamente essa a característica que revela sua identidade como um entomófago, que utiliza seu perigoso anzol para capturar suas presas, como pulgões e moscas-brancas!
+    Doutor Torres: Apesar da sua fama como "percevejo-assassino", o Zelus leucogrammus não oferece risco considerável aos seres humanos.
+    Doutor Torres: Na verdade, ele é benéfico para nós, já que se alimenta principalmente de pragas que assolam plantações e outros insetos nocivos.
+    Doutor Torres: Pouco provável que seja o nosso culpado, mas eu certamente não gostaria de levar uma picada dele, hahaha.
+    <<jump Q2>>
+<<if $hematophagesSelected == 2>>
+    <<jump Q3>> 
+<<endif>>
+===
+
+title: Q3
+position: 54,-15
+---
+<<once>>
+Doutor Torres: Acho que encontramos todos os hematófagos entre os insetos coletados!
+Doutor Torres: Mas isso não significa que nossa missão aqui esteja concluída. Ainda precisamos determinar qual dos suspeitos é o responsável pelos sintomas da sua mãe.
+Doutor Torres: Ambos foram encontrados no interior da sua casa e são igualmente capazes de picar você ou a Dona Neusa...
+Doutor Torres: Entretanto, se analisarmos com cuidado as circunstâncias da picada e os locais em que encontrou cada um dos espécimes, poderemos descobrir qual dos dois é o mais provável autor da picada e da irritação.
+<<wait 1>>
+Doutor Torres: Considerando que a irritação se apresenta próxima à região dos olhos, a picada, ainda que pequena demais para ser visível, não deve estar muito distante.
+Doutor Torres: Seria difícil não notar um inseto no seu rosto, mas, como a Dona Neusa não relatou nenhum incidente com algum deles, é bem possível que a picada tenha ocorrido enquanto ela dormia...
+Doutor Torres: Tendo em vista o que aprendemos sobre cada um e os locais em que foram encontrados, qual destes insetos teria mais facilidade de fazer uma picada no rosto da sua mãe durante a noite? 
+<<endonce>>
+-> Cimex lectularius <<once>>
+    Doutor Torres: Um excelente palpite. O Cimex lectularius foi encontrado no colchão da sua mãe; portanto, poderia facilmente picá-la durante a noite.
+    Doutor Torres: Isso seria coerente com os hábitos da espécie, que costuma fazer sua morada em locais com temperatura controlada e próximos ao local de descanso da sua principal fonte de alimento: animais de sangue quente.
+    Doutor Torres: Colchões atendem a ambas as necessidades do percevejo, e a presença desses pequenos insetos em colchões é tão frequente que eles são popularmente conhecidos como "percevejos-de-cama".
+    Doutor Torres: Entretanto, eu vejo dois problemas com essa hipótese.
+    Doutor Torres: O primeiro deles é que, apesar de serem hematófagos e de suas picadas tipicamente gerarem irritação no local da perfuração, o tamanho do inchaço que a Dona Neusa tem é incongruente com o trabalho de um único percevejo.
+    Doutor Torres: Seriam necessárias múltiplas picadas na mesma região para que a irritação tomasse aquela dimensão...
+    Doutor Torres: Acredito que nem mesmo o mais pesado dos sonos seria suficiente para impedir que sua mãe despertasse com tamanha operação...
+    Doutor Torres: O segundo problema é o local das picadas: o rosto.
+    Doutor Torres: Os percevejos-de-cama costumam fazer morada no interior do colchão e se alimentar utilizando a sua probóscide pontiaguda, que é capaz de perfurar tanto o tecido do colchão quanto a pele.
+    Doutor Torres: Dessa forma, eles conseguem se alimentar do sangue humano sem precisar sair do seu ninho, picando regiões como o torso, os braços ou as pernas, que estão em contato direto com o colchão.
+    Doutor Torres: Mas é extremamente incomum que ocorram picadas na região do rosto, já que este está, geralmente, protegido pelo travesseiro e até virado para cima.
+    Doutor Torres: O percevejo teria de sair do seu local de segurança e ir até o rosto de Neusa para picá-la na região do inchaço.
+    Doutor Torres: Considerando estes dois fatores, acredito que é extremamente improvável que este inseto seja o nosso culpado.
+    Doutor Torres: O que nos deixa apenas um suspeito...
+    <<jump Q3>>
+-> Panstrongylus megistus
+===

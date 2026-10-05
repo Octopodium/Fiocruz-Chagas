@@ -1,0 +1,159 @@
+title: DonaNeusa
+position: 227,-312
+---
+<<declare $surpresa = false>>
+<<declare $galinhasAlimentadas = false>>
+<<declare $descansando = false>>
+<<if $galinhasAlimentadas and not $descansando>>
+    <<if $surpresa>>
+        Dona Neusa: O quê?
+        Dona Neusa: Você cuidou das galinhas por mim?
+        Dona Neusa: Não precisava, querido, você deveria aproveitar seu tempo aqui e descansar!
+        <<wait 1>>
+    <<endif>>
+    <<once>>
+    Dona Neusa: Muito obrigada, você é muito gentil.
+    <<wait 1>>
+    Dona Neusa: Ai...
+    -> Você está bem?
+        Dona Neusa: Sim, sim...
+        Dona Neusa: Minha cabeça dói um pouco, eu me sinto cansada...
+    -> É a dor de cabeça?
+        Dona Neusa: Isso também.
+        Dona Neusa: Só de varrer aqui dentro já me sinto cansada.
+    Dona Neusa: Mas não precisa se preocupar com isso. Tenho certeza de que não é nada demais.
+    -> Acho que você deveria ir ao médico.
+    Dona Neusa: Nada disso.
+    Dona Neusa: Não vou perder o dia que tenho para passar com meu filho querido indo ao médico.
+    Dona Neusa: Deve ser pressão baixa. Vou me deitar um pouco, e daqui a pouco já devo estar melhor. 
+    <<set $descansando = true>>
+    <<wait 1>>
+    ...
+    -> Inchaço
+        Esse inchaço no olho não parece um machucado qualquer.
+        Não tem marca de ferida e não parece ser um hematoma.
+        Ela não reclamou de dor na região também...
+        <<set $sinalDeRomana = true>>
+    <<wait 1>>
+    É melhor eu procurar a opinião de um médico...
+    Eu não conheço nenhum, mas pode ser que alguém da região saiba me informar.
+    <<endonce>>
+<<elseif $descansando>>
+    Ela está dormindo...
+    -> Inchaço
+        Esse inchaço no olho não parece um machucado qualquer.
+        Não tem marca de ferida e não parece ser um hematoma.
+        Ela não reclamou de dor na região também...
+        <<set $sinalDeRomana = true>>
+    -> Voltar
+<<else>>
+    Dona Neusa: Oi, filho.
+    -> Seu olho
+        Dona Neusa: Ah, isso?
+        Dona Neusa: É, acordou desse jeito, mas não dói nada.
+        Dona Neusa: Imagino que possa ser terçol.
+        <<set $sinalDeRomana = true>>
+<<endif>>
+===
+
+title: SenhorNelson
+---
+<<once>>
+Opa, Senhor Nelson?
+Senhor Nelson: Hm?
+Senhor Nelson: Ah, menino, é você mesmo?
+Senhor Nelson: Mal te reconheci, você ficou tão grande!
+Senhor Nelson: Como vai você?
+Ah, eu vou bem, obrigado.
+Cheguei ontem, ainda estou me aclimatando.
+Senhor Nelson: E sua mãe, como vai a Dona Neusa?
+Ela acordou com alguns sintomas estranhos, na verdade.
+Dores de cabeça, cansada... Ela diz não ser nada, mas eu estou preocupado.
+Senhor Nelson: Nossa!
+Senhor Nelson: Pobre Neusa, espero que melhore logo.
+Eu também... 
+<<endonce>>
+-> Minha mãe...
+    Por acaso você notou alguma coisa diferente recentemente?
+    Senhor Nelson: Hmm...
+    Senhor Nelson: Acho que não.
+    Senhor Nelson: Encontrei com a Neusa semana passada na feira. Ela parecia saudável, animada como sempre.
+-> Você conhece algum médico? <<once>>
+    Senhor Nelson: Médico?
+    Senhor Nelson: Hmm...
+    Senhor Nelson: Tem o Doutor Torres, neto do antigo prefeito.
+    Senhor Nelson: Você deve conseguir encontrá-lo no Hospital Nossa Senhora do Brasil.
+    -> Nossa Senhora do Brasil?
+    Senhor Nelson: É mesmo, você ficou um tempo fora, né?
+    Senhor Nelson: É a antiga Santa Casa. Construíram um prédio novo, mais moderno, e mudaram o nome.
+    Senhor Nelson: Ele costuma atender lá mesmo, mas faz visitação se necessário.
+    Certo, muito obrigado.
+    <<set $medicoDaCidade = true>>
+    Melhor eu ir procurar o Doutor Torres no hospital.
+-> Voltar
+    <<jump ExteriorDaCasa>>
+<<jump SenhorNelson>>
+===
+
+title: DoutorTorres
+---
+<<once>>
+Gostaria da sua ajuda.
+Doutor Torres: Bom, como pode perceber, eu estou de saída. Se você precisa de atendimento médico, não poderei ajudar agora.
+Doutor Torres: Entretanto, posso te aconselhar ou indicar um colega que possa.
+Acho que minha mãe está doente. Neste momento ela está descansando, mas tem apresentado sintomas estranhos a manhã toda.
+<<endonce>>
+-> Inchaço em um olho só <<once if $sinalDeRomana>>
+    Doutor Torres: Houve alguma reclamação de dor no inchaço?
+    Não. Disse que achava ser terçol.
+    Doutor Torres: A ausência de dor é uma evidência forte de que não seja um caso de terçol ou ferida local.
+    <<set $suspeita += 1>>
+-> Muito cansada <<once>>
+    Doutor Torres: E ela relatou que dormiu a noite toda, correto?
+    Doutor Torres: Esse nível de cansaço, especialmente se acompanhado de outros sintomas, pode ser um indicador preocupante.
+    <<set $suspeita += 1>>
+-> Dores de cabeça <<once>>
+    Doutor Torres: Essa dor começou na manhã de hoje?
+    Não sei dizer com certeza. Mas me pareceu que sim.
+    Doutor Torres: Hmm.
+    <<set $suspeita += 1>>
+<<if $suspeita < 3>>
+    Doutor Torres: Observou mais alguma coisa?
+    <<jump DoutorTorres>>
+<<endif>>
+Doutor Torres: Pelo que você me relatou, estes sintomas se assemelham aos da paciente que estou indo ver.
+Doutor Torres: Aonde fica a sua casa?
+Na direção de Luz e do Córrego Danta.
+Doutor Torres: Hmm...
+Doutor Torres: Será que...?
+Doutor Torres: Não, não posso dizer nada com certeza ainda.
+Doutor Torres: Veja bem, eu não posso visitar a sua mãe neste momento. Avisei à família que veria a filha deles ainda esta tarde.
+Doutor Torres: Contudo, existe algo que você pode fazer que pode ajudar a sua mãe, minha paciente e possivelmente toda Bambuí.
+Doutor Torres: Eu acredito que estamos lidando com uma infecção oriunda de insetos.
+Doutor Torres: Dada a proximidade de ambos os casos e a região de mata, além dos sintomas relatados, tenho motivos suficientes para considerar a existência de um vetor animal.
+Doutor Torres: Mas não quero tirar conclusões precipitadas.
+Doutor Torres: Eu teria de investigar os domicílios e procurar por sinais de insetos que possam ter entrado em contato com os pacientes...
+Doutor Torres: Mas não terei tempo de conduzir uma procura detalhada ainda hoje...
+-> Eu posso fazer
+-> Quero ajudar
+Doutor Torres: Oh!
+Doutor Torres: Hmm...
+Doutor Torres: Certo. Isso vai nos permitir reagir mais rapidamente a uma possível epidemia e prevenir que mais pessoas sejam infectadas.
+Doutor Torres: Eu preciso que você colete qualquer inseto que possa ter tido contato direto com sua mãe.
+Doutor Torres: O foco da sua investigação deve ser a sua casa e os arredores imediatos. Ambientes que sua mãe visita com frequência.
+Doutor Torres: Mas tome cuidado! Se os insetos encontrados podem de fato transmitir uma doença, você deve evitar contato direto com eles.
+Doutor Torres: Vou te dar alguns recipientes de vidro. Eles vão permitir que você colete os insetos para análise sem se pôr em risco.
+<<set $recipiente = 5>>
+<<wait 1>>
+Doutor Torres: Espero retornar no final da tarde. Então traga os espécimes coletados para conduzirmos uma análise mais aprofundada.
+-> Obrigado
+    Doutor Torres: Eu que agradeço a sua disposição para ajudar. 
+-> Pode deixar comigo
+    Doutor Torres: Seu esforço para ajudar é muito bem-vindo.
+    Doutor Torres: Agradeço pela disposição. Sua mãe certamente tem muito orgulho de você.
+Doutor Torres: Bom, eu preciso tomar meu rumo agora.
+Doutor Torres: Até mais tarde!
+É melhor eu voltar logo e começar a procurar...
+<<set $procurandoInsetos = true>>
+<<jump ExteriorDaCasa>>
+===

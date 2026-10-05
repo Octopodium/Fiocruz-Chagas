@@ -1,0 +1,32 @@
+title: Notas
+---
+<<declare $sinalDeRomana = true>>
+<<declare $barbeiroGalinheiro = false>>
+<<declare $barbeiroDaCasa = false>>
+<<declare $percevejoDeCama = false>>
+<<declare $medicoDaCidade = false>>
+<<declare $percevejoAssassino = false>>
+<<declare $mariaFedida = false>>
+
+-> Sinal de Romaña <<if $sinalDeRomana>>
+    Um inchaço na região do rosto, próximo ao olho.
+-> Barbeiro do Galinheiro <<if $barbeiroGalinheiro>>
+    Um barbeiro que encontrei no galinheiro, sua proboscide é reta e curta.
+-> Maria Fedida <<if $percevejoDeCama>>
+    Maria Fedida
+<<jump Notas>>
+===
+
+title: Flags
+---
+<<declare $procurandoInsetos = false>>
+<<declare $suspeita = 0>>
+<<declare $conheceProboscide = false>>
+<<declare $conhecimento = 0>>
+===
+
+title: Inventário
+---
+<<declare $recipiente = 0>>
+<<declare $insetosColetados = 0>>
+===

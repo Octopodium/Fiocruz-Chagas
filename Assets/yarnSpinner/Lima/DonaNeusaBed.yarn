@@ -1,0 +1,35 @@
+title: CamaDaDonaNeusa
+---
+-> Travesseiro <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump CamaDaDonaNeusa>>
+-> Colchão <<if not $percevejoDeCama>>
+    ...
+    <<wait 1>>
+    ?
+    Tem algo aqui...
+    <<wait 1>>
+    Um percevejo-de-cama.
+    -> Coletar <<if $recipiente > 0>>
+        <<wait 1>>
+        <<set $percevejoDeCama = true>>
+        <<set $recipiente -= 1>>
+        Pronto.
+        <<detour InsetoColetado>>
+        <<jump CamaDaDonaNeusa>>
+    -> Voltar
+-> Coberta <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump CamaDaDonaNeusa>>
+-> Olhar embaixo da cama <<once>>
+    ...
+    <<wait 1>>
+    Nada aqui.
+    <<jump CamaDaDonaNeusa>>
+-> Voltar
+    <<jump Casa>>
+===

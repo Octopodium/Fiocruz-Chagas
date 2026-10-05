@@ -1,0 +1,10 @@
+title: InsetoColetado
+---
+<<set $insetosColetados += 1>>
+<<if $insetosColetados >= 5>>
+    Acho que encontrei espécimes suficientes.
+    Melhor encontrar o Doutor Torres e fazer a análise logo.
+<<else>>
+    Acho que ainda posso encontrar mais espécimes para análise.
+<<endif>>
+===

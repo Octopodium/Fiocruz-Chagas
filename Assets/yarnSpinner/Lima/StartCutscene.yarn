@@ -1,0 +1,30 @@
+title: Despertar
+position: -561,-240
+---
+
+É manhã. Grilos criquitam do lado de fora.
+Dona Neusa: Ah, você já acordou?
+-> Abrir os olhos
+Dona Neusa: Bom dia, querido!
+Dona Neusa: Dormiu bem?
+-> Sim
+    Dona Neusa: Que coisa boa! Você estava tão cansado quando chegou que achei que iria dormir o dia inteiro.
+-> Não
+    Dona Neusa: Sinto muito, filho. Deve ter sido por conta destes mosquitos que não param de aparecer.
+    Dona Neusa: Desde que começaram com aquela história do cafezal novo, eu tenho visto mais e mais bichos por aqui.
+Dona Neusa: Já eu, mesmo dormindo a noite inteira, estou me sentindo mais cansada do que quando fui dormir.
+Dona Neusa: Não consegui nem terminar de limpar a casa ainda, e tenho que trocar a água e a comida das galinhas antes de começar o almoço...
+-> Eu posso ajudar
+    Dona Neusa: De maneira alguma! Não vai ser uma dorzinha de cabeça dessas que vai me derrubar, não.
+    Dona Neusa: Além disso, você mal chegou, tem mais é que relaxar.
+    -> Insistir
+        Dona Neusa: Hm...
+        Dona Neusa: Tá bom, mas só a comida e a água; não inventa de ficar trabalhando na sua folga. 
+    -> ...
+        Dona Neusa: É só tomar um cafezinho que eu fico boa e termino essas tarefas rapidinho, você vai ver. 
+        <<wait 1>>
+        Ela nunca vai admitir que quer ajuda...
+        Melhor eu fazer isso mesmo sem permissão, vai ser rápido...
+        <<set $surpresa = true>>
+<<jump Casa>>
+===
