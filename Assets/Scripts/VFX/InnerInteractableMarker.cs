@@ -4,7 +4,8 @@ public class InnerInteractableMarker : MonoBehaviour
 {
     private MaterialPropertyBlock materialPropertyBlock;
     private Renderer render;
-    private int fresnelMultiplierHash = Shader.PropertyToID("_FresnelMultiplier");
+    private readonly int fresnelMultiplierHash = Shader.PropertyToID("_FresnelMultiplier");
+    private readonly int ColorHash = Shader.PropertyToID("_BaseColor");
     [SerializeField] private float transparency;
 
     private void Awake()
@@ -16,6 +17,12 @@ public class InnerInteractableMarker : MonoBehaviour
     private void AjustTransparency()
     {
         materialPropertyBlock.SetFloat(fresnelMultiplierHash, transparency);
+        render.SetPropertyBlock(materialPropertyBlock);
+    }
+
+    public void AjustColor(Color color)
+    {
+        materialPropertyBlock.SetColor(ColorHash, color);
         render.SetPropertyBlock(materialPropertyBlock);
     }
 

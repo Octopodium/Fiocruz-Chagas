@@ -65,7 +65,7 @@ Shader "Custom/InteractableMarker"
             {
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;
                 float fresnel = dot(normalize(IN.cameraDirection), IN.normal);
-                return (1 - fresnel) * _FresnelMultiplier;
+                return (1 - fresnel) * _FresnelMultiplier * color;
             }
             ENDHLSL
         }
