@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c34daef7f9d4ec4f97bbfc4a0c4c156, type: 3}
+  m_Name: MusicEvent
+  m_EditorClassIdentifier: Assembly-CSharp::AudioEvent
+  clips:
+  - {fileID: 8300000, guid: 9a5b61e10ea868d4d9535aca142b66d3, type: 3}
+  volume: 1
+  randomVolume: {x: 1, y: 1}
+  randomPitch: {x: 1, y: 1}
+  loop: 1
+  output: {fileID: 130760612368693602, guid: 480273da652eced43b6558a580dd293f, type: 2}
