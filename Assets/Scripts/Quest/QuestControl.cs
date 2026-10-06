@@ -8,8 +8,11 @@ using UnityEngine;
 /// </summary>
 public class QuestControl : MonoBehaviour, ISaveable {
     public Quest startingQuest;
-    public System.Action<Quest> OnQuestStarted, OnQuestFinished;
-    public System.Action<Quest,QuestStep> OnQuestStepStarted, OnQuestStepEnded;
+    public Action<Quest> OnQuestStarted, OnQuestFinished;
+    public Action<Quest,QuestStep> OnQuestStepStarted, OnQuestStepEnded;
+
+    public enum QuestChangeState { StartedQuest, StartedQuestStep, EndedQuestStep, EndedQuest }
+    public Action<Quest,QuestStep, QuestChangeState> OnQuestChanged;
 
     // Internal
     public Quest currentQuest {get; protected set;}
@@ -44,6 +47,7 @@ public class QuestControl : MonoBehaviour, ISaveable {
         currentQuest = questToStart;
 
         OnQuestStarted?.Invoke(currentQuest);
+        OnQuestChanged?.Invoke(currentQuest, null, QuestChangeState.StartedQuest);
 
         questStepIndex = startFromIndex - 1;
         currentStep = null;
@@ -60,6 +64,7 @@ public class QuestControl : MonoBehaviour, ISaveable {
         if (currentStep != null) {
             currentStep.OnFinished -= NextStep;
             OnQuestStepEnded?.Invoke(currentQuest, currentStep);
+            OnQuestChanged?.Invoke(currentQuest, currentStep, QuestChangeState.EndedQuestStep);
             currentStep = null;
         }
         
@@ -72,6 +77,7 @@ public class QuestControl : MonoBehaviour, ISaveable {
         currentStep = currentQuest.steps[questStepIndex];
         currentStep.OnFinished += NextStep;
         OnQuestStepStarted?.Invoke(currentQuest, currentStep);
+        OnQuestChanged?.Invoke(currentQuest, currentStep, QuestChangeState.StartedQuestStep);
         currentStep.Start();
     }
 
@@ -85,6 +91,7 @@ public class QuestControl : MonoBehaviour, ISaveable {
         currentStep = null;
 
         OnQuestFinished?.Invoke(currentQuest);
+        OnQuestChanged?.Invoke(currentQuest, null, QuestChangeState.EndedQuest);
 
         Quest lastQuest = currentQuest;
         currentQuest = null;

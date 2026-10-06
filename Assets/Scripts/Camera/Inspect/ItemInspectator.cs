@@ -18,6 +18,10 @@ public class ItemInspectator : MonoBehaviour {
     public float rotateSpeed = 2f;
     public float positionTransitionTime = 0.5f;
     bool inspecting = false;
+
+
+    public System.Action<Inspectable> OnInspectingChanged;
+
     
     void Start() {
         enabled = false;
@@ -51,6 +55,7 @@ public class ItemInspectator : MonoBehaviour {
 
         inspectorLeaveTrigger.SetActive(true);
 
+        OnInspectingChanged?.Invoke(currentInspectable);
         enabled = true;
     }
 
@@ -83,6 +88,7 @@ public class ItemInspectator : MonoBehaviour {
 
         enabled = false;
         currentInspectable = null;
+        OnInspectingChanged?.Invoke(currentInspectable);
         inspectorLeaveTrigger.SetActive(false);
     }
 

@@ -896,7 +896,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74641541dfa725145a0143bfb0d25725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  conditions: []
+  conditions:
+  - referenceType: 1
+    gameObjectReferenced: {fileID: 1774207438}
+    componentType: Inspectable
+    functionName: beingInspected
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
   extraActions: []
   collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
   destroyOnPicked: 1
@@ -1909,6 +1928,7 @@ GameObject:
   - component: {fileID: 1514929132}
   - component: {fileID: 1514929134}
   - component: {fileID: 1514929135}
+  - component: {fileID: 1514929136}
   m_Layer: 0
   m_Name: PesquisadorCapsulaRosa
   m_TagString: Untagged
@@ -2032,6 +2052,20 @@ MonoBehaviour:
   consumeOnUse: 0
   NPCName: Cap Rosa
   startNode: RosaTexto2
+--- !u!114 &1514929136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514929130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfddcba13c3259a4bb1404e9ac494417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarkerPositionOffset
+  positionOffset: {x: 0, y: 0.5, z: 0}
+  scale: 1
 --- !u!1 &1558559534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,7 +2547,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74641541dfa725145a0143bfb0d25725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  conditions: []
+  conditions:
+  - referenceType: 1
+    gameObjectReferenced: {fileID: 1774207438}
+    componentType: Inspectable
+    functionName: beingInspected
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
   extraActions: []
   collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
   destroyOnPicked: 1

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class InteractableMarker : MonoBehaviour
@@ -14,8 +15,9 @@ public class InteractableMarker : MonoBehaviour
         mpb = new MaterialPropertyBlock();
     }
 
-    private void Start()
+    void Start()
     {
+        ChangeColor(defaultColor);
     }
 
     public void ChangeColor(Color color)
@@ -30,5 +32,62 @@ public class InteractableMarker : MonoBehaviour
         Color newCol = new Color(Random.Range(0f,1f), Random.Range(0f,1.0f), Random.Range(0.0f,1.0f));
         Debug.Log(newCol);
         ChangeColor(newCol);
+    }
+
+
+    IUnderMouse[] interactables;
+    Coroutine selectedCoroutine;
+
+    public void SetupInteractables() {
+        interactables = transform.parent.GetComponents<IUnderMouse>();
+        foreach (IUnderMouse interactable in interactables) {
+            interactable.OnHover += HandleInteractableHoverChanged;
+            interactable.OnInteracted += HandleInteractableInteracted;
+        }
+    }
+
+    public void RefreshVisibility(bool isInteractable) {
+        foreach (IUnderMouse interactable in interactables) {
+            if (!interactable.CanBeFound() || !interactable.CheckConditions()) continue;
+
+            if ((interactable is IInteractable && isInteractable) || !(interactable is IInteractable || isInteractable) ) {
+                SetVisibility(true);
+                return;
+            }
+        }
+
+        SetVisibility(false);
+    }
+
+    void SetVisibility(bool visible) {
+        gameObject.SetActive(visible);
+    }
+
+    void HandleInteractableHoverChanged(bool entered) {
+        if (selectedCoroutine != null) return;
+
+        ChangeColor(entered? highlightedColor : defaultColor);
+    }
+
+    bool ContainsInteractable(IUnderMouse interactable) {
+        foreach (IUnderMouse i in interactables) {
+            if (i == interactable) return true;
+        }
+
+        return false;
+    }
+    
+    void HandleInteractableInteracted() {
+        if (!gameObject.activeInHierarchy) return;
+        if (selectedCoroutine != null) StopCoroutine(selectedCoroutine);
+
+        ChangeColor(selectedColor);
+        selectedCoroutine = StartCoroutine(InteractedEffectTimer(1.0f));
+    }
+
+    IEnumerator InteractedEffectTimer(float waitFor) {
+        yield return new WaitForSeconds(waitFor);
+        HandleInteractableHoverChanged(ContainsInteractable(GameManager.instance.player.currentInteractable));
+        selectedCoroutine = null;
     }
 }

@@ -1260,7 +1260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.315548
+      value: -56.375
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1284,7 +1284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23.545244
+      value: -23.625
       objectReference: {fileID: 0}
     - target: {fileID: 5993259185684408428, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1356,7 +1356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.225059
+      value: -13.124999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7513,6 +7513,7 @@ GameObject:
   - component: {fileID: 1362507199}
   - component: {fileID: 1362507198}
   - component: {fileID: 1362507197}
+  - component: {fileID: 1362507201}
   m_Layer: 0
   m_Name: "Transi\xE7\xE3oInterior"
   m_TagString: Untagged
@@ -7628,6 +7629,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362507195}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1362507201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362507195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfddcba13c3259a4bb1404e9ac494417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarkerSettings
+  positionOffset: {x: -0.1, y: 0.28, z: 0.06}
+  scale: 1
 --- !u!1 &1366263432
 GameObject:
   m_ObjectHideFlags: 0
@@ -11446,7 +11461,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
-  conditions: []
+  conditions:
+  - referenceType: 2
+    gameObjectReferenced: {fileID: 0}
+    componentType: cam
+    functionName: 'IsGameObjectCurrentArea(UnityEngine.GameObject, UnityEngine.CoreModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+    functionParameter:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 820274657}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 820274657}
   extraActions: []
   NPCName: Seu Barriga
   startNode: SeuBarriga

@@ -8,6 +8,9 @@ public abstract class IUnderMouse: MonoBehaviour{
     public ConditionDescription[] conditions;
     public ActionDescription[] extraActions;
 
+    public Action<bool> OnHover;
+    public Action OnInteracted;
+
     /// <summary>
     /// Defines the text shown when hovering. It will only be called if CanBeFound return true.
     /// </summary>
@@ -40,5 +43,14 @@ public abstract class IUnderMouse: MonoBehaviour{
 
         foreach (ActionDescription action in extraActions)
             try { action.RunAction(); } catch (Exception e) { Debug.LogError (e);}
+    }
+
+    void OnDrawGizmosSelected() {
+        MarkerSettings settings = GetComponent<MarkerSettings>();
+        Vector3 positionOffset = settings != null ? settings.positionOffset : Vector3.zero;
+        positionOffset = transform.TransformVector(positionOffset);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position + positionOffset, 0.5f * (settings != null ? settings.scale : 1));
     }
 }

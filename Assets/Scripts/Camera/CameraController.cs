@@ -86,6 +86,8 @@ public class CameraController : MonoBehaviour {
         return null;
     }
 
+    public bool IsGameObjectCurrentArea(GameObject area) => currentCameraArea?.gameObject == area;
+
 
     #region Check Under Mouse
     /// <summary>

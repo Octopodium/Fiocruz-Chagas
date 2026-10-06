@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581c84b095bbd4d4ba3eeecc95f41acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableMarker
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  highlightedColor: {r: 0, g: 0, b: 0, a: 0}
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightedColor: {r: 1, g: 0.80811393, b: 0, a: 1}
+  selectedColor: {r: 0.3115586, g: 0.764151, b: 0, a: 1}
   render: {fileID: 2402172814848867642}
   innerMarker: {fileID: 2561606851672061560}
 --- !u!1 &6732625437876265680

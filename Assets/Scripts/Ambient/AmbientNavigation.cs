@@ -12,6 +12,7 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
     AsyncOperation loadingScene;
 
 
+    public System.Action<AmbientInfo> onBeforeChangingAmbient, onAfterChangingAmbient;
     public System.Action<float> onAmbientLoadingProgress;
 
 
@@ -49,6 +50,8 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
         Scene lastScene = currentScene.Value;
         currentScene = null;
 
+        onBeforeChangingAmbient?.Invoke(info);
+
         onAmbientLoadingProgress?.Invoke(0f);
 
         if (fadeOptions == FadeController.FadeOptions.FadeInOut || fadeOptions == FadeController.FadeOptions.FadeInOnly)
@@ -68,6 +71,9 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
         loadingScene = null;
 
         yield return UnloadSceneCoroutine(lastScene);
+
+        onAfterChangingAmbient?.Invoke(info);
+
 
         if (fadeOptions == FadeController.FadeOptions.FadeInOut || fadeOptions == FadeController.FadeOptions.FadeOutOnly)
             yield return UIManager.instance.fade.FadeFromBlackCoroutine();

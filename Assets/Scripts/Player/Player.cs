@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     // References
     public InventoryManager inventory;
     public QuestControl quest;
+    public IndicatorManager indicators;
 
 
     // Internal
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour {
         if (currentInteractable != null) {
             currentInteractable.HandleInteract();
             currentInteractable.RunActions();
+            currentInteractable.OnInteracted?.Invoke();
         }
     }
 
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour {
         if (currentUseCollectable != null && collectableHeld != null) {
             currentUseCollectable.HandleCollectable(collectableHeld);
             currentUseCollectable.RunActions();
+            currentUseCollectable.OnInteracted?.Invoke();
         }
     }
 
@@ -119,7 +122,9 @@ public class Player : MonoBehaviour {
         if (interactable == currentInteractable)
             return;
         
+        if (currentInteractable != null) currentInteractable.OnHover?.Invoke(false);
         currentInteractable = interactable;
+        if (currentInteractable != null) currentInteractable.OnHover?.Invoke(true);
 
         string hoverText = currentInteractable != null ? currentInteractable.GetHoverText() : "";
         if (updateHoverText) onHoverTextChange?.Invoke(hoverText);
@@ -135,7 +140,9 @@ public class Player : MonoBehaviour {
         if (useCollectable == currentUseCollectable)
             return;
         
+        if (currentUseCollectable != null) currentUseCollectable.OnHover?.Invoke(false);
         currentUseCollectable = useCollectable;
+        if (currentUseCollectable != null) currentUseCollectable.OnHover?.Invoke(true);
 
         string hoverText = currentUseCollectable != null ? currentUseCollectable.GetHoverText() : "";
         if (updateHoverText) onHoverTextChange?.Invoke(hoverText);
