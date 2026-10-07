@@ -5,12 +5,14 @@
 <<set_background true background_placeholder>>
 
 // 2. Ativa a área de personagens e passa os sprites (Char1: Dona Neuza, Char2: Jogador)
-<<set_characters true sprite_1 sprite_2>>
+<<set_characters true sprite_1 >>
 
 // 3. Garante que a caixa de texto padrão está ativa com fundo
 <<set_text_background true>>
 
 Dona Neuza: Identificamos uma nova molécula promissora contra o Trypanosoma cruzi nos testes de laboratório.
+-> teste
+    <<set_background false>>
 
 // 4. Exemplo mudar apenas o sprite do char
 <<set_char2 barbeiro>>
