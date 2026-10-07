@@ -9683,8 +9683,41 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4694788144767430553, guid: 710a0d6899c01c947ae0720c576290bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1258555593548349322}
   m_SourcePrefab: {fileID: 100100000, guid: 710a0d6899c01c947ae0720c576290bc, type: 3}
+--- !u!1 &1258555593548349321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4694788144767430553, guid: 710a0d6899c01c947ae0720c576290bc, type: 3}
+  m_PrefabInstance: {fileID: 1258555593548349320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1258555593548349322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258555593548349321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfac9f2c1db3bda4ca825fdcf1bd2db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaturationTransition
+  volume: {fileID: 1258555593548349323}
+  fadeDuration: 3
+--- !u!114 &1258555593548349323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1555787655004262061, guid: 710a0d6899c01c947ae0720c576290bc, type: 3}
+  m_PrefabInstance: {fileID: 1258555593548349320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258555593548349321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
 --- !u!23 &1369154426329651781
 MeshRenderer:
   m_ObjectHideFlags: 0
