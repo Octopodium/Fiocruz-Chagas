@@ -14,6 +14,7 @@ Dona Neuza: Identificamos uma nova molécula promissora contra o Trypanosoma cru
 
 // 4. Exemplo mudar apenas o sprite do char
 <<set_char2 barbeiro>>
+<<fade_bg_image 0 1.5>>
 Você: Isso é excelente.
 
 // 5. Exemplo de toggle do background da caixa de texto (desativando para texto flutuante/narrativo)

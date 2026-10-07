@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using DG.Tweening;
 
 /// <summary>
 /// Controls dialogue visual elements (background image, character portraits, text box)
@@ -51,6 +53,7 @@ public class DialogueVisualsController : MonoBehaviour
 
     [Tooltip("Reset all visuals back to their default states when dialogue finishes.")]
     [SerializeField] private bool resetVisualsOnDialogueEnd = true;
+
 
     private void Awake()
     {
@@ -448,5 +451,37 @@ public class DialogueVisualsController : MonoBehaviour
         {
             Debug.LogWarning("[DialogueVisualsController] No DialogueVisualsController instance found in the scene.");
         }
+    }
+
+    /// <summary>
+    /// Yarn command: <<fade_bg_image <target_alpha> [duration]>>
+    /// </summary>
+    [YarnCommand("fade_bg_image")]
+    public static void YarnFadeBgImage(float targetAlpha, float duration = 1f)
+    {
+        DialogueVisualsController controller = EnsureInstance();
+        if (controller == null || controller.backgroundImage == null)
+        {
+            Debug.LogWarning("[DialogueVisualsController] Instância ou Background Image não encontrados.");
+            return;
+        }
+
+        Image bg = controller.backgroundImage;
+
+        if (targetAlpha > 0f && !bg.gameObject.activeSelf)
+        {
+            Color c = bg.color;
+            c.a = 0f;
+            bg.color = c;
+            bg.gameObject.SetActive(true);
+        }
+
+        bg.DOFade(targetAlpha, duration).OnComplete(() => 
+        {
+            if (targetAlpha <= 0f)
+            {
+                bg.gameObject.SetActive(false);
+            }
+        });
     }
 }
