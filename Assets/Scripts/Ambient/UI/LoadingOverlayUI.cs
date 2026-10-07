@@ -18,6 +18,7 @@ public class LoadingOverlayUI : MonoBehaviour {
     }
 
     void OnDestroy() {
-        GameManager.instance.navigation.onAmbientLoadingProgress -= HandleLoadingProgress;
+        if (GameManager.exists)
+            GameManager.instance.navigation.onAmbientLoadingProgress -= HandleLoadingProgress;
     }
 }

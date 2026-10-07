@@ -119,96 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &2744792
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2744795}
-  - component: {fileID: 2744794}
-  - component: {fileID: 2744793}
-  - component: {fileID: 2744796}
-  m_Layer: 5
-  m_Name: Voltar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2744793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2744794
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744792}
-  m_CullTransparentMesh: 1
---- !u!224 &2744795
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1558559538}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360, y: -192.4}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2744796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
-  conditions: []
-  extraActions: []
 --- !u!1 &10627640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,7 +3754,6 @@ Transform:
   - {fileID: 1362507196}
   - {fileID: 1238529099}
   - {fileID: 1431636132}
-  - {fileID: 1371258949}
   - {fileID: 10627641}
   - {fileID: 161954670}
   m_Father: {fileID: 0}
@@ -4205,9 +4114,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 660705426}
   areaName: Barriga
-  onlyEnableOnArea:
-  - {fileID: 2744792}
+  onlyEnableOnArea: []
   childAreas: []
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 0
+      area: {fileID: 0}
+    left:
+      option: 1
+      area: {fileID: 0}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!4 &820274659
 Transform:
   m_ObjectHideFlags: 0
@@ -5414,6 +5335,19 @@ MonoBehaviour:
   childAreas:
   - {fileID: 820274658}
   - {fileID: 1723917461}
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 0
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!1001 &945501515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7722,133 +7656,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366263432}
   m_CullTransparentMesh: 1
---- !u!1 &1371258948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1371258949}
-  - component: {fileID: 1371258953}
-  - component: {fileID: 1371258952}
-  - component: {fileID: 1371258951}
-  - component: {fileID: 1371258954}
-  m_Layer: 0
-  m_Name: "Transi\xE7\xE3oGalinheiroVoltar"
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1371258949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371258948}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.40751573, z: -0, w: 0.91319823}
-  m_LocalPosition: {x: 10.4294, y: 2.4614, z: -7.5636}
-  m_LocalScale: {x: 1.1515144, y: 3.6799946, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 770606160}
-  m_LocalEulerAnglesHint: {x: 0, y: 48.098, z: 0}
---- !u!65 &1371258951
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371258948}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1371258952
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371258948}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1371258953
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371258948}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1371258954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371258948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
-  conditions: []
-  extraActions: []
 --- !u!1001 &1397646942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9321,7 +9128,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1366263433}
-  - {fileID: 2744795}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10647,10 +10453,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 1659309064}
   areaName: Main
-  onlyEnableOnArea:
-  - {fileID: 1371258948}
-  childAreas:
-  - {fileID: 820274658}
+  onlyEnableOnArea: []
+  childAreas: []
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 0
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 1
+      area: {fileID: 0}
 --- !u!4 &1723917462
 Transform:
   m_ObjectHideFlags: 0

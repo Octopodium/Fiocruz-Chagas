@@ -7,6 +7,7 @@ using Yarn.Unity;
 /// </summary>
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
+    public static bool exists => instance != null && instance.gameObject != null;
     
     // References
     public Player player;

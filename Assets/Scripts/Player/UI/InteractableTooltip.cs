@@ -19,6 +19,7 @@ public class InteractableTooltip : MonoBehaviour {
 
 
     void OnDestroy() {
-        GameManager.instance.player.onHoverTextChange -= HandleHoverChange;
+        if (GameManager.exists)
+            GameManager.instance.player.onHoverTextChange -= HandleHoverChange;
     }
 }

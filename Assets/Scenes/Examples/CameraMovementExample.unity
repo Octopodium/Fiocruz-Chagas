@@ -151,7 +151,6 @@ Transform:
   m_Children:
   - {fileID: 1811548257}
   - {fileID: 1061561824}
-  - {fileID: 1161036290}
   m_Father: {fileID: 1853358910}
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
 --- !u!114 &252858
@@ -168,9 +167,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 1811548258}
   areaName: cubo
-  onlyEnableOnArea:
-  - {fileID: 1161036289}
+  onlyEnableOnArea: []
   childAreas: []
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 1
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!1 &30165560
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +415,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1642034395}
-  - {fileID: 330409230}
   - {fileID: 1114681377}
   - {fileID: 870351345}
   - {fileID: 1777641344}
@@ -424,99 +434,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 371077050}
   areaName: outro lado
-  onlyEnableOnArea:
-  - {fileID: 330409229}
+  onlyEnableOnArea: []
   childAreas:
   - {fileID: 870351346}
---- !u!1 &183311720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 183311721}
-  - component: {fileID: 183311724}
-  - component: {fileID: 183311723}
-  - component: {fileID: 183311722}
-  m_Layer: 0
-  m_Name: MesaAreaLeave
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &183311721
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183311720}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3999996, y: 0, z: -0.17000008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1853358910}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &183311722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183311720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
-  conditions: []
---- !u!65 &183311723
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183311720}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 10}
-  m_Center: {x: 1.5, y: -0.89, z: 0}
---- !u!65 &183311724
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183311720}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 5.3351, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 0
+      area: {fileID: 0}
+    left:
+      option: 2
+      area: {fileID: 1517658397}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!1001 &232059374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -710,260 +643,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
---- !u!1 &262527691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 262527692}
-  - component: {fileID: 262527696}
-  - component: {fileID: 262527695}
-  - component: {fileID: 262527694}
-  - component: {fileID: 262527693}
-  m_Layer: 0
-  m_Name: GoToOtherSideTemp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &262527692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262527691}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1517658396}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &262527693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262527691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fc0f0630773c514499b99a4f815906f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwitchToCamera
-  conditions: []
-  area: {fileID: 172132718}
---- !u!65 &262527694
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262527691}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &262527695
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262527691}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 76bad1fa733758446ac32e2c6d373877, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &262527696
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262527691}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &330409229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 330409230}
-  - component: {fileID: 330409234}
-  - component: {fileID: 330409233}
-  - component: {fileID: 330409232}
-  - component: {fileID: 330409231}
-  m_Layer: 0
-  m_Name: GoToOtherSideTemp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &330409230
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330409229}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.82, y: 0, z: 2.9099998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 172132717}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &330409231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330409229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fc0f0630773c514499b99a4f815906f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwitchToCamera
-  conditions: []
-  area: {fileID: 1517658397}
---- !u!65 &330409232
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330409229}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &330409233
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330409229}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 76bad1fa733758446ac32e2c6d373877, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &330409234
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330409229}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &371077050 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7940480663926906354, guid: 6782c9cc0118a6744b4f7fd78bfbd8cc, type: 3}
@@ -1123,7 +802,6 @@ GameObject:
   m_Component:
   - component: {fileID: 482896722}
   - component: {fileID: 482896724}
-  - component: {fileID: 482896723}
   m_Layer: 0
   m_Name: Barbeiro
   m_TagString: Untagged
@@ -1146,21 +824,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1205558091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &482896723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482896721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74641541dfa725145a0143bfb0d25725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  conditions: []
-  collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
-  destroyOnPicked: 1
 --- !u!212 &482896724
 SpriteRenderer:
   serializedVersion: 2
@@ -1447,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: 'onlyEnableWhenOnCamera.Array.data[0]'
       value: 
-      objectReference: {fileID: 183311720}
+      objectReference: {fileID: 0}
     - target: {fileID: 1843775936343440036, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: m_Size.x
       value: 2
@@ -1758,7 +1421,6 @@ Transform:
   m_Children:
   - {fileID: 7008863252568744252}
   - {fileID: 1554480859}
-  - {fileID: 972628875}
   m_Father: {fileID: 172132717}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &870351346
@@ -1775,165 +1437,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 7008863252568744253}
   areaName: quadro
-  onlyEnableOnArea:
-  - {fileID: 972628874}
+  onlyEnableOnArea: []
   childAreas: []
---- !u!1 &950057131
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 950057132}
-  - component: {fileID: 950057135}
-  - component: {fileID: 950057133}
-  - component: {fileID: 950057134}
-  m_Layer: 0
-  m_Name: CubeLeave
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &950057132
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950057131}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1881571368}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &950057133
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950057131}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.25, y: 10, z: 10}
-  m_Center: {x: -0.75, y: 0, z: 0}
---- !u!114 &950057134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950057131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
-  conditions: []
---- !u!65 &950057135
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950057131}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10, y: 10, z: 0.25}
-  m_Center: {x: 0, y: 0, z: 0.75}
---- !u!1 &972628874
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 972628875}
-  - component: {fileID: 972628877}
-  - component: {fileID: 972628876}
-  m_Layer: 0
-  m_Name: GoBackTempTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &972628875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972628874}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.224}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 870351345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &972628876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972628874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
-  conditions: []
---- !u!65 &972628877
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972628874}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5, y: 4, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 1
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!1 &998341328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,95 +2030,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127196906}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1161036289
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1161036290}
-  - component: {fileID: 1161036293}
-  - component: {fileID: 1161036292}
-  - component: {fileID: 1161036291}
-  m_Layer: 0
-  m_Name: CubeLeave
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1161036290
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161036289}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 252857}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1161036291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161036289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e13851300c6448a473e4d3c47e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoBackToCamera
-  conditions: []
---- !u!65 &1161036292
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161036289}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.25, y: 10, z: 10}
-  m_Center: {x: -0.75, y: 0, z: 0}
---- !u!65 &1161036293
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161036289}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10, y: 10, z: 0.25}
-  m_Center: {x: 0, y: 0, z: -0.75}
 --- !u!4 &1190922127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 674012313120289096, guid: 6782c9cc0118a6744b4f7fd78bfbd8cc, type: 3}
@@ -2680,7 +2109,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74641541dfa725145a0143bfb0d25725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  conditions: []
+  conditions:
+  - referenceType: 2
+    gameObjectReferenced: {fileID: 0}
+    componentType: inspectator
+    functionName: 'IsGameObjectCurrentInspectable(UnityEngine.GameObject, UnityEngine.CoreModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+    functionParameter:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 1638433884}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
+  extraActions: []
   collectable: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
   destroyOnPicked: 1
 --- !u!65 &1205558094
@@ -2813,7 +2264,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 262527692}
   - {fileID: 1042082807}
   - {fileID: 1579658844}
   - {fileID: 1853358910}
@@ -2834,10 +2284,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 476315851}
   areaName: outro lado
-  onlyEnableOnArea:
-  - {fileID: 262527691}
+  onlyEnableOnArea: []
   childAreas:
   - {fileID: 1853358911}
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 0
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 2
+      area: {fileID: 172132718}
 --- !u!1 &1554480858
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +2622,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece4178dcf106a428238df1ed9f9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
-  conditions: []
+  conditions:
+  - referenceType: 2
+    gameObjectReferenced: {fileID: 0}
+    componentType: cam
+    functionName: 'IsGameObjectCurrentArea(UnityEngine.GameObject, UnityEngine.CoreModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+    functionParameter:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 1853358909}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
+  extraActions: []
   itemName: retrato
 --- !u!1001 &1642034394
 PrefabInstance:
@@ -3366,6 +2850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
   conditions: []
+  extraActions: []
   ambient: {fileID: 11400000, guid: 6fbce11d62f413c4f9ee25a169420e27, type: 2}
 --- !u!65 &1777641346
 BoxCollider:
@@ -3405,13 +2890,47 @@ PrefabInstance:
       value: cubo
       objectReference: {fileID: 0}
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: onlyEnableWhenOnCamera.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: 'onlyEnableWhenOnCamera.Array.data[0]'
       value: 
-      objectReference: {fileID: 1161036289}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].functionName
+      value: 'IsGameObjectCurrentArea(UnityEngine.GameObject, UnityEngine.CoreModule,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].componentType
+      value: cam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].referenceType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].compareValue.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].compareValue.boolValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].functionParameter.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].functionParameter.objectRefValue
+      value: 
+      objectReference: {fileID: 1853358909}
     - target: {fileID: 1843775936343440036, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: m_Size.x
       value: 0.5
@@ -3559,7 +3078,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 183311721}
   - {fileID: 815499989}
   - {fileID: 1881571368}
   - {fileID: 252857}
@@ -3580,11 +3098,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 815499990}
   areaName: mesa
-  onlyEnableOnArea:
-  - {fileID: 183311720}
+  onlyEnableOnArea: []
   childAreas:
   - {fileID: 1881571369}
   - {fileID: 252858}
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 1
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!1001 &1860481286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3602,13 +3132,47 @@ PrefabInstance:
       value: cubo
       objectReference: {fileID: 0}
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: onlyEnableWhenOnCamera.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: 'onlyEnableWhenOnCamera.Array.data[0]'
       value: 
-      objectReference: {fileID: 950057131}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].functionName
+      value: 'IsGameObjectCurrentArea(UnityEngine.GameObject, UnityEngine.CoreModule,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].componentType
+      value: cam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].referenceType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].compareValue.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].compareValue.boolValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].functionParameter.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401357143138165549, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: conditions.Array.data[0].functionParameter.objectRefValue
+      value: 
+      objectReference: {fileID: 1853358909}
     - target: {fileID: 1843775936343440036, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: m_Size.x
       value: 0.5
@@ -3758,7 +3322,6 @@ Transform:
   m_Children:
   - {fileID: 1860481287}
   - {fileID: 998341329}
-  - {fileID: 950057132}
   m_Father: {fileID: 1853358910}
   m_LocalEulerAnglesHint: {x: 0, y: -21.584, z: 0}
 --- !u!114 &1881571369
@@ -3775,9 +3338,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraArea
   cam: {fileID: 1860481288}
   areaName: cubo
-  onlyEnableOnArea:
-  - {fileID: 950057131}
+  onlyEnableOnArea: []
   childAreas: []
+  navigationArrows:
+    up:
+      option: 0
+      area: {fileID: 0}
+    down:
+      option: 1
+      area: {fileID: 0}
+    left:
+      option: 0
+      area: {fileID: 0}
+    right:
+      option: 0
+      area: {fileID: 0}
 --- !u!1001 &7008863252568744251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3816,7 +3391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482599348656470716, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: m_Name
-      value: FocusableInteractable
+      value: QuadroFocusableInteractable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482599348656470716, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8573143252654859328, guid: b7d390f4ab9eab2459bd7e903541b772, type: 3}
       propertyPath: m_LocalPosition.x

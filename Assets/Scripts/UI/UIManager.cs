@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class UIManager : MonoBehaviour {
     public static UIManager instance;
+    public static bool exists => instance != null && instance.gameObject != null;
     
     // References
     public InventoryDeckDisplay inventoryDeck;

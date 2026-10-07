@@ -25,9 +25,29 @@ public class CameraController : MonoBehaviour {
     void Awake() {
         mainCamera = Camera.main;
         cinemachine = mainCamera.GetComponent<CinemachineBrain>();
+        GameManager.instance.navigation.onBeforeChangingAmbient += OnAmbientUnloading;
+        GameManager.instance.navigation.onAfterChangingAmbient += OnAmbientLoaded;
     }
 
     void Start() {
+        OnAmbientLoaded(null);
+    }
+
+    void OnDestroy() {
+        if (!GameManager.exists) return;
+
+        GameManager.instance.navigation.onBeforeChangingAmbient -= OnAmbientUnloading;
+        GameManager.instance.navigation.onAfterChangingAmbient -= OnAmbientLoaded;
+    }
+
+    void OnAmbientUnloading(AmbientInfo ambient) {
+        cameraStack.Clear();
+        onCurrentCameraAreaChange?.Invoke(null);
+    }
+
+    async void OnAmbientLoaded(AmbientInfo ambient) {
+        await Awaitable.FixedUpdateAsync();
+
         if (cinemachine != null && cameraStack.Count == 0 && cinemachine.ActiveVirtualCamera is CinemachineCamera) {
             CameraArea area = GetCinemachinesCameraArea((CinemachineCamera) cinemachine.ActiveVirtualCamera);
             if (area != null) GoToCamera(area);

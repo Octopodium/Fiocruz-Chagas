@@ -17,6 +17,10 @@ public class IndicatorManager : MonoBehaviour {
         CreateAmbientIndicators();
     }
 
+    void OnDestroy() {
+        UnsetRefreshEvents();
+    }
+
     #region Creation Methods
 
     /// <summary>
@@ -84,6 +88,14 @@ public class IndicatorManager : MonoBehaviour {
 
     #endregion
 
+    #region Redirects
+    void DelayedRefreshIndicatorsRedirect(object p) => DelayedRefreshIndicators();
+    void DelayedRefreshIndicatorsRedirect(object p, object p2) => DelayedRefreshIndicators();
+    void DelayedRefreshIndicatorsRedirect(object p, object p2, QuestControl.QuestChangeState p3) => DelayedRefreshIndicators();
+    void ClearAllIndicatorsRedirect(object p) => ClearAllIndicators();
+    void CreateAmbientIndicatorsRedirect(object p) => CreateAmbientIndicators();
+    #endregion
+
 
     /// <summary>
     /// Called internally on Awake, setups all events that changes the game state to refresh the state of an indicator.
@@ -93,27 +105,55 @@ public class IndicatorManager : MonoBehaviour {
     void SetupRefreshEvents() {
         // É babado.
         Player player = GameManager.instance.player;
-        player.onCollectableHeldChanged += held => RefreshIndicators();
-        player.inventory.OnAddToInventory += item => RefreshIndicators();
-        player.inventory.OnRemoveFromInventory += item => RefreshIndicators();
-        player.quest.OnQuestChanged += (quest, step, state) => RefreshIndicators();
-        GameManager.instance.flags.OnFlagChanged += (flag, value) => RefreshIndicators();
-        GameManager.instance.cam.onCurrentCameraAreaChange += area => RefreshIndicators();
-        GameManager.instance.inspectator.OnInspectingChanged += inspectable => RefreshIndicators();
+        player.onCollectableHeldChanged += DelayedRefreshIndicatorsRedirect;
+        player.inventory.OnAddToInventory += DelayedRefreshIndicatorsRedirect;
+        player.inventory.OnRemoveFromInventory += DelayedRefreshIndicatorsRedirect;
+        player.quest.OnQuestChanged += DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.flags.OnFlagChanged += DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.cam.onCurrentCameraAreaChange += DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.inspectator.OnInspectingChanged += DelayedRefreshIndicatorsRedirect;
 
+        GameManager.instance.navigation.onBeforeChangingAmbient += ClearAllIndicatorsRedirect;
+        GameManager.instance.navigation.onAfterChangingAmbient += CreateAmbientIndicatorsRedirect;
+    }
 
-        GameManager.instance.navigation.onBeforeChangingAmbient += ambient => ClearAllIndicators();
-        GameManager.instance.navigation.onAfterChangingAmbient += ambient => CreateAmbientIndicators();
+    void UnsetRefreshEvents() {
+        if (!GameManager.exists) return;
+
+        Player player = GameManager.instance.player;
+        player.onCollectableHeldChanged -= DelayedRefreshIndicatorsRedirect;
+        player.inventory.OnAddToInventory -= DelayedRefreshIndicatorsRedirect;
+        player.inventory.OnRemoveFromInventory -= DelayedRefreshIndicatorsRedirect;
+        player.quest.OnQuestChanged -= DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.flags.OnFlagChanged -= DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.cam.onCurrentCameraAreaChange -= DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.inspectator.OnInspectingChanged -= DelayedRefreshIndicatorsRedirect;
+
+        GameManager.instance.navigation.onBeforeChangingAmbient -= ClearAllIndicatorsRedirect;
+        GameManager.instance.navigation.onAfterChangingAmbient -= CreateAmbientIndicatorsRedirect;
     }
 
 
     List<GameObject> removedIndicators = new List<GameObject>();
 
+
+    bool alreadyWaiting = false;
+    public async void DelayedRefreshIndicators() {
+        if (alreadyWaiting) return;
+
+        alreadyWaiting = true;
+        await Awaitable.FixedUpdateAsync();
+        alreadyWaiting = false;
+
+        RefreshIndicators();
+    }
+
+
     /// <summary>
     /// Checks every indicator to refresh its visibility. Also clears indicators from the lookup table that where removed.
     /// Called internally by a lot of events (see SetupRefreshEvents)
     /// </summary>
-    void RefreshIndicators() {
+    public void RefreshIndicators() {
         Player player = GameManager.instance.player;
         bool isInteractables = player.collectableHeld == null;
 

@@ -16,6 +16,8 @@ public class CameraArea : MonoBehaviour {
     public CameraArea[] childAreas;
     public bool isOnCamera {get; private set;} = false;
 
+    public AreaArrows navigationArrows;
+
     void Awake() {
         GameManager.instance.cam.onCurrentCameraAreaChange += HandleCameraChanged;
     }
@@ -29,7 +31,8 @@ public class CameraArea : MonoBehaviour {
     }
 
     void OnDestroy() {
-        GameManager.instance.cam.onCurrentCameraAreaChange -= HandleCameraChanged;
+        if (GameManager.exists)
+            GameManager.instance.cam.onCurrentCameraAreaChange -= HandleCameraChanged;
     }
 
     /// <summary>

@@ -155,6 +155,8 @@ public class ItemInspectator : MonoBehaviour {
     }
 
 
+    public bool IsGameObjectCurrentInspectable(GameObject inspectable) => currentInspectable?.gameObject == inspectable;
+
 
     #region Previous State
     struct PreviousState {

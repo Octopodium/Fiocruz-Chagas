@@ -19,7 +19,8 @@ public class QSGetItem : QuestStep{
     }
 
     public override void Stop() {
-        GameManager.instance.player.inventory.OnAddToInventory -= InventoryChanged;
+        if (GameManager.exists)
+            GameManager.instance.player.inventory.OnAddToInventory -= InventoryChanged;
     }
 
     void InventoryChanged(Collectable collectable) {

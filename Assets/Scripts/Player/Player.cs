@@ -25,6 +25,11 @@ public class Player : MonoBehaviour {
         UIManager.instance.inventoryDeck.OnHeldCardChanged += HandleHeldCardChanged;
     }
 
+    void OnDestroy() {
+        if (UIManager.exists)
+            UIManager.instance.inventoryDeck.OnHeldCardChanged -= HandleHeldCardChanged;
+    }
+
 
     void Update() {
         if (Mouse.current.leftButton.wasPressedThisFrame) {

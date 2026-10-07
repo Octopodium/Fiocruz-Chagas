@@ -25,7 +25,10 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
     }
 
     void OnDestroy(){
-        GameManager.instance?.saveManager.RemoveSaveable(this);
+        SceneManager.activeSceneChanged -= HandleSceneChanged;
+        
+        if (GameManager.exists)
+            GameManager.instance?.saveManager.RemoveSaveable(this);
     }
 
 

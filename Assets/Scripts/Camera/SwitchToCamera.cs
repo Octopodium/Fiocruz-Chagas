@@ -16,6 +16,11 @@ public class SwitchToCamera : IInteractable {
         GameManager.instance.cam.onCurrentCameraAreaChange += HandleCameraChanged;
     }
 
+    void OnDestroy() {
+        if (GameManager.exists)
+            GameManager.instance.cam.onCurrentCameraAreaChange -= HandleCameraChanged;
+    }
+
     async void Start() {
         await Awaitable.EndOfFrameAsync();
         bool isCurrent = GameManager.instance.cam.currentCameraArea == area;
@@ -27,7 +32,7 @@ public class SwitchToCamera : IInteractable {
     }
 
     public override bool CanBeFound() {
-        return area != null ? !area.isOnCamera : false;
+        return (area != null ? !area.isOnCamera : false) && enabled;
     }
 
 
@@ -43,6 +48,15 @@ public class SwitchToCamera : IInteractable {
         foreach (Collider col in colliders) {
             col.enabled = !is_it;
         }
+
+        enabled = !is_it;
+    }
+
+    void OnEnable() => RefreshMarker();
+    void OnDisable() => RefreshMarker();
+
+    void RefreshMarker() {
+        GameManager.instance.player.indicators.RefreshIndicators();
     }
 
 

@@ -19,6 +19,8 @@ public class QuestDisplayUI : MonoBehaviour {
     }
 
     void OnDestroy() {
+        if (!GameManager.exists) return;
+        
         GameManager.instance.player.quest.OnQuestStarted -= HandleQuestChanged;
         GameManager.instance.player.quest.OnQuestFinished -= HandleQuestEnded;
         GameManager.instance.player.quest.OnQuestStepStarted -= UpdateVisual;

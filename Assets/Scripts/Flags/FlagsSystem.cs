@@ -288,8 +288,10 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
     /// Unset auto-flags events setted by SetAutoFlags. Called on destroy.
     /// </summary>
     void UnsetAutoFlags() {
-        GameManager.instance.player.inventory.OnAddToInventory -= HandleCollectableAdded;
-        GameManager.instance.player.inventory.OnRemoveFromInventory -= HandleCollectableRemoved;
+        if (GameManager.exists) {
+            GameManager.instance.player.inventory.OnAddToInventory -= HandleCollectableAdded;
+            GameManager.instance.player.inventory.OnRemoveFromInventory -= HandleCollectableRemoved;
+        }
 
         if (autoFlagDialogueDisposable != null) {
             autoFlagDialogueDisposable.Dispose();
