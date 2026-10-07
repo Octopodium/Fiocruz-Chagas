@@ -8,7 +8,13 @@ public class OpenDialogue : IInteractable
 {
     [SerializeField] private string NPCName = "Dona Neuza"; //temp
     [SerializeField] private string startNode = "TestAnaScript"; //temp
-    
+    [SerializeField] private bool startAutomatic = false;
+
+    private void Start()
+    {
+        if(startAutomatic) GameManager.instance.dialogue.StartDialogue(startNode);
+    }
+
     public override string GetHoverText() 
     {
         return "Conversar com " + NPCName;
@@ -16,6 +22,7 @@ public class OpenDialogue : IInteractable
     
     public override void HandleInteract() 
     {
+        Debug.Log("ooioioioiio");
         GameManager.instance.dialogue.StartDialogue(startNode); 
     }
 

@@ -1,11 +1,14 @@
 title: Despertar
 position: -561,-240
 ---
-
+<<set_background true black>>
 É manhã. Grilos criquitam do lado de fora.
 Dona Neusa: Ah, você já acordou?
 -> Abrir os olhos
 Dona Neusa: Bom dia, querido!
+<<wait 2>>
+<<fade_bg_image 0 1.5>>
+<<set_characters true blank dona_neusa>>
 Dona Neusa: Dormiu bem?
 -> Sim
     Dona Neusa: Que coisa boa! Você estava tão cansado quando chegou que achei que iria dormir o dia inteiro.
@@ -26,5 +29,5 @@ Dona Neusa: Não consegui nem terminar de limpar a casa ainda, e tenho que troca
         Ela nunca vai admitir que quer ajuda...
         Melhor eu fazer isso mesmo sem permissão, vai ser rápido...
         <<set $surpresa = true>>
-<<jump Casa>>
+//<<jump Casa>>
 ===

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InteractableMarker : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class InteractableMarker : MonoBehaviour
     void Start()
     {
         ChangeColor(defaultColor);
+        GambiarrandoPos();
     }
 
     public void ChangeColor(Color color)
@@ -32,6 +34,16 @@ public class InteractableMarker : MonoBehaviour
         Color newCol = new Color(Random.Range(0f,1f), Random.Range(0f,1.0f), Random.Range(0.0f,1.0f));
         Debug.Log(newCol);
         ChangeColor(newCol);
+    }
+
+    private void GambiarrandoPos()
+    {
+        BoxCollider box;
+        if(box = GetComponentInParent<BoxCollider>())
+        {
+            transform.localPosition = box.center;
+            transform.localScale = box.size;
+        }
     }
 
 
