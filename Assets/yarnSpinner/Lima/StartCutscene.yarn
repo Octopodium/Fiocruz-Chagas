@@ -2,12 +2,13 @@ title: Despertar
 position: -561,-240
 ---
 <<set_background true black>>
-É manhã. Grilos criquitam do lado de fora.
+<<wait 4>>
+Grilos criquitam do lado de fora.
 Dona Neusa: Ah, você já acordou?
 -> Abrir os olhos
 Dona Neusa: Bom dia, querido!
+<<fade_bg_image 0.2 2>>
 <<wait 2>>
-<<fade_bg_image 0 1.5>>
 <<set_characters true blank dona_neusa>>
 Dona Neusa: Dormiu bem?
 -> Sim
@@ -26,8 +27,8 @@ Dona Neusa: Não consegui nem terminar de limpar a casa ainda, e tenho que troca
     -> ...
         Dona Neusa: É só tomar um cafezinho que eu fico boa e termino essas tarefas rapidinho, você vai ver. 
         <<wait 1>>
+        <<set_characters false>>
         Ela nunca vai admitir que quer ajuda...
         Melhor eu fazer isso mesmo sem permissão, vai ser rápido...
         <<set $surpresa = true>>
-//<<jump Casa>>
 ===

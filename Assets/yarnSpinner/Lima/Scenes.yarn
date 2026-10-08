@@ -6,7 +6,7 @@ position: 42,12
     A mãe deve ter comprado pouco antes de eu chegar...
     <<if $procurandoInsetos>>
         -> Investigar
-            <<jump SuaCama>>
+            <<jump InvestigarCama>>
         -> Voltar
             <<jump Casa>>
     <<endif>>
@@ -14,7 +14,7 @@ position: 42,12
     É a cama da mãe. O colchão já tem uns furos e está até manchado... Vou comprar um novo para ela no Natal.
     <<if $procurandoInsetos>>
         -> Investigar
-            <<jump CamaDaDonaNeusa>>
+            <<jump CamaDaDonaNeusaInvestigação>>
         -> Voltar
             <<jump Casa>>
     <<endif>>
@@ -69,6 +69,61 @@ position: 42,12
 -> Mãe
     <<detour DonaNeusa>>
 <<jump Casa>>
+===
+
+title: ParedeLascada
+---
+Lembro de brincar de esconder botões nos furinhos das paredes quando era pequeno, mas não me lembro de os buracos serem tão grandes.
+Pode ser que precise de manutenção...
+<<if $procurandoInsetos>>
+    -> Investigar
+        ...
+        <<wait 1>>
+        Eu consigo ver algo no interior da parede...
+        Acho que é algum tipo de percevejo.
+        Não consigo alcançá-lo, mas consigo ver alguns detalhes. 
+        <<if $barbeiroGalinheiro>>
+            <<if $barbeiroDaCasa>>
+                Parece ser o mesmo barbeiro que encontrei no galinheiro e atrás do retrato antigo.
+            <<else>>
+                Parece ser o mesmo barbeiro que encontrei no galinheiro.
+            <<endif>>
+        <<elseif $barbeiroDaCasa>>
+            Parece ser o mesmo barbeiro que encontrei atrás do retrato antigo.
+        <<else>>
+            Pode ser que eu encontre outro percevejo igual em outro local da casa...
+        <<endif>>
+    -> Voltar
+<<endif>>
+===
+
+title: Janela
+---
+Me lembro de passar horas olhando por essa janela, pensando no que poderia estar acontecendo do outro lado desses morros.
+Mas acho que eles tinham mais mata naquela época... 
+===
+
+title: RetratoAntigo
+---
+Uma foto antiga da minha mãe.
+Meu pai dizia que ela era a mulher mais bonita de Bambuí.
+<<if $procurandoInsetos and not $barbeiroDaCasa>>
+    -> Investigar <<if not $barbeiroDaCasa>>
+        A moldura do retrato parece ter uma cavidade na parte de trás...
+        <<wait 1>>
+        Tem um barbeiro aqui, escondido na moldura.
+        -> Coletar com recipiente <<if $recipiente > 0>>
+            ...
+            <<wait 1>>
+            <<set $barbeiroDaCasa = true>>
+            <<set $recipiente -= 1>>
+            Pronto.
+            <<detour InsetoColetado>>
+        -> Voltar
+    -> Voltar
+<<elseif $barbeiroDaCasa>>
+    Foi aqui que encontrei o barbeiro.
+<<endif>>
 ===
 
 title: ExteriorDaCasa

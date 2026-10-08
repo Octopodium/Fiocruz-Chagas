@@ -1,10 +1,22 @@
 title: CamaDaDonaNeusa
 ---
+É a cama da mãe. O colchão já tem uns furos e está até manchado... Vou comprar um novo para ela no Natal.
+<<if $procurandoInsetos>>
+    -> Investigar
+        <<jump CamaDaDonaNeusaInvestigação>>
+    -> Voltar
+        <<jump Casa>>
+<<endif>>
+
+===
+
+title: CamaDaDonaNeusaInvestigação
+---
 -> Travesseiro <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump CamaDaDonaNeusa>>
+    <<jump CamaDaDonaNeusaInvestigação>>
 -> Colchão <<if not $percevejoDeCama>>
     ...
     <<wait 1>>
@@ -18,18 +30,17 @@ title: CamaDaDonaNeusa
         <<set $recipiente -= 1>>
         Pronto.
         <<detour InsetoColetado>>
-        <<jump CamaDaDonaNeusa>>
+        <<jump CamaDaDonaNeusaInvestigação>>
     -> Voltar
 -> Coberta <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump CamaDaDonaNeusa>>
+    <<jump CamaDaDonaNeusaInvestigação>>
 -> Olhar embaixo da cama <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump CamaDaDonaNeusa>>
+    <<jump CamaDaDonaNeusaInvestigação>>
 -> Voltar
-    <<jump Casa>>
 ===

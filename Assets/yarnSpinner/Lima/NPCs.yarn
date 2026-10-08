@@ -4,6 +4,10 @@ position: 227,-312
 <<declare $surpresa = false>>
 <<declare $galinhasAlimentadas = false>>
 <<declare $descansando = false>>
+
+<<set_background true black 0.3>>
+<<set_characters true blank dona_neusa>>
+
 <<if $galinhasAlimentadas and not $descansando>>
     <<if $surpresa>>
         Dona Neusa: O quê?

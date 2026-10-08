@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c34daef7f9d4ec4f97bbfc4a0c4c156, type: 3}
-  m_Name: MusicEvent
+  m_Name: SFXEvent
   m_EditorClassIdentifier: Assembly-CSharp::AudioEvent
-  clips:
-  - {fileID: 8300000, guid: b2cad3cd35b1ad845bad0a185b982809, type: 3}
+  clips: []
   volume: 1
   randomVolume: {x: 1, y: 1}
   randomPitch: {x: 1, y: 1}
-  loop: 1
-  output: {fileID: 130760612368693602, guid: 480273da652eced43b6558a580dd293f, type: 2}
+  loop: 0
+  output: {fileID: 0}

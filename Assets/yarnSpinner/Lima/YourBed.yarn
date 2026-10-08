@@ -1,24 +1,35 @@
 title: SuaCama
 ---
+É a minha cama. O colchão é confortável e relativamente novo, apesar de pequeno.
+    A mãe deve ter comprado pouco antes de eu chegar...
+    <<if $procurandoInsetos>>
+        -> Investigar
+            <<jump InvestigarCama>>
+        -> Voltar
+    <<endif>>
+===
+
+title: InvestigarCama
+---
 -> Travesseiro <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump SuaCama>>
+    <<jump InvestigarCama>>
 -> Colchão <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump SuaCama>>
+    <<jump InvestigarCama>>
 -> Coberta <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump SuaCama>>
+    <<jump InvestigarCama>>
 -> Olhar embaixo da cama <<once>>
     ...
     <<wait 1>>
     Nada aqui.
-    <<jump SuaCama>>
+    <<jump InvestigarCama>>
 -> Voltar
 ===

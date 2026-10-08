@@ -163,15 +163,18 @@ public class DialogueVisualsController : MonoBehaviour
     }
 
     /// <summary>
-    /// Enables or disables the screen background image, optionally applying a sprite.
+    /// Enables or disables the screen background image, optionally applying a sprite and alpha.
     /// </summary>
-    public void SetBackground(bool enabled, string spriteName = "")
+    public void SetBackground(bool enabled, string spriteName = "", float alpha = 1f)
     {
         AutoFindReferences();
 
         if (backgroundImage != null)
         {
             backgroundImage.gameObject.SetActive(enabled);
+            Color color = backgroundImage.color;
+            color.a = alpha;
+            backgroundImage.color = color;
 
             if (enabled && !string.IsNullOrEmpty(spriteName))
             {
@@ -337,16 +340,16 @@ public class DialogueVisualsController : MonoBehaviour
     }
 
     /// <summary>
-    /// Yarn command: <<set_background <true|false> [sprite_name]>>
-    /// Controls screen background visibility and updates its sprite.
+    /// Yarn command: <<set_background <true|false> [sprite_name] [alpha]>>
+    /// Controls screen background visibility, updates its sprite, and sets alpha opacity.
     /// </summary>
     [YarnCommand("set_background")]
-    public static void YarnSetBackground(bool enabled, string spriteName = "")
+    public static void YarnSetBackground(bool enabled, string spriteName = "", float alpha = 1f)
     {
         DialogueVisualsController controller = EnsureInstance();
         if (controller != null)
         {
-            controller.SetBackground(enabled, spriteName);
+            controller.SetBackground(enabled, spriteName, alpha);
         }
         else
         {
