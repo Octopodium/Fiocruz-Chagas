@@ -1,14 +1,12 @@
 title: DonaNeusa
 position: 227,-312
 ---
-<<declare $surpresa = false>>
-<<declare $galinahs_alimentadas = false>>
-<<declare $dona_neusa_descansando = false>>
+
 
 <<set_background true black 0.3>>
 <<set_characters true blank dona_neusa>>
 
-<<if $galinahs_alimentadas and not $dona_neusa_descansando>>
+<<if $galinhas_alimentadas and not $dona_neusa_descansando>>
     <<if $surpresa>>
         Dona Neusa: O quê?
         Dona Neusa: Você cuidou das galinhas por mim?
@@ -31,6 +29,11 @@ position: 227,-312
     Dona Neusa: Não vou perder o dia que tenho para passar com meu filho querido indo ao médico.
     Dona Neusa: Deve ser pressão baixa. Vou me deitar um pouco, e daqui a pouco já devo estar melhor. 
     <<set $dona_neusa_descansando = true>>
+    <<fade_bg_image 1 2>>
+    <<wait 2>>
+    <<fade_bg_image 0 2>>
+    <<wait 2>>
+    <<set_characters false>>
     <<wait 1>>
     ...
     -> Inchaço
@@ -62,6 +65,8 @@ position: 227,-312
 
 title: SenhorNelson
 ---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> // sprite placeholder, precisa ser trocado pelo senhor nelson assim que possivel.
 <<once>>
 Opa, Senhor Nelson?
 Senhor Nelson: Hm?
@@ -92,10 +97,10 @@ Eu também...
     Senhor Nelson: É a antiga Santa Casa. Construíram um prédio novo, mais moderno, e mudaram o nome.
     Senhor Nelson: Ele costuma atender lá mesmo, mas faz visitação se necessário.
     Certo, muito obrigado.
-    <<set $medicoDaCidade = true>>
+    <<set $medico_da_cidade = true>>
     Melhor eu ir procurar o Doutor Torres no hospital.
 -> Voltar
-    <<jump ExteriorDaCasa>>
+    <<stop>>
 <<jump SenhorNelson>>
 ===
 

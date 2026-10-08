@@ -3058,6 +3058,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 5e45e2b35990eef43a2da75986e19e74, type: 3}
   - id: blank
     sprite: {fileID: 21300000, guid: 3a75fc1687c34b243843f06a3291c40c, type: 3}
+  - id: hospital
+    sprite: {fileID: 21300000, guid: 1134b953967be5f42ab410d8643d2db7, type: 3}
+  - id: recepcionista
+    sprite: {fileID: 21300000, guid: d17009816d10c9c41b4f63508b92255b, type: 3}
   defaultBackgroundActive: 0
   defaultCharacterAreaActive: 0
   defaultTextBoxActive: 1
@@ -4755,6 +4759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93b7b7572b90da41b56f9b23422cb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagsSystem
+  debugLogFlagChanges: 0
 --- !u!1 &8801601110657553159
 GameObject:
   m_ObjectHideFlags: 0

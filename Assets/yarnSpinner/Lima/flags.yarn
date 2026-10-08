@@ -24,6 +24,9 @@ title: Flags
 <<declare $conheceProboscide = false>>
 <<declare $conhecimento = 0>>
 <<declare $viu_cutscene_inicial = false>>
+<<declare $surpresa = false>>
+<<declare $galinhas_alimentadas = false>>
+<<declare $dona_neusa_descansando = false>>
 ===
 
 title: Inventário

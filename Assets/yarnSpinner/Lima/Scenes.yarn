@@ -204,19 +204,20 @@ Algumas galinhas estão cacarejando.
             Não vejo nenhum inseto.
         -> Voltar
     <<else>>
-        <<if not $galinhasAlimentadas>>
+        <<if not $galinhas_alimentadas>>
             As galinhas estão andando inquietas por aí.
             Pode ser que estejam com fome.
         <<else>>
             As galinhas parecem normais.
         <<endif>>
     <<endif>>
+    <<jump Galinheiro>>
 -> Comedouro
-    <<if not $galinhasAlimentadas>>
+    <<if not $galinhas_alimentadas>>
         Vazio.
         Vou repor a comida e a água.
         <<wait 3>>
-        <<set $galinhasAlimentadas = true>>
+        <<set $galinhas_alimentadas = true>>
         Pronto.
         As galinhas já estão se agrupando ao redor da comida.
         Melhor eu deixá-las comer em paz e avisar à minha mãe que está feito.
@@ -230,6 +231,7 @@ Algumas galinhas estão cacarejando.
     <<else>>
         O comedouro está abastecido.
     <<endif>>
+    <<jump Galinheiro>>
 -> Ninhos
     <<if $procurandoInsetos>>
         À primeira vista, nada de diferente nesses ninhos.
@@ -251,24 +253,29 @@ Algumas galinhas estão cacarejando.
         Os ninhos estão um pouco sujos...
         Deve fazer um tempo desde que essa palha foi trocada.
     <<endif>>
+    <<jump Galinheiro>>
 -> Voltar
     <<fade_bg_image 0 2>>
     <<wait 2>>
-    <<stop>>
-<<jump Galinheiro>>
 ===
 
 title: Cidade
 ---
 <<once>>
+<<set_background true hospital 0>>
+<<fade_bg_image 1 2>>
+<<wait 2>>
+<<set_characters false>>
 O hospital deve ser aquele prédio novo.
 O Senhor Nelson disse para procurar o Doutor Torres.
 <<wait 2>>
+<<set_characters true recepcionista blank>>
 Recepcionista: Boa tarde, senhor. Como posso ajudá-lo?
 -> Procuro o Doutor Torres
 Recepcionista: O Doutor Torres?
 Recepcionista: Isso pode ser um pouco complicado, ele acaba de receber um caso.
 Recepcionista: Ele disse que visitará o paciente em casa e não sabe quando retorna.
+<<set_characters true recepcionista doutor_torres>>
 Doutor Torres: Estão falando de mim?
 Recepcionista: Doutor!
 Recepcionista: Já está de saída?

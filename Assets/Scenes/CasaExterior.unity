@@ -1171,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.375
+      value: -56.6875
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1267,7 +1267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.124999
+      value: -13.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2261,6 +2261,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 93ceac8b5fe80084cb3573c98b51c4d0, type: 3}
+    - target: {fileID: 5579375139701836979, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: m_Color.b
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579375139701836979, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6566563
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579375139701836979, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: m_Color.r
+      value: 0.28627458
+      objectReference: {fileID: 0}
     - target: {fileID: 8681296730567668261, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_Name
       value: SenhorNelson
@@ -12402,7 +12414,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1685692960}
   - component: {fileID: 1685692962}
-  - component: {fileID: 1685692961}
+  - component: {fileID: 1685692963}
+  - component: {fileID: 1685692964}
   m_Layer: 0
   m_Name: "Transi\xE7\xE3o"
   m_TagString: Untagged
@@ -12425,40 +12438,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 422724650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1685692961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685692959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 352b2ae9b80042c4e900fee233a7172a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
-  conditions:
-  - referenceType: 0
-    gameObjectReferenced: {fileID: 0}
-    componentType: 
-    functionName: medico_da_cidade
-    functionParameter:
-      type: 0
-      intValue: 0
-      floatValue: 0
-      stringValue: 
-      boolValue: 0
-      objectRefValue: {fileID: 0}
-    compareOptions: 0
-    compareValue:
-      type: 4
-      intValue: 0
-      floatValue: 0
-      stringValue: 
-      boolValue: 1
-      objectRefValue: {fileID: 0}
-  extraActions: []
-  ambient: {fileID: 11400000, guid: 94ffa8bc1fe5ff747a673921014db522, type: 2}
 --- !u!65 &1685692962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12480,6 +12459,83 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1685692963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685692959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c27d074e535d614bb175462205440a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneStartEvent
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: medico_da_cidade
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  extraActions:
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1685692959}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    componentType: 
+    name: dona_neusa_descansando
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+--- !u!114 &1685692964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685692959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
+  conditions: []
+  extraActions: []
+  NPCName: Cidade
+  startNode: Cidade
+  startAutomatic: 0
+  onDialogueFinished: []
 --- !u!1001 &1699116452
 PrefabInstance:
   m_ObjectHideFlags: 0
