@@ -13,6 +13,8 @@ public class Inspectable : IInteractable {
 
     public System.Action<bool> onInspectingChanged;
 
+    public ActionDescription[] onLeavingInspecting;
+
     List<IUnderMouse> childrenUnderMouse = new List<IUnderMouse>();
 
     void Awake() {
@@ -49,6 +51,8 @@ public class Inspectable : IInteractable {
 
         SetChildrenUnderMouseState(beingInspected);
         onInspectingChanged?.Invoke(beingInspected);
+
+        if (!beingInspected) RunLeavingActions();
     }
 
     /// <summary>
@@ -65,6 +69,14 @@ public class Inspectable : IInteractable {
                 else childComponent.enabled = active;
             }
         }
+    }
+
+
+    public void RunLeavingActions() {
+        if (onLeavingInspecting == null || onLeavingInspecting.Length == 0) return;
+
+        foreach (ActionDescription action in onLeavingInspecting)
+            try { action.RunAction(); } catch (Exception e) { Debug.LogError (e);}
     }
 
 }
