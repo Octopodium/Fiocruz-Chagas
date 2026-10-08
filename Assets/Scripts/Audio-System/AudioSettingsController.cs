@@ -9,7 +9,6 @@ public class AudioSettingsController : MonoBehaviour
 
     [Header("Sliders")]
     [SerializeField] private Slider musicSlider;
-
     [SerializeField] private Slider sfxSlider;
 
     private const string MusicVolume = "MusicVolume";
@@ -22,48 +21,51 @@ public class AudioSettingsController : MonoBehaviour
 
     public void SetMusicVolume(float value)
     {
-        float volume = Mathf.Log10(
-            Mathf.Max(value, 0.0001f)) * 20f;
-
-        audioMixer.SetFloat(
-            MusicVolume,
-            volume);
-
-        PlayerPrefs.SetFloat(
-            MusicVolume,
-            value);
+        SetVolume(MusicVolume, value);
     }
 
     public void SetSFXVolume(float value)
     {
-        float volume = Mathf.Log10(
-            Mathf.Max(value, 0.0001f)) * 20f;
+        SetVolume(SFXVolume, value);
+    }
 
-        audioMixer.SetFloat(
-            SFXVolume,
-            volume);
+    private void SetVolume(string parameter, float value)
+    {
+        float volumeDB = value <= 0.0001f
+            ? -80f
+            : Mathf.Log10(value) * 20f;
 
-        PlayerPrefs.SetFloat(
-            SFXVolume,
-            value);
+        bool success = audioMixer.SetFloat(parameter, volumeDB);
+
+        if (!success)
+        {
+            Debug.LogError(
+                $"AudioMixer parameter '{parameter}' not found!"
+            );
+            return;
+        }
+
+        PlayerPrefs.SetFloat(parameter, value);
+
+        Debug.Log(
+            $"{parameter}: {value:F2} | {volumeDB:F2} dB"
+        );
     }
 
     private void LoadSettings()
     {
-        float musicVolume =
-            PlayerPrefs.GetFloat(
-                MusicVolume,
-                1f);
+        float musicVolume = PlayerPrefs.GetFloat(MusicVolume, 1f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFXVolume, 1f);
 
-        float sfxVolume =
-            PlayerPrefs.GetFloat(
-                SFXVolume,
-                1f);
-
-        musicSlider.value = musicVolume;
-        sfxSlider.value = sfxVolume;
+        musicSlider.SetValueWithoutNotify(musicVolume);
+        sfxSlider.SetValueWithoutNotify(sfxVolume);
 
         SetMusicVolume(musicVolume);
         SetSFXVolume(sfxVolume);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
     }
 }
