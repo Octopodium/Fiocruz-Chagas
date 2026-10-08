@@ -34,10 +34,12 @@ public class CameraController : MonoBehaviour {
     }
 
     void OnDestroy() {
-        if (!GameManager.exists) return;
+        if (GameManager.exists) {
+            GameManager.instance.navigation.onBeforeChangingAmbient -= OnAmbientUnloading;
+            GameManager.instance.navigation.onAfterChangingAmbient -= OnAmbientLoaded;
+        }
 
-        GameManager.instance.navigation.onBeforeChangingAmbient -= OnAmbientUnloading;
-        GameManager.instance.navigation.onAfterChangingAmbient -= OnAmbientLoaded;
+        CinemachineCore.CameraActivatedEvent.RemoveListener(SetDefaultCameraDelayed);
     }
 
     void OnAmbientUnloading(AmbientInfo ambient) {
@@ -48,10 +50,24 @@ public class CameraController : MonoBehaviour {
     async void OnAmbientLoaded(AmbientInfo ambient) {
         await Awaitable.FixedUpdateAsync();
 
+        if (!TryToSetDefaultCamera()) {
+            CinemachineCore.CameraActivatedEvent.AddListener(SetDefaultCameraDelayed);
+        }
+    }
+
+    void SetDefaultCameraDelayed(ICinemachineCamera.ActivationEventParams p) {
+        if (TryToSetDefaultCamera())
+            CinemachineCore.CameraActivatedEvent.RemoveListener(SetDefaultCameraDelayed);
+    }
+
+    bool TryToSetDefaultCamera() {
         if (cinemachine != null && cameraStack.Count == 0 && cinemachine.ActiveVirtualCamera is CinemachineCamera) {
             CameraArea area = GetCinemachinesCameraArea((CinemachineCamera) cinemachine.ActiveVirtualCamera);
             if (area != null) GoToCamera(area);
+            return true;
         }
+
+        return false;
     }
 
     /// <summary>

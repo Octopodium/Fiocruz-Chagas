@@ -48,7 +48,7 @@ public class InteractableMarker : MonoBehaviour
 
 
     IUnderMouse[] interactables;
-    Coroutine selectedCoroutine;
+    Awaitable selectedAwaitable;
 
     public void SetupInteractables() {
         interactables = transform.parent.GetComponents<IUnderMouse>();
@@ -76,7 +76,7 @@ public class InteractableMarker : MonoBehaviour
     }
 
     void HandleInteractableHoverChanged(bool entered) {
-        if (selectedCoroutine != null) return;
+        if (selectedAwaitable != null) return;
 
         ChangeColor(entered? highlightedColor : defaultColor);
     }
@@ -91,15 +91,16 @@ public class InteractableMarker : MonoBehaviour
     
     void HandleInteractableInteracted() {
         if (!gameObject.activeInHierarchy) return;
-        if (selectedCoroutine != null) StopCoroutine(selectedCoroutine);
+        if (selectedAwaitable != null) selectedAwaitable.Cancel();
 
         ChangeColor(selectedColor);
-        selectedCoroutine = StartCoroutine(InteractedEffectTimer(1.0f));
+        InteractedEffectTimer(1.0f);
     }
 
-    IEnumerator InteractedEffectTimer(float waitFor) {
-        yield return new WaitForSeconds(waitFor);
+    async void InteractedEffectTimer(float waitFor) {
+        selectedAwaitable = Awaitable.WaitForSecondsAsync(waitFor);
+        await selectedAwaitable;
+        selectedAwaitable = null;
         HandleInteractableHoverChanged(ContainsInteractable(GameManager.instance.player.currentInteractable));
-        selectedCoroutine = null;
     }
 }

@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0e76c058510b349ab2996011eccae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdditiveSceneActivator
-  sceneToActivate: CasaExterior
+  sceneToActivate: CasaExteriorVisual
   activateOnAwake: 1
   setupTransition: 1
 --- !u!4 &270892519
