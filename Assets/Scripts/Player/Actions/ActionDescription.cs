@@ -117,7 +117,12 @@ public class ActionDescription {
     }
 
 
+    public static void RunAll(ActionDescription[] actions) {
+        if (actions == null || actions.Length == 0) return;
 
+        foreach (ActionDescription action in actions)
+            try { action.RunAction(); } catch (Exception e) { Debug.LogError (e);}
+    }
 }
 
 

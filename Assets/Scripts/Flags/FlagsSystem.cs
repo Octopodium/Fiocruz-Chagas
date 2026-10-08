@@ -13,6 +13,8 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
 
     public Action<string, object> OnFlagChanged;
 
+    [SerializeField] bool debugLogFlagChanges = false;
+
 
     void Awake() {
         register = FlagsRegister.instance;
@@ -275,14 +277,16 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
 
         autoFlagDialogueDisposable = GameManager.instance.dialogue.VariableStorage.AddChangeListener(HandleDialogueVariableChange);
         OnFlagChanged += HandleFlagChanged;
-        //OnFlagChanged += SimpleDebugger;
+
+        if (debugLogFlagChanges)
+            OnFlagChanged += SimpleDebugger;
     }
 
-/*
+
     void SimpleDebugger(string name, object value) {
         Debug.Log("[FLAG CHANGED] " + name + ": " + value);
     }
-*/
+
 
     /// <summary>
     /// Unset auto-flags events setted by SetAutoFlags. Called on destroy.
@@ -299,6 +303,9 @@ public class FlagsSystem : MonoBehaviour, ISaveable {
         }
 
         OnFlagChanged -= HandleFlagChanged;
+
+        if (debugLogFlagChanges)
+            OnFlagChanged -= SimpleDebugger;
     }
 
     /// <summary>

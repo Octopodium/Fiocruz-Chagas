@@ -1171,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.6875
+      value: -56.375
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1267,7 +1267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.4375
+      value: -13.124999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2217,22 +2217,6 @@ PrefabInstance:
       propertyPath: conditionalExistence
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
-      propertyPath: conditions.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
-      propertyPath: conditions.Array.data[0].functionName
-      value: dona_neusa_descansando
-      objectReference: {fileID: 0}
-    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
-      propertyPath: conditions.Array.data[0].compareValue.type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
-      propertyPath: conditions.Array.data[0].compareValue.boolValue
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6491236
@@ -2284,7 +2268,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8681296730567668261, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2014700635}
   m_SourcePrefab: {fileID: 100100000, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
 --- !u!4 &327773442 stripped
 Transform:
@@ -6008,10 +5995,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   NPCName: Galinheiro
   startNode: Galinheiro
   startAutomatic: 0
+  onDialogueFinished: []
 --- !u!1001 &750162663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6671,6 +6658,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
   m_PrefabInstance: {fileID: 864746462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &872003410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8681296730567668261, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+  m_PrefabInstance: {fileID: 316593574}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &883629510
 GameObject:
@@ -8160,7 +8152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   ambient: {fileID: 11400000, guid: 69ed67251177b1d4fa58e8160c06a30c, type: 2}
 --- !u!65 &1093544866
 BoxCollider:
@@ -12467,7 +12458,6 @@ MonoBehaviour:
       boolValue: 1
       objectRefValue: {fileID: 0}
   extraActions: []
-  conditionalExistence: 1
   ambient: {fileID: 11400000, guid: 94ffa8bc1fe5ff747a673921014db522, type: 2}
 --- !u!65 &1685692962
 BoxCollider:
@@ -14703,6 +14693,65 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
   m_PrefabInstance: {fileID: 316593574}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2014700635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872003410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c27d074e535d614bb175462205440a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneStartEvent
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: dona_neusa_descansando
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  extraActions:
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 872003410}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    componentType: 
+    name: dona_neusa_descansando
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
 --- !u!1001 &2032352869
 PrefabInstance:
   m_ObjectHideFlags: 0

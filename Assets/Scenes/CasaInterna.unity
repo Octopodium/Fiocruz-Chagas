@@ -1586,10 +1586,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   NPCName: 
   startNode: Janela
   startAutomatic: 0
+  onDialogueFinished: []
 --- !u!4 &473630307
 Transform:
   m_ObjectHideFlags: 0
@@ -1897,10 +1897,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   NPCName: Porta-retrato
   startNode: RetratoAntigo
   startAutomatic: 0
+  onDialogueFinished: []
 --- !u!1001 &573398995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2381,7 +2381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   ambient: {fileID: 11400000, guid: 462816a267a9e3a428269e3b3a99b953, type: 2}
 --- !u!1 &763422468
 GameObject:
@@ -2910,10 +2909,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   NPCName: 
   startNode: CamaDaDonaNeusa
   startAutomatic: 0
+  onDialogueFinished: []
 --- !u!65 &896270797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3150,10 +3149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
-  conditionalExistence: 0
   NPCName: 
   startNode: SuaCama
   startAutomatic: 0
+  onDialogueFinished: []
 --- !u!1001 &910516839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6011,7 +6010,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1831626101}
-  - component: {fileID: 1831626100}
   - component: {fileID: 1831626102}
   m_Layer: 0
   m_Name: StatingDialogue
@@ -6020,43 +6018,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1831626100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831626099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
-  conditions:
-  - referenceType: 0
-    gameObjectReferenced: {fileID: 0}
-    componentType: 
-    functionName: viu_cutscene_inicial
-    functionParameter:
-      type: 0
-      intValue: 0
-      floatValue: 0
-      stringValue: 
-      boolValue: 0
-      objectRefValue: {fileID: 0}
-    compareOptions: 0
-    compareValue:
-      type: 4
-      intValue: 0
-      floatValue: 0
-      stringValue: 
-      boolValue: 0
-      objectRefValue: {fileID: 0}
-  extraActions: []
-  conditionalExistence: 1
-  NPCName: 
-  startNode: Despertar
-  startAutomatic: 1
 --- !u!4 &1831626101
 Transform:
   m_ObjectHideFlags: 0
@@ -6081,11 +6042,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831626099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfddcba13c3259a4bb1404e9ac494417, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c27d074e535d614bb175462205440a3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MarkerSettings
-  positionOffset: {x: 0, y: 0, z: 0}
-  scale: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SceneStartEvent
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: viu_cutscene_inicial
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  extraActions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: dialogue
+    name: 'StartDialogue(System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089): Yarn.Unity.YarnTask, YarnSpinner.Unity, Version=3.2.4.0,
+      Culture=neutral, PublicKeyToken=null'
+    assignOption: 0
+    value:
+      type: 3
+      intValue: 0
+      floatValue: 0
+      stringValue: Despertar
+      boolValue: 0
+      objectRefValue: {fileID: 0}
 --- !u!1001 &1833829553
 PrefabInstance:
   m_ObjectHideFlags: 0

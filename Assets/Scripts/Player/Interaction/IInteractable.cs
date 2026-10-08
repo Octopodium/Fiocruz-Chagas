@@ -4,18 +4,6 @@ using UnityEngine;
 /// Abstract class that defines an object as an Interactable (clickable by the player).
 /// </summary>
 public abstract class IInteractable: IUnderMouse {
-
-    [SerializeField] protected bool conditionalExistence = false;
-
-    protected void Start()
-    {
-        if(conditionalExistence && !CheckConditions())
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-    }
-
     /// <summary>
     /// Called when an Interactable is interacted with (clicked). It will only be called if CanInteract return true.
     /// </summary>

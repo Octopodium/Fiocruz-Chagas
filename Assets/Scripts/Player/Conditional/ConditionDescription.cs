@@ -163,6 +163,15 @@ public class ConditionDescription {
             return Activator.CreateInstance(t);
         return null;
     }
+
+
+    public static bool CheckAll(ConditionDescription[] conditions) {
+        if (conditions == null || conditions.Length == 0) return true;
+
+        foreach (ConditionDescription condition in conditions)
+            if (!condition.GetValue()) return false;
+        return true;
+    }
     
 }
 
