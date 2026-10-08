@@ -187,6 +187,14 @@ position: 330,267
 title: Galinheiro
 position: -205,564
 ---
+<<once>>
+<<set_background true black 0>>
+<<fade_bg_image 1 2>>
+<<wait 2>>
+<<set_characters false>>
+Está escuro aqui dentro...
+Algumas galinhas estão cacarejando. 
+<<endonce>>
 -> Galinhas
     <<if $procurandoInsetos>>
         As galinhas pareciam completamente normais mais cedo...
@@ -244,7 +252,9 @@ position: -205,564
         Deve fazer um tempo desde que essa palha foi trocada.
     <<endif>>
 -> Voltar
-    <<jump ExteriorDaCasa>>
+    <<fade_bg_image 0 2>>
+    <<wait 2>>
+    <<stop>>
 <<jump Galinheiro>>
 ===
 

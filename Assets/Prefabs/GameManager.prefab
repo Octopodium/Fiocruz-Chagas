@@ -3046,14 +3046,18 @@ MonoBehaviour:
   spriteLibrary:
   - id: background_placeholder
     sprite: {fileID: 21300000, guid: 1134b953967be5f42ab410d8643d2db7, type: 3}
-  - id: sprite_1
-    sprite: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
-  - id: sprite_2
-    sprite: {fileID: 21300000, guid: ae869c5b654eb3d4e8e031bdbc251fa5, type: 3}
+  - id: dona_neusa
+    sprite: {fileID: 21300000, guid: 8b95241c9000c8740ab5a24c14b488ad, type: 3}
+  - id: doutor_torres
+    sprite: {fileID: 21300000, guid: 93ceac8b5fe80084cb3573c98b51c4d0, type: 3}
   - id: textBox
     sprite: {fileID: 21300000, guid: 2b9e769be9b79004891fa44bd1ceeef2, type: 3}
   - id: barbeiro
     sprite: {fileID: 21300000, guid: dc9607ba457d8aa40bd2c2440552a1d2, type: 3}
+  - id: black
+    sprite: {fileID: 21300000, guid: 5e45e2b35990eef43a2da75986e19e74, type: 3}
+  - id: blank
+    sprite: {fileID: 21300000, guid: 3a75fc1687c34b243843f06a3291c40c, type: 3}
   defaultBackgroundActive: 0
   defaultCharacterAreaActive: 0
   defaultTextBoxActive: 1

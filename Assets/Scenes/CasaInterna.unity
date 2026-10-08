@@ -429,42 +429,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -134.759
       objectReference: {fileID: 0}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[1].id
-      value: dona_neusa
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[2].id
-      value: doutor_torres
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[5].id
-      value: black
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[6].id
-      value: blank
-      objectReference: {fileID: 0}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[1].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8b95241c9000c8740ab5a24c14b488ad, type: 3}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[2].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 93ceac8b5fe80084cb3573c98b51c4d0, type: 3}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[5].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5e45e2b35990eef43a2da75986e19e74, type: 3}
-    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[6].sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3a75fc1687c34b243843f06a3291c40c, type: 3}
     - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: field of view
       value: 60
@@ -1618,10 +1582,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
+  conditionalExistence: 0
   NPCName: 
   startNode: Janela
   startAutomatic: 0
-  conditionalExistence: 0
 --- !u!4 &473630307
 Transform:
   m_ObjectHideFlags: 0
@@ -1929,10 +1893,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
+  conditionalExistence: 0
   NPCName: Porta-retrato
   startNode: RetratoAntigo
   startAutomatic: 0
-  conditionalExistence: 0
 --- !u!1001 &573398995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2413,6 +2377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
   conditions: []
   extraActions: []
+  conditionalExistence: 0
   ambient: {fileID: 11400000, guid: 462816a267a9e3a428269e3b3a99b953, type: 2}
 --- !u!1 &763422468
 GameObject:
@@ -2941,10 +2906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
+  conditionalExistence: 0
   NPCName: 
   startNode: CamaDaDonaNeusa
   startAutomatic: 0
-  conditionalExistence: 0
 --- !u!65 &896270797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3181,10 +3146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
+  conditionalExistence: 0
   NPCName: 
   startNode: SuaCama
   startAutomatic: 0
-  conditionalExistence: 0
 --- !u!1001 &910516839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6014,10 +5979,10 @@ MonoBehaviour:
       boolValue: 0
       objectRefValue: {fileID: 0}
   extraActions: []
+  conditionalExistence: 1
   NPCName: 
   startNode: Despertar
   startAutomatic: 1
-  conditionalExistence: 1
 --- !u!4 &1831626101
 Transform:
   m_ObjectHideFlags: 0

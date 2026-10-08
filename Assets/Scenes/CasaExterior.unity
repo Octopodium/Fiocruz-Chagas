@@ -5950,7 +5950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 749383099}
   - component: {fileID: 749383100}
-  - component: {fileID: 749383101}
+  - component: {fileID: 749383102}
   m_Layer: 0
   m_Name: Galinheiro
   m_TagString: Untagged
@@ -5994,22 +5994,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &749383101
+--- !u!114 &749383102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749383098}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 352b2ae9b80042c4e900fee233a7172a, type: 3}
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TravelToAmbient
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
   extraActions: []
   conditionalExistence: 0
-  ambient: {fileID: 11400000, guid: 69ed67251177b1d4fa58e8160c06a30c, type: 2}
+  NPCName: Galinheiro
+  startNode: Galinheiro
+  startAutomatic: 0
 --- !u!1001 &750162663
 PrefabInstance:
   m_ObjectHideFlags: 0

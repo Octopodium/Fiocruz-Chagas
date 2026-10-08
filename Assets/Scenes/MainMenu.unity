@@ -1047,7 +1047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.0809937, y: -1.2039795}
+  m_AnchoredPosition: {x: -4.0810547, y: -1.2039795}
   m_SizeDelta: {x: 30.365, y: 36.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &195148926
@@ -5990,7 +5990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdc44668ebe0dc459a66a2bc408fc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuOptions
-  firstAmbient: {fileID: 11400000, guid: 5ffa6afcda215934188b73f5e5182b1e, type: 2}
+  firstAmbient: {fileID: 11400000, guid: 69ed67251177b1d4fa58e8160c06a30c, type: 2}
   startTypeContainer: {fileID: 450776817}
   fade: {fileID: 1113557115}
 --- !u!225 &1109613889
