@@ -4,7 +4,7 @@ title: Notas
 <<declare $barbeiroGalinheiro = false>>
 <<declare $barbeiroDaCasa = false>>
 <<declare $percevejoDeCama = false>>
-<<declare $medicoDaCidade = false>>
+<<declare $medico_da_cidade = false>>
 <<declare $percevejoAssassino = false>>
 <<declare $mariaFedida = false>>
 
@@ -23,6 +23,7 @@ title: Flags
 <<declare $suspeita = 0>>
 <<declare $conheceProboscide = false>>
 <<declare $conhecimento = 0>>
+<<declare $viu_cutscene_inicial = false>>
 ===
 
 title: Inventário

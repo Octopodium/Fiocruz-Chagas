@@ -5,10 +5,22 @@ using UnityEngine;
 /// </summary>
 public abstract class IInteractable: IUnderMouse {
 
+    [SerializeField] protected bool conditionalExistence = false;
+
+    protected void Start()
+    {
+        if(conditionalExistence && !CheckConditions())
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+    }
+
     /// <summary>
     /// Called when an Interactable is interacted with (clicked). It will only be called if CanInteract return true.
     /// </summary>
     public abstract void HandleInteract();
+
 
     #if UNITY_EDITOR
     protected virtual void OnDrawGizmos() {

@@ -25,3 +25,11 @@ MonoBehaviour:
     type: 0
   - name: temp_contador
     type: 1
+  - name: viu_cutscene_inicial
+    type: 0
+  - name: medico_da_cidade
+    type: 0
+  - name: dona_neusa_descansando
+    type: 0
+  - name: galinhas_alimentadas
+    type: 0

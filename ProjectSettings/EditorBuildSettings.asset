@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: "Assets/Scenes/Fases/FasePra\xE7a.unity"
     guid: 0c04e4f66f74a5a4dbf348239fc9381a
   - enabled: 1
+    path: Assets/Scenes/CasaExterior.unity
+    guid: a16610fcbbb94f74bb3a41c6b7789fdb
+  - enabled: 1
     path: Assets/Scenes/CasaExteriorVisual.unity
     guid: d1deb7b45fc185546b8b22cad58f4b6b
   - enabled: 1
@@ -32,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: e0ec05e8e4c242640806ec47a1a7b42c
+  - enabled: 1
+    path: Assets/Scenes/CasaInterna.unity
+    guid: 5e2ee83f15af7b44e862cb629e9a175a
   - enabled: 1
     path: Assets/Scenes/Examples/SaveExample.unity
     guid: e917826a456913242adde362fa65e062

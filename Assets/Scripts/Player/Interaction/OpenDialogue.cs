@@ -12,6 +12,7 @@ public class OpenDialogue : IInteractable
 
     private void Start()
     {
+        base.Start();
         if(startAutomatic) GameManager.instance.dialogue.StartDialogue(startNode);
     }
 
@@ -22,7 +23,6 @@ public class OpenDialogue : IInteractable
     
     public override void HandleInteract() 
     {
-        Debug.Log("ooioioioiio");
         GameManager.instance.dialogue.StartDialogue(startNode); 
     }
 

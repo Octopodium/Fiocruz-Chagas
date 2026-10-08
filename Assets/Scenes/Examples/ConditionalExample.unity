@@ -453,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.375
+      value: -56.6875
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -593,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.124999
+      value: -13.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -761,6 +761,7 @@ MonoBehaviour:
   extraActions: []
   NPCName: Azul
   startNode: AzulTexto1
+  startAutomatic: 0
 --- !u!136 &363034158
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1892,6 +1893,7 @@ MonoBehaviour:
       objectRefValue: {fileID: 0}
   NPCName: Contador
   startNode: ContadorTexto
+  startAutomatic: 0
 --- !u!136 &1450210553
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2034,6 +2036,7 @@ MonoBehaviour:
   extraActions: []
   NPCName: Cap Rosa
   startNode: RosaTexto1
+  startAutomatic: 0
 --- !u!114 &1514929135
 MonoBehaviour:
   m_ObjectHideFlags: 0
