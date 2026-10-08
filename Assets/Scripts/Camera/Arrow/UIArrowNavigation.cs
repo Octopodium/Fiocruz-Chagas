@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yarn.Unity;
 
 public class UIArrowNavigation : MonoBehaviour {
     public GameObject upButton, downButton, leftButton, rightButton;
@@ -10,11 +11,20 @@ public class UIArrowNavigation : MonoBehaviour {
 
     void Awake() {
         GameManager.instance.cam.onCurrentCameraAreaChange += RefreshVisual;
+        GameManager.instance.inspectator.OnInspectingChanged += SetActiveRedirect;
+
+        GameManager.instance.dialogue.onDialogueStart.AddListener(SetActiveFalse);
+        GameManager.instance.dialogue.onDialogueComplete.AddListener(SetActiveTrue);
     }
 
     void OnDestroy() {
-        if (GameManager.exists)
+        if (GameManager.exists) {
             GameManager.instance.cam.onCurrentCameraAreaChange -= RefreshVisual;
+            GameManager.instance.inspectator.OnInspectingChanged -= SetActiveRedirect;
+
+            GameManager.instance.dialogue.onDialogueStart.RemoveListener(SetActiveFalse);
+            GameManager.instance.dialogue.onDialogueComplete.RemoveListener(SetActiveTrue);
+        }
     }
 
     void Start() {
@@ -36,4 +46,12 @@ public class UIArrowNavigation : MonoBehaviour {
         leftButton.SetActive(areaArrows.left.option != ArrowOptions.NoArrow);
         rightButton.SetActive(areaArrows.right.option != ArrowOptions.NoArrow);
     }
+
+    public void SetActiveArrows(bool active) {
+        gameObject.SetActive(active);
+    }
+
+    void SetActiveRedirect(Inspectable inspectable) => SetActiveArrows(inspectable == null);
+    void SetActiveTrue() => SetActiveArrows(true);
+    void SetActiveFalse() => SetActiveArrows(false);
 }

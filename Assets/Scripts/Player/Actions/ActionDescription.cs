@@ -212,9 +212,26 @@ public class ActionDescriptionDrawer : PropertyDrawer {
             data[descriptor.name + ": " + descriptor.readableType] = descriptor.name;
         }
 
+
+
+        VisualElement flagSelectorHolder = new VisualElement();
+        flagSelectorHolder.style.flexDirection = FlexDirection.Row;
+
         VisualElement nameField = CreatePopup(property, nameProp, data);
+        nameField.style.flexGrow = 1;
         nameField.TrackPropertyValue(nameProp, RebuildUI);
         rightRow.Add(nameField);
+
+        
+
+        flagSelectorHolder.Add(nameField);
+
+        Button aboutFlags = new Button(() => { Selection.activeObject=AssetDatabase.LoadMainAssetAtPath("Assets/Resources/"+FlagsRegister.mainRegisterResourcePath+".asset"); });
+        aboutFlags.text = "?";
+        aboutFlags.tooltip = "The displayed flag list is based on registered flags on the FlagsRegister";
+        flagSelectorHolder.Add(aboutFlags);
+        rightRow.Add(flagSelectorHolder);
+
 
 
         SerializedProperty assingProp = property.FindPropertyRelative("assignOption");
@@ -334,6 +351,7 @@ public class ActionDescriptionDrawer : PropertyDrawer {
     #region Popup
 
     public PopupField<string> CreatePopup(SerializedProperty mainProperty, SerializedProperty property, SortedDictionary<string, object> choices) {
+        int defaultIndex = Mathf.Max(0, choices.Values.ToList().FindIndex(x => object.Equals(x,property.boxedValue)));
         PopupField<string> dropdown = new PopupField<string>(
             choices: choices.Keys.ToList(),
             defaultIndex: Mathf.Max(0, choices.Values.ToList().FindIndex(x => object.Equals(x,property.boxedValue)))
@@ -345,6 +363,9 @@ public class ActionDescriptionDrawer : PropertyDrawer {
         });
 
         dropdown.AddToClassList(PopupField<string>.alignedFieldUssClassName);
+
+        string choice = choices.Keys.ToList()[defaultIndex];
+        property.boxedValue = choices[choice];
 
         return dropdown;
     }

@@ -37,7 +37,16 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public bool CanInteract() {
+        return !GameManager.instance.dialogue.IsDialogueRunning;
+    }
+
     void FixedUpdate() {
+        if (!CanInteract()) {
+            ClearUnderMouse();
+            return;
+        }
+
         CheckUnderMouse();
     }
 
@@ -115,6 +124,12 @@ public class Player : MonoBehaviour {
         SetCurrentInteractable(interactable, !isUsingCard);
         SetCurrentUseColletable(useCollectable, isUsingCard); 
 
+    }
+
+    void ClearUnderMouse() {
+        bool isUsingCard = collectableHeld != null;
+        SetCurrentInteractable(null, !isUsingCard);
+        SetCurrentUseColletable(null, isUsingCard); 
     }
 
     /// <summary>

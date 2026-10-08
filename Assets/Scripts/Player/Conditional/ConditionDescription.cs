@@ -357,8 +357,19 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
             SortedDictionary<string, object> systemsData = GetTypeSystems(typeof(GameManager));
             container = CreatePopup(property, componentProperty, systemsData);
         } else if(referenceType == ConditionDescription.ReferenceType.Flags) {
-            container = CreatePopup(property, componentProperty, new SortedDictionary<string, object>{{"Flag System", ""}});
-            container.SetEnabled(false);
+            container = new VisualElement();
+            container.style.flexDirection = FlexDirection.Row;
+
+            VisualElement flagComponentVisual = CreatePopup(property, componentProperty, new SortedDictionary<string, object>{{"Flag System", ""}});
+            flagComponentVisual.style.flexGrow = 1;
+            flagComponentVisual.SetEnabled(false);
+
+            container.Add(flagComponentVisual);
+
+            Button aboutFlags = new Button(() => { Selection.activeObject=AssetDatabase.LoadMainAssetAtPath("Assets/Resources/"+FlagsRegister.mainRegisterResourcePath+".asset"); });
+            aboutFlags.text = "?";
+            aboutFlags.tooltip = "The displayed flag list is based on registered flags on the FlagsRegister";
+            container.Add(aboutFlags);
         }
 
         container.TrackPropertyValue(componentProperty, RebuildUI);
@@ -480,9 +491,10 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
     #region Popup
 
     public PopupField<string> CreatePopup(SerializedProperty mainProperty, SerializedProperty property, SortedDictionary<string, object> choices) {
+        int defaultIndex = Mathf.Max(0, choices.Values.ToList().FindIndex(x => object.Equals(x,property.boxedValue)));
         PopupField<string> dropdown = new PopupField<string>(
             choices: choices.Keys.ToList(),
-            defaultIndex: Mathf.Max(0, choices.Values.ToList().FindIndex(x => object.Equals(x,property.boxedValue)))
+            defaultIndex: defaultIndex
         );
 
         dropdown.RegisterValueChangedCallback(evt => {
@@ -491,6 +503,9 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
         });
 
         dropdown.AddToClassList(PopupField<string>.alignedFieldUssClassName);
+        
+        string choice = choices.Keys.ToList()[defaultIndex];
+        property.boxedValue = choices[choice];
 
         return dropdown;
     }

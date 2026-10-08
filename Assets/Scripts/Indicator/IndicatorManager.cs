@@ -112,6 +112,8 @@ public class IndicatorManager : MonoBehaviour {
         GameManager.instance.flags.OnFlagChanged += DelayedRefreshIndicatorsRedirect;
         GameManager.instance.cam.onCurrentCameraAreaChange += DelayedRefreshIndicatorsRedirect;
         GameManager.instance.inspectator.OnInspectingChanged += DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.dialogue.onDialogueStart.AddListener(DelayedRefreshIndicators);
+        GameManager.instance.dialogue.onDialogueComplete.AddListener(DelayedRefreshIndicators);
 
         GameManager.instance.navigation.onBeforeChangingAmbient += ClearAllIndicatorsRedirect;
         GameManager.instance.navigation.onAfterChangingAmbient += CreateAmbientIndicatorsRedirect;
@@ -128,6 +130,8 @@ public class IndicatorManager : MonoBehaviour {
         GameManager.instance.flags.OnFlagChanged -= DelayedRefreshIndicatorsRedirect;
         GameManager.instance.cam.onCurrentCameraAreaChange -= DelayedRefreshIndicatorsRedirect;
         GameManager.instance.inspectator.OnInspectingChanged -= DelayedRefreshIndicatorsRedirect;
+        GameManager.instance.dialogue.onDialogueStart.RemoveListener(DelayedRefreshIndicators);
+        GameManager.instance.dialogue.onDialogueComplete.RemoveListener(DelayedRefreshIndicators);
 
         GameManager.instance.navigation.onBeforeChangingAmbient -= ClearAllIndicatorsRedirect;
         GameManager.instance.navigation.onAfterChangingAmbient -= CreateAmbientIndicatorsRedirect;
