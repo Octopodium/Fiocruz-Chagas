@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: "Assets/Scenes/Fases/FasePra\xE7a.unity"
     guid: 0c04e4f66f74a5a4dbf348239fc9381a
   - enabled: 1
-    path: Assets/Scenes/CasaExterior.unity
+    path: Assets/Scenes/CasaExteriorVisual.unity
     guid: d1deb7b45fc185546b8b22cad58f4b6b
   - enabled: 1
     path: Assets/Scenes/Fases/MGBugCatch.unity
