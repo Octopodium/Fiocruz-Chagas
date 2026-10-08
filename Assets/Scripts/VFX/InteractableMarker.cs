@@ -101,6 +101,8 @@ public class InteractableMarker : MonoBehaviour
         selectedAwaitable = Awaitable.WaitForSecondsAsync(waitFor);
         await selectedAwaitable;
         selectedAwaitable = null;
-        HandleInteractableHoverChanged(ContainsInteractable(GameManager.instance.player.currentInteractable));
+
+        if (this != null)
+            HandleInteractableHoverChanged(ContainsInteractable(GameManager.instance.player.currentInteractable));
     }
 }
