@@ -1,7 +1,7 @@
 title: CamaDaDonaNeusa
 ---
 É a cama da mãe. O colchão já tem uns furos e está até manchado... Vou comprar um novo para ela no Natal.
-<<if $procurandoInsetos>>
+<<if $procurando_insetos>>
     -> Investigar
         <<jump CamaDaDonaNeusaInvestigação>>
     -> Voltar

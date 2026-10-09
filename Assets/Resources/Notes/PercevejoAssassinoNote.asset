@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf6b118e72a9a34a97bd0d9eac5b998, type: 3}
   m_Name: PercevejoAssassinoNote
   m_EditorClassIdentifier: Assembly-CSharp::NoteData
-  noteId: PercevejoCama
-  title: Percevejo-de-cama
-  buttonLabel: Percevejo-de-cama
+  noteId: PercevejoAssassino
+  title: Percevejo-assassino
+  buttonLabel: Percevejo-assassino
   bulletPoints:
   - Encontrei um percevejo escondido debaixo de uma folha no jardim de casa.
   - "Na mesma planta havia um outro percevejo andando, mas eles n\xE3o parecem ser
