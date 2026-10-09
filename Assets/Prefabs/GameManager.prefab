@@ -1871,8 +1871,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3438802314507179037}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.95399237, z: 0, w: -0.29983097}
-  m_LocalPosition: {x: 3.55322, y: -1.8237599, z: -0.14707005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.86524, y: 1, z: -9.38431}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1910,7 +1910,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
@@ -4760,7 +4760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93b7b7572b90da41b56f9b23422cb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlagsSystem
-  debugLogFlagChanges: 0
+  debugLogFlagChanges: 1
 --- !u!1 &8801601110657553159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5179,7 +5179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5803773405904592, guid: b70e8e1232b7cff43928f0098743b5c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8
+      value: -23.625
       objectReference: {fileID: 0}
     - target: {fileID: 119905865946648896, guid: b70e8e1232b7cff43928f0098743b5c1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5895,7 +5895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8691177598584352732, guid: b70e8e1232b7cff43928f0098743b5c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -12
+      value: -56.375
       objectReference: {fileID: 0}
     - target: {fileID: 9158247196322538153, guid: b70e8e1232b7cff43928f0098743b5c1, type: 3}
       propertyPath: m_AnchorMax.y

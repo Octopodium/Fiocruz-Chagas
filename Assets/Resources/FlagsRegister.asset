@@ -67,3 +67,5 @@ MonoBehaviour:
     type: 0
   - name: barbeiro_parede
     type: 0
+  - name: recipiente
+    type: 1

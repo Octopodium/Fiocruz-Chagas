@@ -126,10 +126,10 @@ public class InventoryDeckDisplay : MonoBehaviour, IPointerClickHandler{
     /// <param name="card">The current CollectableCard</param>
     /// <param name="isDragging">True if the CollectableCard is being held by the player</param>
     private void HandleCardDragChanged(CollectableCard card, bool isDragging) {
-        if (card != cardHeld) {
-            cardHeld = card;
-        } else if (!isDragging) {
+        if (!isDragging) {
             cardHeld = null;
+        } else if (card != cardHeld) {
+            cardHeld = card;
         } else {
             return;
         }

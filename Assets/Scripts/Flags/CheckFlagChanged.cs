@@ -18,6 +18,7 @@ public class CheckFlagChanged : MonoBehaviour {
     public string flag;
     public GenericValue value;
     public ActionDescription[] actions;
+    public ConditionDescription[] extraConditions;
 
     [Tooltip("After the first time the condition becomes true, can it run the action again if the condition becomes true once more?")]
     public bool canRunAgain = false;
@@ -47,6 +48,7 @@ public class CheckFlagChanged : MonoBehaviour {
         if (!canRunAgain && runnedOnce) return;
 
         if (Equals(currentValue, value.GetValue())) {
+            if (!ConditionDescription.CheckAll(extraConditions)) return;
             if (wasEqualBefore) return;
             wasEqualBefore = true;
             runnedOnce = true;
@@ -69,6 +71,7 @@ public class Car_Inspector : Editor {
     SerializedProperty flagProp;
     SerializedProperty valueProp;
     SerializedProperty actionsProp;
+    SerializedProperty conditionsProp;
     SerializedProperty runAgainProp;
 
     void OnEnable() {
@@ -76,6 +79,7 @@ public class Car_Inspector : Editor {
         flagProp = serializedObject.FindProperty("flag");
         valueProp = serializedObject.FindProperty("value");
         actionsProp = serializedObject.FindProperty("actions");
+        conditionsProp = serializedObject.FindProperty("extraConditions");
         runAgainProp = serializedObject.FindProperty("canRunAgain");
     }
 
@@ -142,6 +146,9 @@ public class Car_Inspector : Editor {
             valueProp.boxedValue = val;
             valueProp.serializedObject.ApplyModifiedProperties();
         }
+
+        PropertyField conditionsField = new PropertyField(conditionsProp);
+        container.Add(conditionsField);
 
         PropertyField actionsField = new PropertyField(actionsProp);
         container.Add(actionsField);

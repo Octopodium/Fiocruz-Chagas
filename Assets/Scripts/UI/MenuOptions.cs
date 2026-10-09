@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MenuOptions : MonoBehaviour {
     public AmbientInfo firstAmbient;
@@ -7,11 +8,17 @@ public class MenuOptions : MonoBehaviour {
     [SerializeField] GameObject startTypeContainer;
     [SerializeField] FadeController fade;
 
+    public UnityEvent onNewGameStart;
+    public UnityEvent onContinueGameStart;
+
+    public void CallOnNewGameStart() => onNewGameStart?.Invoke();
+    public void CallOnContinueGameStart() => onContinueGameStart?.Invoke();
+
     public void HandleStartGameButton() {
         if (SaveManager.TryGetSaveData(out saveDataLoaded)) {
             startTypeContainer.SetActive(true);
         } else {
-            RequestNewGame();
+            CallOnNewGameStart();
         }
     }
 
