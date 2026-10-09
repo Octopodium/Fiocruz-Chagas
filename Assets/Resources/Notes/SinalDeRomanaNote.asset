@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf6b118e72a9a34a97bd0d9eac5b998, type: 3}
+  m_Name: SinalDeRomanaNote
+  m_EditorClassIdentifier: Assembly-CSharp::NoteData
+  noteId: SinalDeRomana
+  title: "Sinal de Roma\xF1a"
+  buttonLabel: "Sinal de Roma\xF1a"
+  bulletPoints:
+  - "Minha m\xE3e acordou com um incha\xE7o anormal no olho esquerdo."
+  - "Um edema unilateral que se manifesta como um incha\xE7o em um dos olhos."
+  - "Pele avermelhada e inflamada na regi\xE3o do incha\xE7o."
+  - "N\xE3o h\xE1 reclama\xE7\xE3o a respeito de dor no local."
+  noteImage: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  preserveImageAspect: 1

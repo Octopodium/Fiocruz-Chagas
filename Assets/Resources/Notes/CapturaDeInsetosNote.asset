@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf6b118e72a9a34a97bd0d9eac5b998, type: 3}
+  m_Name: CapturaDeInsetosNote
+  m_EditorClassIdentifier: Assembly-CSharp::NoteData
+  noteId: CapturaDeInsetos
+  title: Captura de Insetos
+  buttonLabel: Captura de Insetos
+  bulletPoints:
+  - "O Doutor Ant\xF4nio Torres me pediu para capturar insetos que possam ter causado
+    os sintomas da minha m\xE3e."
+  - "A captura do inseto com vida vai ajudar na identifica\xE7\xE3o e combate de
+    uma poss\xEDvel infec\xE7\xE3o."
+  - "A captura deve ser feita com um recipiente seguro, evitando contato direto com
+    o inseto e preservado a minha sa\xFAde."
+  - "O recipiente deve permitir o transporte do inseto de maneira segura. Me foram
+    fornecidos potes de vidro... provavel que um pote, ou copo similar tamb\xE9m
+    servisse."
+  noteImage: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  preserveImageAspect: 1
