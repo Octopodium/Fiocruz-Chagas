@@ -93,6 +93,7 @@ Pode ser que precise de manutenção...
         <<else>>
             Pode ser que eu encontre outro percevejo igual em outro local da casa...
         <<endif>>
+        <<set $barbeiro_parede = true>>
     -> Voltar
 <<endif>>
 ===

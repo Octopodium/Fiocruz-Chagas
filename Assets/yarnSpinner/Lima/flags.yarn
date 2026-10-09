@@ -3,6 +3,7 @@ title: Notas
 <<declare $sinalDeRomana = true>>
 <<declare $barbeiro_galinheiro = false>>
 <<declare $barbeiro_casa = false>>
+<<declare $barbeiro_parede = false>>
 <<declare $percevejo_de_cama = false>>
 <<declare $medico_da_cidade = false>>
 <<declare $percevejo_assassino = false>>
@@ -38,5 +39,5 @@ title: Flags
 title: Inventário
 ---
 <<declare $recipiente = 0>>
-<<declare $insetosColetados = 5>>
+<<declare $insetosColetados = 0>>
 ===

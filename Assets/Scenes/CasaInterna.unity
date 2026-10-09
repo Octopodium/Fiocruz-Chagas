@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.375
+      value: -56.6875
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.124999
+      value: -13.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1659,7 +1659,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
   conditions: []
-  extraActions: []
+  extraActions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: notebook
+    name: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 52576fff5c1a6d8479f23e16d6777002, type: 2}
   startingPhrase: 'Inspecionar  '
   NPCName: janela
   startNode: Janela
@@ -4022,6 +4038,22 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 11400000, guid: fd5a71bb8925a414a96b6a712a020a17, type: 2}
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: notebook
+    name: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: cc662d765f2c48645a19fa4db7ccfe04, type: 2}
   canRunAgain: 0
 --- !u!65 &998391931
 BoxCollider:
@@ -8456,8 +8488,54 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8885430590316393936, guid: eefa7376e79db514b910edf194ca5d05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 829080262325142541}
   m_SourcePrefab: {fileID: 100100000, guid: eefa7376e79db514b910edf194ca5d05, type: 3}
+--- !u!1 &829080262325142540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8885430590316393936, guid: eefa7376e79db514b910edf194ca5d05, type: 3}
+  m_PrefabInstance: {fileID: 829080262325142539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &829080262325142541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829080262325142540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: barbeiro_parede
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 0
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: notebook
+    name: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 7079d594a9d567b48b63dd3ae2078a4f, type: 2}
+  canRunAgain: 0
 --- !u!1001 &2088980673456080215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9000,6 +9078,32 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1098813796}
     m_Modifications:
+    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: extraActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: extraActions.Array.data[0].name
+      value: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: extraActions.Array.data[0].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: extraActions.Array.data[0].value.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: extraActions.Array.data[0].componentType
+      value: notebook
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450874290399210753, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
+      propertyPath: extraActions.Array.data[0].value.objectRefValue
+      value: 
+      objectReference: {fileID: 11400000, guid: d520082b965dcbe42a76a8d8d2a79f39, type: 2}
     - target: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.274

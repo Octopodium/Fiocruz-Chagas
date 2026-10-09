@@ -65,3 +65,5 @@ MonoBehaviour:
     type: 0
   - name: torres_questiona_prosseguir
     type: 0
+  - name: barbeiro_parede
+    type: 0
