@@ -1,109 +1,203 @@
-title: AnaliseMorfologica
+title: ProsseguirAnaliseTorres
 ---
-Qual espécime devemos analisar agora?
--> Percevejo-marrom | Euschistus heros
-    Doutor Torres: Este é o Euschistus heros, ou percevejo-marrom. Ele também é conhecido, popularmente, como maria-fedida.
-    <<jump PercevejoMarrom>>
--> Percevejo-de-cama | Cimex lectularius
-    Doutor Torres: Este é o Cimex lectularius, ou percevejo-de-cama. 
-    <<jump PercevejoDeCama>>
--> Percevejo-assassino | Zelus leucogrammus
-    Doutor Torres: Este é o Zelus leucogrammus, também chamado de percevejo-assassino.
-    Doutor Torres: Mas não precisa se preocupar, esse assassino está completamente sedado e não oferece nenhum risco neste estado.
-    <<jump PercevejoAssassino>>
--> Barbeiro | Panstrongylus megistus
-    Doutor Torres: Este é o Panstrongylus megistus, conhecido também como barbeiro.
-    <<jump Barbeiro>>
--> Análise <<if $conhecimento >= 4>>
-    Doutor Torres: Já se familiarizou com cada um dos suspeitos?
-    Doutor Torres: Se estiver pronto, podemos passar para a nossa análise.
-    Doutor Torres: A partir do nosso conhecimento, vamos tentar deduzir o mais provável, entre os espécimes coletados, causador dos sintomas apresentados pela sua mãe.
-    Doutor Torres: E aí, está pronto?
-    -> Sim
-        <<jump Q1>>
-    -> Não
-        <<jump AnaliseMorfologica>>
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Já se familiarizou com cada um dos suspeitos?
+Doutor Torres: Se estiver pronto, podemos passar para a nossa análise.
+Doutor Torres: A partir do nosso conhecimento, vamos tentar deduzir o mais provável, entre os espécimes coletados, causador dos sintomas apresentados pela sua mãe.
+Doutor Torres: E aí, está pronto?
+-> Sim
+    <<jump Q1>>
+-> Não
 ===
 
-title: PercevejoMarrom
+
+
+
+title: PercevejoMarrom_Conhecer
 ---
--> Probóscide 
-    <<detour Proboscide>>
-    Doutor Torres: A probóscide do percevejo-marrom é reta e alongada, ultrapassando o primeiro par de patas quando rente ao corpo.
-    Doutor Torres: Dessa forma, ela age como um tipo de canudo profundo, permitindo que ele extraia o alimento através de camadas grossas de proteção.
-    <<set $conhecimento += 1>>
--> Costas
-    Doutor Torres: Como o próprio nome diz, a parte de cima do Euschistus heros possui uma coloração amarronzada.
-    Doutor Torres: Ela age como camuflagem para o percevejo, dificultando que ele seja visto em ambientes como troncos de árvore, galhos e em meio à folhagem.
-    Doutor Torres: Além disso, o formato curioso faz com que ele seja facilmente confundido com uma folha seca.
--> Cheiro
-    Doutor Torres: Você está sentindo isso?
-    Doutor Torres: Por acaso andou comendo muita proteína, garoto?
-    Doutor Torres: É brincadeira, hahaha. Esse cheiro é uma substância química que esse tipo de percevejo produz em glândulas localizadas no tórax.
-    Doutor Torres: Ele libera essa substância quando se sente ameaçado, e o cheiro forte serve para afastar predadores.
--> Voltar
-    <<jump AnaliseMorfologica>>
-<<jump PercevejoMarrom>>
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Este é o Euschistus heros, ou percevejo-marrom. Ele também é conhecido, popularmente, como maria-fedida.
 ===
 
-title: PercevejoDeCama
+title: PercevejoMarrom_Proboscide
 ---
--> Probóscide 
-    <<detour Proboscide>>
-    Doutor Torres: A probóscide do percevejo-de-cama é reta e curta, não ultrapassando o primeiro par de patas quando rente ao corpo.
-    Doutor Torres: O seu formato é perfeito para a sucção do alimento. Além disso, ele é capaz de perfurar camadas finas com o seu aparelho bucal.
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: A probóscide do percevejo-marrom é reta e alongada, ultrapassando o primeiro par de patas quando rente ao corpo.
+Doutor Torres: Dessa forma, ela age como um tipo de canudo profundo, permitindo que ele extraia o alimento através de camadas grossas de proteção.
+<<if $conheceu_percevejo_marrom == false>>
     <<set $conhecimento += 1>>
--> Tamanho
-    Doutor Torres: Como pode ver, esses percevejos costumam ser muito pequenos.
-    Doutor Torres: Isso facilita que eles transitem em locais apertados ou de difícil acesso.
-    Doutor Torres: Além disso, torna o percevejo mais difícil de ser percebido por outros animais. 
--> Voltar
-    <<jump AnaliseMorfologica>>
-<<jump PercevejoDeCama>>
+    <<set $conheceu_percevejo_marrom = true>>
+    <<if $conhecimento >= 4 and not $torres_questiona_prosseguir>>
+        <<set $torres_questiona_prosseguir = true>>
+        <<jump ProsseguirAnaliseTorres>>
+    <<endif>>
+<<endif>>
 ===
 
-title: PercevejoAssassino
+title: PercevejoMarrom_Costas
 ---
--> Probóscide 
-    <<detour Proboscide>>
-    Doutor Torres: A probóscide do percevejo-assassino é curvada, assemelhando-se a um anzol.
-    Doutor Torres: Isso permite que ele a utilize tanto como um aparelho de sucção de alimento quanto como uma faca perfurante.
-    Doutor Torres: Essa aptidão para o combate faz com que ele seja extremamente eficaz em caçar a sua presa.
-    <<set $conhecimento += 1>>
--> Tamanho
-    Doutor Torres: Como pode ver, esses percevejos são relativamente grandes, podendo chegar aos dezesseis milímetros de comprimento.
-    Doutor Torres: O tamanho torna-os intimidadores e resilientes, especialmente quando comparados a outras espécies de percevejos.
--> Cores
-    Doutor Torres: As cores do Zelus leucogrammus são uma das suas características mais icônicas.
-    Doutor Torres: O próprio nome "leucogrammus" significa "linhas brancas", referindo-se às linhas cor-de-creme que ele tem nas laterais do corpo.
-    Doutor Torres: Além disso, as cores vibrantes do seu corpo tornam-no extremamente chamativo.
--> Voltar
-    <<jump AnaliseMorfologica>>
-<<jump PercevejoAssassino>>
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Como o próprio nome diz, a parte de cima do Euschistus heros possui uma coloração amarronzada.
+Doutor Torres: Ela age como camuflagem para o percevejo, dificultando que ele seja visto em ambientes como troncos de árvore, galhos e em meio à folhagem.
+Doutor Torres: Além disso, o formato curioso faz com que ele seja facilmente confundido com uma folha seca.
 ===
 
-title: Barbeiro
+title: PercevejoMarrom_Cheiro
 ---
--> Probóscide 
-    <<detour Proboscide>>
-    Doutor Torres: A probóscide do barbeiro é curta e reta, similar à do percevejo-de-cama.
-    Doutor Torres: Ela permite que ele perfure superfícies ou membranas finas e faça a extração do alimento.
-    <<set $conhecimento += 1>>
--> Formato
-    Doutor Torres: O corpo achatado do Panstrongylus megistus permite que ele facilmente se esconda em pequenas frestas e demais espaços estreitos.
--> Antenas
-    Doutor Torres: Se observarmos com cuidado, veremos que as antenas desse espécime são inseridas especialmente próximas dos olhos.
-    Doutor Torres: Essa é uma característica dos percevejos do gênero Panstrongylus.
--> Cores
-    Doutor Torres: O Panstrongylus megistus é predominantemente preto, pontuado por manchas avermelhadas ou alaranjadas.
-    Doutor Torres: Essas manchas se manifestam, geralmente, na parte superior do tórax, nas bordas do abdômen e no cório.
--> Voltar
-    <<jump AnaliseMorfologica>>
-<<jump Barbeiro>>
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Você está sentindo isso?
+Doutor Torres: Por acaso andou comendo muita proteína, garoto?
+Doutor Torres: É brincadeira, hahaha. Esse cheiro é uma substância química que esse tipo de percevejo produz em glândulas localizadas no tórax.
+Doutor Torres: Ele libera essa substância quando se sente ameaçado, e o cheiro forte serve para afastar predadores.
 ===
+
+
+
+
+
+title: PercevejoDeCama_Conhecer
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Este é o Cimex lectularius, ou percevejo-de-cama.
+===
+
+title: PercevejoDeCama_Proboscide
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: A probóscide do percevejo-de-cama é reta e curta, não ultrapassando o primeiro par de patas quando rente ao corpo.
+Doutor Torres: O seu formato é perfeito para a sucção do alimento. Além disso, ele é capaz de perfurar camadas finas com o seu aparelho bucal.
+<<if $conheceu_percevejo_cama == false>>
+    <<set $conhecimento += 1>>
+    <<set $conheceu_percevejo_cama = true>>
+    <<if $conhecimento >= 4 and not $torres_questiona_prosseguir>>
+        <<set $torres_questiona_prosseguir = true>>
+        <<jump ProsseguirAnaliseTorres>>
+    <<endif>>
+<<endif>>
+===
+
+title: PercevejoDeCama_Tamanho
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Como pode ver, esses percevejos costumam ser muito pequenos.
+Doutor Torres: Isso facilita que eles transitem em locais apertados ou de difícil acesso.
+Doutor Torres: Além disso, torna o percevejo mais difícil de ser percebido por outros animais. 
+===
+
+
+
+
+
+title: PercevejoAssassino_Conhecer
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Este é o Zelus leucogrammus, também chamado de percevejo-assassino.
+Doutor Torres: Mas não precisa se preocupar, esse assassino está completamente sedado e não oferece nenhum risco neste estado.
+===
+
+title: PercevejoAssassino_Proboscide
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: A probóscide do percevejo-assassino é curvada, assemelhando-se a um anzol.
+Doutor Torres: Isso permite que ele a utilize tanto como um aparelho de sucção de alimento quanto como uma faca perfurante.
+Doutor Torres: Essa aptidão para o combate faz com que ele seja extremamente eficaz em caçar a sua presa.
+
+<<if $conheceu_percevejo_ass == false>>
+    <<set $conhecimento += 1>>
+    <<set $conheceu_percevejo_ass = true>>
+    <<if $conhecimento >= 4 and not $torres_questiona_prosseguir>>
+        <<set $torres_questiona_prosseguir = true>>
+        <<jump ProsseguirAnaliseTorres>>
+    <<endif>>
+<<endif>>
+===
+
+title: PercevejoAssassino_Tamanho
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Como pode ver, esses percevejos são relativamente grandes, podendo chegar aos dezesseis milímetros de comprimento.
+Doutor Torres: O tamanho torna-os intimidadores e resilientes, especialmente quando comparados a outras espécies de percevejos.
+===
+
+title: PercevejoAssassino_Cores
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: As cores do Zelus leucogrammus são uma das suas características mais icônicas.
+Doutor Torres: O próprio nome "leucogrammus" significa "linhas brancas", referindo-se às linhas cor-de-creme que ele tem nas laterais do corpo.
+Doutor Torres: Além disso, as cores vibrantes do seu corpo tornam-no extremamente chamativo.
+===
+
+
+
+
+
+
+title: Barbeiro_Conhecer
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Este é o Panstrongylus megistus, conhecido também como barbeiro.
+===
+
+title: Barbeiro_Proboscide
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: A probóscide do barbeiro é curta e reta, similar à do percevejo-de-cama.
+Doutor Torres: Ela permite que ele perfure superfícies ou membranas finas e faça a extração do alimento.
+<<if $conheceu_barbeiro == false>>
+    <<set $conhecimento += 1>>
+    <<set $conheceu_barbeiro = true>>
+    <<if $conhecimento >= 4 and not $torres_questiona_prosseguir>>
+        <<set $torres_questiona_prosseguir = true>>
+        <<jump ProsseguirAnaliseTorres>>
+    <<endif>>
+<<endif>>
+===
+
+title: Barbeiro_Formato
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: O corpo achatado do Panstrongylus megistus permite que ele facilmente se esconda em pequenas frestas e demais espaços estreitos.
+===
+
+title: Barbeiro_Antenas
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: Se observarmos com cuidado, veremos que as antenas desse espécime são inseridas especialmente próximas dos olhos.
+Doutor Torres: Essa é uma característica dos percevejos do gênero Panstrongylus.
+===
+
+title: Barbeiro_Cores
+---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
+Doutor Torres: O Panstrongylus megistus é predominantemente preto, pontuado por manchas avermelhadas ou alaranjadas.
+Doutor Torres: Essas manchas se manifestam, geralmente, na parte superior do tórax, nas bordas do abdômen e no cório.
+===
+
+
+
+
 
 title: Proboscide
 ---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
 <<if not $conheceProboscide>>
     Doutor Torres: O "bico", ou aparelho bucal dos percevejos, é conhecido como probóscide.
     Doutor Torres: Ela é uma peça essencial para entender a alimentação e os hábitos de um percevejo.

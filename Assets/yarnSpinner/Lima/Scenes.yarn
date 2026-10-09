@@ -353,6 +353,8 @@ Doutor Torres: É você que procura por mim?
 
 title: Laboratório
 ---
+<<set_background true black 0.3>>
+<<set_characters true blank doutor_torres>> 
 Doutor Torres: Certo. Antes de tudo, devemos fazer uma análise mais apurada de cada espécime.
 Doutor Torres: Muito sobre um animal pode ser aprendido através da análise morfológica!
 Doutor Torres: Neste processo, nós avaliamos a forma física dos organismos vivos, buscando entender a funcionalidade e o desempenho de um animal com base na sua estrutura física.
@@ -362,5 +364,4 @@ Doutor Torres: Tomei a liberdade de sedá-los, então não se preocupe, não exi
 Doutor Torres: Vamos começar colocando os insetos, de maneira segura, na bancada, onde poderemos observá-los com calma.
 <<fade_bg_image 0 2>>
 <<wait 2>>
-<<jump AnaliseMorfologica>>
 ===

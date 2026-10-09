@@ -794,7 +794,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece4178dcf106a428238df1ed9f9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
-  conditions: []
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: ouviu_barbeiro
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
   extraActions:
   - type: 1
     unityEvent:
@@ -846,7 +865,7 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 0}
-  itemName: item
+  itemName: Barbeiro
   onLeavingInspecting:
   - type: 1
     unityEvent:
@@ -1674,14 +1693,34 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: 0.12161618
       objectReference: {fileID: 0}
+    - target: {fileID: 2863352142423444737, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863352142423444737, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_ClearFlags
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4314349191064129666, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: startingQuest
-      value: 
-      objectReference: {fileID: 11400000, guid: 24522761413b6084199cc0615969376b, type: 2}
+    - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: field of view
+      value: 60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2717,7 +2756,7 @@ Transform:
   m_GameObject: {fileID: 369925448}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0169, z: 0.4345}
+  m_LocalPosition: {x: -0.023, y: -0.0169, z: 0.4345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2742,7 +2781,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.05, z: 0.3}
+  m_Size: {x: 0.15, y: 0.05, z: 0.3}
   m_Center: {x: 0, y: -0.00000018449202, z: 0.012036875}
 --- !u!54 &369925451
 Rigidbody:
@@ -2800,10 +2839,72 @@ MonoBehaviour:
   conditions: []
   extraActions: []
   startingPhrase: 'Analisar '
-  NPCName: Casco
-  startNode: DonaNeusa
+  NPCName: Formato
+  startNode: Barbeiro_Formato
   startAutomatic: 0
   onDialogueFinished: []
+--- !u!1 &372820910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372820912}
+  - component: {fileID: 372820911}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &372820911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372820910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c27d074e535d614bb175462205440a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneStartEvent
+  conditions: []
+  extraActions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: dialogue
+    name: 'StartDialogue(System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089): Yarn.Unity.YarnTask, YarnSpinner.Unity, Version=3.2.4.0,
+      Culture=neutral, PublicKeyToken=null'
+    assignOption: 0
+    value:
+      type: 3
+      intValue: 0
+      floatValue: 0
+      stringValue: "Laborat\xF3rio"
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+--- !u!4 &372820912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372820910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.7367, y: -0, z: -1.36885}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &388527337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,7 +3536,7 @@ MonoBehaviour:
   extraActions: []
   startingPhrase: 'Analisar '
   NPCName: Casco
-  startNode: DonaNeusa
+  startNode: PercevejoMarrom_Costas
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!1 &438828430
@@ -4045,7 +4146,7 @@ MonoBehaviour:
   extraActions: []
   startingPhrase: 'Analisar '
   NPCName: Proboscide
-  startNode: DonaNeusa
+  startNode: Barbeiro_Proboscide
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!65 &553561139
@@ -4278,6 +4379,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646386093}
   m_CullTransparentMesh: 1
+--- !u!1 &654197630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654197634}
+  - component: {fileID: 654197633}
+  - component: {fileID: 654197632}
+  - component: {fileID: 654197631}
+  m_Layer: 5
+  m_Name: FakeCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &654197631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654197630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &654197632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654197630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &654197633
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654197630}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &654197634
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654197630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1182356654}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &663001928
 GameObject:
   m_ObjectHideFlags: 0
@@ -4511,6 +4714,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672185331}
   m_CullTransparentMesh: 1
+--- !u!1 &685330412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685330413}
+  - component: {fileID: 685330415}
+  - component: {fileID: 685330414}
+  m_Layer: 0
+  m_Name: Conhecer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &685330413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685330412}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1072984546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &685330414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685330412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
+  conditions: []
+  extraActions:
+  - type: 0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: 
+    name: ouviu_barbeiro
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 685330412}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    componentType: 
+    name: ouviu_percevejo_marrom
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  startingPhrase: 'Conhecer sobre  '
+  NPCName: Barbeiro
+  startNode: Barbeiro_Conhecer
+  startAutomatic: 0
+  onDialogueFinished: []
+--- !u!135 &685330415
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685330412}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &704867868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4960,7 +5276,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece4178dcf106a428238df1ed9f9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
-  conditions: []
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: ouviu_percevejo_cama
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
   extraActions:
   - type: 1
     unityEvent:
@@ -5012,7 +5347,7 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 0}
-  itemName: item
+  itemName: Percevejo-De-Cama
   onLeavingInspecting:
   - type: 1
     unityEvent:
@@ -6163,6 +6498,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 685330413}
   - {fileID: 116814750}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6294,7 +6630,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece4178dcf106a428238df1ed9f9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
-  conditions: []
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: ouviu_percevejo_ass
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
   extraActions:
   - type: 1
     unityEvent:
@@ -6346,7 +6701,7 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 0}
-  itemName: item
+  itemName: Percevejo-Assassino
   onLeavingInspecting:
   - type: 1
     unityEvent:
@@ -6898,9 +7253,103 @@ MonoBehaviour:
   extraActions: []
   startingPhrase: 'Analisar '
   NPCName: Proboscide
-  startNode: DonaNeusa
+  startNode: PercevejoDeCama_Proboscide
   startAutomatic: 0
   onDialogueFinished: []
+--- !u!1 &1182356653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182356654}
+  - component: {fileID: 1182356655}
+  - component: {fileID: 1182356656}
+  m_Layer: 5
+  m_Name: FakeArrows
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1182356654
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182356653}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2146607601}
+  m_Father: {fileID: 654197634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1182356655
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182356653}
+  m_CullTransparentMesh: 1
+--- !u!114 &1182356656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182356653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: torres_questiona_prosseguir
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2146607600}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    componentType: 
+    name: barbeiro_casa
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  canRunAgain: 0
 --- !u!1 &1202506995
 GameObject:
   m_ObjectHideFlags: 0
@@ -7130,6 +7579,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261518539}
   m_CullTransparentMesh: 1
+--- !u!1 &1269141907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269141908}
+  - component: {fileID: 1269141910}
+  - component: {fileID: 1269141909}
+  m_Layer: 0
+  m_Name: Conhecer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269141908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269141907}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4192589133834884290}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269141909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269141907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
+  conditions: []
+  extraActions:
+  - type: 0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: 
+    name: ouviu_percevejo_cama
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1269141907}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    componentType: 
+    name: ouviu_percevejo_marrom
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  startingPhrase: 'Conhecer sobre  '
+  NPCName: Percevejo-De-Cama
+  startNode: PercevejoDeCama_Conhecer
+  startAutomatic: 0
+  onDialogueFinished: []
+--- !u!135 &1269141910
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269141907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1271469424
 GameObject:
   m_ObjectHideFlags: 0
@@ -7688,9 +8250,123 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1589734480}
   - {fileID: 1410205182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1391182922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391182923}
+  - component: {fileID: 1391182925}
+  - component: {fileID: 1391182924}
+  m_Layer: 0
+  m_Name: Conhecer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1391182923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391182922}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1755261105}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391182924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391182922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
+  conditions: []
+  extraActions:
+  - type: 0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: 
+    name: ouviu_percevejo_ass
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1391182922}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    componentType: 
+    name: ouviu_percevejo_marrom
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  startingPhrase: 'Conhecer sobre  '
+  NPCName: Percevejo-Assassino
+  startNode: PercevejoAssassino_Conhecer
+  startAutomatic: 0
+  onDialogueFinished: []
+--- !u!135 &1391182925
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391182922}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1398106325
 GameObject:
   m_ObjectHideFlags: 0
@@ -7902,7 +8578,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece4178dcf106a428238df1ed9f9d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
-  conditions: []
+  conditions:
+  - referenceType: 0
+    gameObjectReferenced: {fileID: 0}
+    componentType: 
+    functionName: ouviu_percevejo_marrom
+    functionParameter:
+      type: 0
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
   extraActions:
   - type: 1
     unityEvent:
@@ -7954,7 +8649,7 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 0}
-  itemName: item
+  itemName: Percevejo-Marrom
   onLeavingInspecting:
   - type: 1
     unityEvent:
@@ -8902,8 +9597,8 @@ MonoBehaviour:
   conditions: []
   extraActions: []
   startingPhrase: 'Analisar '
-  NPCName: Casco
-  startNode: DonaNeusa
+  NPCName: Tamanho
+  startNode: PercevejoAssassino_Tamanho
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!1 &1558559534
@@ -8924,7 +9619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1558559535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9173,6 +9868,119 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587709190}
   m_CullTransparentMesh: 1
+--- !u!1 &1589734479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589734480}
+  - component: {fileID: 1589734482}
+  - component: {fileID: 1589734481}
+  m_Layer: 0
+  m_Name: Conhecer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589734480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589734479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1389631686}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589734481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589734479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
+  conditions: []
+  extraActions:
+  - type: 0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: 
+    name: ouviu_percevejo_marrom
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 1
+      objectRefValue: {fileID: 0}
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1589734479}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    componentType: 
+    name: ouviu_percevejo_marrom
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  startingPhrase: 'Conhecer sobre  '
+  NPCName: Percevejo-Marrom
+  startNode: PercevejoMarrom_Conhecer
+  startAutomatic: 0
+  onDialogueFinished: []
+--- !u!135 &1589734482
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589734479}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1591622276
 GameObject:
   m_ObjectHideFlags: 0
@@ -9913,8 +10721,8 @@ MonoBehaviour:
   conditions: []
   extraActions: []
   startingPhrase: 'Analisar '
-  NPCName: Casco
-  startNode: DonaNeusa
+  NPCName: Tamanho
+  startNode: PercevejoDeCama_Tamanho
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!1 &1755261102
@@ -10005,6 +10813,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1391182923}
   - {fileID: 1126142551}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10196,7 +11005,7 @@ MonoBehaviour:
   extraActions: []
   startingPhrase: 'Analisar '
   NPCName: Proboscide
-  startNode: DonaNeusa
+  startNode: PercevejoAssassino_Proboscide
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!1 &1833528772
@@ -12187,7 +12996,7 @@ MonoBehaviour:
   extraActions: []
   startingPhrase: 'Analisar '
   NPCName: Proboscide
-  startNode: DonaNeusa
+  startNode: PercevejoMarrom_Proboscide
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!1 &2111000555
@@ -12387,6 +13196,169 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134974828}
+  m_CullTransparentMesh: 1
+--- !u!1 &2146607600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146607601}
+  - component: {fileID: 2146607605}
+  - component: {fileID: 2146607604}
+  - component: {fileID: 2146607603}
+  - component: {fileID: 2146607602}
+  m_Layer: 5
+  m_Name: DownArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2146607601
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146607600}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1182356654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 16}
+  m_SizeDelta: {x: 29.87378, y: 66.054}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &2146607602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146607600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e479534b054c9954db50756397a2e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DummyActionRunner
+  conditions: []
+  extraActions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: dialogue
+    name: 'StartDialogue(System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089): Yarn.Unity.YarnTask, YarnSpinner.Unity, Version=3.2.4.0,
+      Culture=neutral, PublicKeyToken=null'
+    assignOption: 0
+    value:
+      type: 3
+      intValue: 0
+      floatValue: 0
+      stringValue: ProsseguirAnaliseTorres
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+--- !u!114 &2146607603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146607600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2146607604}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2146607602}
+        m_TargetAssemblyTypeName: DummyActionRunner, Assembly-CSharp
+        m_MethodName: DummyRun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2146607604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146607600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 36f50d909b94ea5498a2dd1998db8f7a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2146607605
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146607600}
   m_CullTransparentMesh: 1
 --- !u!1 &429608649160187009
 GameObject:
@@ -13065,6 +14037,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1269141908}
   - {fileID: 810237601}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13393,6 +14366,7 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 232059374}
   - {fileID: 1558559538}
+  - {fileID: 654197634}
   - {fileID: 2556999305416181354}
   - {fileID: 4171901818234596264}
   - {fileID: 8860371441988281123}
@@ -13402,3 +14376,4 @@ SceneRoots:
   - {fileID: 1389631686}
   - {fileID: 1755261105}
   - {fileID: 1072984546}
+  - {fileID: 372820912}

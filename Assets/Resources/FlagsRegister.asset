@@ -47,3 +47,21 @@ MonoBehaviour:
     type: 0
   - name: percevejo_de_cama
     type: 0
+  - name: ouviu_barbeiro
+    type: 0
+  - name: ouviu_percevejo_marrom
+    type: 0
+  - name: ouviu_percevejo_cama
+    type: 0
+  - name: ouviu_percevejo_ass
+    type: 0
+  - name: conheceu_barbeiro
+    type: 0
+  - name: conheceu_percevejo_marrom
+    type: 0
+  - name: conheceu_percevejo_cama
+    type: 0
+  - name: conheceu_percevejo_ass
+    type: 0
+  - name: torres_questiona_prosseguir
+    type: 0

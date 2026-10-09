@@ -28,6 +28,11 @@ title: Flags
 <<declare $galinhas_alimentadas = false>>
 <<declare $dona_neusa_descansando = false>>
 <<declare $laboratorio = false>>
+<<declare $conheceu_barbeiro = false>>
+<<declare $conheceu_percevejo_ass = false>>
+<<declare $conheceu_percevejo_cama = false>>
+<<declare $conheceu_percevejo_marrom = false>>
+<<declare $torres_questiona_prosseguir = false>>
 ===
 
 title: Inventário
