@@ -25,19 +25,32 @@ public class CollectableCard : MonoBehaviour, IPointerClickHandler, IDragHandler
         canvas = GetComponentInParent<Canvas>();
     }
 
+    private void Start()
+    {
+        GameManager.instance.dialogue.onDialogueStart.AddListener(() => {
+            SetInteractable(false);
+            dampedFollower.following = true;
+            beingDraged = false;
+            OnDragStateChanged?.Invoke(beingDraged);
+        });
+    }
+
     public void OnPointerClick(PointerEventData eventData){
+        if(GameManager.instance.dialogue.IsDialogueRunning) return;
         if(beingDraged) return;
         Debug.Log($"Asking for notes on {nameText.text}.");
         InventoryManager.Instance.OpenCollectableNote(nameText.text);
     }
 
     public void OnBeginDrag(PointerEventData eventData){
+        if(GameManager.instance.dialogue.IsDialogueRunning) return;
         dampedFollower.following = false;
         beingDraged = true;
         OnDragStateChanged?.Invoke(beingDraged);
     }
 
     public void OnDrag(PointerEventData eventData){
+        if(GameManager.instance.dialogue.IsDialogueRunning) return;
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 

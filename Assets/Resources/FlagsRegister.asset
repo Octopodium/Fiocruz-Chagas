@@ -37,3 +37,13 @@ MonoBehaviour:
     type: 0
   - name: procurando_insetos
     type: 0
+  - name: maria_fedida
+    type: 0
+  - name: percevejo_assassino
+    type: 0
+  - name: barbeiro_casa
+    type: 0
+  - name: barbeiro_galinheiro
+    type: 0
+  - name: percevejo_de_cama
+    type: 0

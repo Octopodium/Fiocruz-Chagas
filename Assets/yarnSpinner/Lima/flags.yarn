@@ -1,18 +1,18 @@
 title: Notas
 ---
 <<declare $sinalDeRomana = true>>
-<<declare $barbeiroGalinheiro = false>>
-<<declare $barbeiroDaCasa = false>>
-<<declare $percevejoDeCama = false>>
+<<declare $barbeiro_galinheiro = false>>
+<<declare $barbeiro_casa = false>>
+<<declare $percevejo_de_cama = false>>
 <<declare $medico_da_cidade = false>>
-<<declare $percevejoAssassino = false>>
-<<declare $mariaFedida = false>>
+<<declare $percevejo_assassino = false>>
+<<declare $maria_fedida = false>>
 
 -> Sinal de Romaña <<if $sinalDeRomana>>
     Um inchaço na região do rosto, próximo ao olho.
--> Barbeiro do Galinheiro <<if $barbeiroGalinheiro>>
+-> Barbeiro do Galinheiro <<if $barbeiro_galinheiro>>
     Um barbeiro que encontrei no galinheiro, sua proboscide é reta e curta.
--> Maria Fedida <<if $percevejoDeCama>>
+-> Maria Fedida <<if $percevejo_de_cama>>
     Maria Fedida
 <<jump Notas>>
 ===

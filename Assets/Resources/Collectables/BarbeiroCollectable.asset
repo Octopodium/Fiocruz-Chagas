@@ -15,5 +15,5 @@ MonoBehaviour:
   collectableID: 100
   collectableName: Barbeiro
   description: Barbeiro de verdade
-  sprite: {fileID: 21300000, guid: 5736151b2a7e3bb4b878211916ab4f18, type: 3}
+  sprite: {fileID: 21300000, guid: 133718bd8018fe84c9cea3a2b9b4c395, type: 3}
   relatedFlag: has_barbeiro

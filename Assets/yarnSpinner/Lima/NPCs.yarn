@@ -28,9 +28,10 @@ position: 227,-312
     Dona Neusa: Nada disso.
     Dona Neusa: Não vou perder o dia que tenho para passar com meu filho querido indo ao médico.
     Dona Neusa: Deve ser pressão baixa. Vou me deitar um pouco, e daqui a pouco já devo estar melhor. 
-    <<set $dona_neusa_descansando = true>>
     <<fade_bg_image 1 2>>
     <<wait 2>>
+    <<set $dona_neusa_descansando = true>>
+    <<wait 1>>
     <<fade_bg_image 0 2>>
     <<wait 2>>
     <<set_characters false>>

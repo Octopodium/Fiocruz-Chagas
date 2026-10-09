@@ -28,13 +28,13 @@ position: 42,12
             Eu consigo ver algo no interior da parede...
             Acho que é algum tipo de percevejo.
             Não consigo alcançá-lo, mas consigo ver alguns detalhes. 
-            <<if $barbeiroGalinheiro>>
-                <<if $barbeiroDaCasa>>
+            <<if $barbeiro_galinheiro>>
+                <<if $barbeiro_casa>>
                     Parece ser o mesmo barbeiro que encontrei no galinheiro e atrás do retrato antigo.
                 <<else>>
                     Parece ser o mesmo barbeiro que encontrei no galinheiro.
                 <<endif>>
-            <<elseif $barbeiroDaCasa>>
+            <<elseif $barbeiro_casa>>
                 Parece ser o mesmo barbeiro que encontrei atrás do retrato antigo.
             <<else>>
                 Pode ser que eu encontre outro percevejo igual em outro local da casa...
@@ -44,21 +44,21 @@ position: 42,12
 -> Retrato antigo
     Uma foto antiga da minha mãe.
     Meu pai dizia que ela era a mulher mais bonita de Bambuí.
-    <<if $procurando_insetos and not $barbeiroDaCasa>>
-        -> Investigar <<if not $barbeiroDaCasa>>
+    <<if $procurando_insetos and not $barbeiro_casa>>
+        -> Investigar <<if not $barbeiro_casa>>
             A moldura do retrato parece ter uma cavidade na parte de trás...
             <<wait 1>>
             Tem um barbeiro aqui, escondido na moldura.
             -> Coletar com recipiente <<if $recipiente > 0>>
                 ...
                 <<wait 1>>
-                <<set $barbeiroDaCasa = true>>
+                <<set $barbeiro_casa = true>>
                 <<set $recipiente -= 1>>
                 Pronto.
                 <<detour InsetoColetado>>
             -> Voltar
         -> Voltar
-    <<elseif $barbeiroDaCasa>>
+    <<elseif $barbeiro_casa>>
         Foi aqui que encontrei o barbeiro.
     <<endif>>
 -> Janela
@@ -82,13 +82,13 @@ Pode ser que precise de manutenção...
         Eu consigo ver algo no interior da parede...
         Acho que é algum tipo de percevejo.
         Não consigo alcançá-lo, mas consigo ver alguns detalhes. 
-        <<if $barbeiroGalinheiro>>
-            <<if $barbeiroDaCasa>>
+        <<if $barbeiro_galinheiro>>
+            <<if $barbeiro_casa>>
                 Parece ser o mesmo barbeiro que encontrei no galinheiro e atrás do retrato antigo.
             <<else>>
                 Parece ser o mesmo barbeiro que encontrei no galinheiro.
             <<endif>>
-        <<elseif $barbeiroDaCasa>>
+        <<elseif $barbeiro_casa>>
             Parece ser o mesmo barbeiro que encontrei atrás do retrato antigo.
         <<else>>
             Pode ser que eu encontre outro percevejo igual em outro local da casa...
@@ -107,21 +107,21 @@ title: RetratoAntigo
 ---
 Uma foto antiga da minha mãe.
 Meu pai dizia que ela era a mulher mais bonita de Bambuí.
-<<if $procurando_insetos and not $barbeiroDaCasa>>
-    -> Investigar <<if not $barbeiroDaCasa>>
+<<if $procurando_insetos and not $barbeiro_casa>>
+    -> Investigar <<if not $barbeiro_casa>>
         A moldura do retrato parece ter uma cavidade na parte de trás...
         <<wait 1>>
         Tem um barbeiro aqui, escondido na moldura.
         -> Coletar com recipiente <<if $recipiente > 0>>
             ...
             <<wait 1>>
-            <<set $barbeiroDaCasa = true>>
+            <<set $barbeiro_casa = true>>
             <<set $recipiente -= 1>>
             Pronto.
             <<detour InsetoColetado>>
         -> Voltar
     -> Voltar
-<<elseif $barbeiroDaCasa>>
+<<elseif $barbeiro_casa>>
     Foi aqui que encontrei o barbeiro.
 <<endif>>
 ===
@@ -139,8 +139,8 @@ position: 330,267
         Vou podá-las mais tarde.
     <<else>>
         Parecem só algumas ervas inofensivas.
-        -> Investigar <<if not $mariaFedida or not $percevejoAssassino>>
-            <<if not $mariaFedida>>
+        -> Investigar <<if not $maria_fedida or not $percevejo_assassino>>
+            <<if not $maria_fedida>>
                 ...
                 <<wait 1>>
                 Tem algo no meio das folhas...
@@ -150,13 +150,13 @@ position: 330,267
                 -> Coletar com recipiente <<if $recipiente > 0>>
                     ...
                     <<wait 1>>
-                    <<set $mariaFedida = true>>
+                    <<set $maria_fedida = true>>
                     <<set $recipiente -= 1>>
                     Pronto.
                     <<detour InsetoColetado>>
                 -> Voltar
             <<endif>>
-            <<if not $percevejoAssassino>>
+            <<if not $percevejo_assassino>>
                 ?
                 Acho que tem mais alguma coisa aqui.
                 <<wait 2>>
@@ -164,7 +164,7 @@ position: 330,267
                 -> Coletar com recipiente <<if $recipiente > 0>>
                     ...
                     <<wait 1>>
-                    <<set $percevejoAssassino = true>>
+                    <<set $percevejo_assassino = true>>
                     <<set $recipiente -= 1>>
                     Pronto.
                     <<detour InsetoColetado>>
@@ -191,8 +191,8 @@ title: ErvaDaninha
     Vou podá-las mais tarde.
 <<else>>
     Parecem só algumas ervas inofensivas.
-    -> Investigar <<if not $mariaFedida or not $percevejoAssassino>>
-        <<if not $mariaFedida>>
+    -> Investigar <<if not $maria_fedida or not $percevejo_assassino>>
+        <<if not $maria_fedida>>
             ...
             <<wait 1>>
             Tem algo no meio das folhas...
@@ -202,13 +202,13 @@ title: ErvaDaninha
             -> Coletar com recipiente <<if $recipiente > 0>>
                 ...
                 <<wait 1>>
-                <<set $mariaFedida = true>>
+                <<set $maria_fedida = true>>
                 <<set $recipiente -= 1>>
                 Pronto.
                 <<detour InsetoColetado>>
             -> Voltar
         <<endif>>
-        <<if not $percevejoAssassino>>
+        <<if not $percevejo_assassino>>
             ?
             Acho que tem mais alguma coisa aqui.
             <<wait 2>>
@@ -216,7 +216,7 @@ title: ErvaDaninha
             -> Coletar com recipiente <<if $recipiente > 0>>
                 ...
                 <<wait 1>>
-                <<set $percevejoAssassino = true>>
+                <<set $percevejo_assassino = true>>
                 <<set $recipiente -= 1>>
                 Pronto.
                 <<detour InsetoColetado>>
@@ -277,14 +277,14 @@ Algumas galinhas estão cacarejando.
 -> Ninhos
     <<if $procurando_insetos>>
         À primeira vista, nada de diferente nesses ninhos.
-        -> Investigar <<if not $barbeiroGalinheiro>>
+        -> Investigar <<if not $barbeiro_galinheiro>>
             ...
             <<wait 1>>
             Oh!
             Tem um barbeiro escondido na palha do ninho.
             -> Capturar com recipiente <<if $recipiente > 0>>
                 <<wait 1>>
-                <<set $barbeiroGalinheiro = true>>
+                <<set $barbeiro_galinheiro = true>>
                 <<set $recipiente -= 1>>
                 Pronto.
                 <<detour InsetoColetado>>
