@@ -53,9 +53,10 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
     /// <returns>Returns an Coroutine that will end after the ambient is loaded and the previous one unloaded</returns>
     public IEnumerator GoToCoroutine(AmbientInfo info, FadeController.FadeOptions fadeOptions = FadeController.FadeOptions.FadeInOut) {
         if (loadingScene != null) yield break;
+        bool isSameAmbient = currentAmbient == info;
         
         Scene lastScene = currentScene.Value;
-        currentScene = null;
+        if (!isSameAmbient) currentScene = null;
 
         onBeforeChangingAmbient?.Invoke(info);
 
@@ -66,18 +67,25 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
         else if (fadeOptions == FadeController.FadeOptions.FadeOutOnly)
             UIManager.instance.fade.SetOnBlack();
         
-        currentAmbient = info;
-        loadingScene = SceneManager.LoadSceneAsync(info.sceneName, LoadSceneMode.Additive);   
 
-        while (!loadingScene.isDone) { 
-            onAmbientLoadingProgress?.Invoke(loadingScene.progress);
+        if (!isSameAmbient) {
+            currentAmbient = info;
+            loadingScene = SceneManager.LoadSceneAsync(info.sceneName, LoadSceneMode.Additive);   
+
+            while (!loadingScene.isDone) { 
+                onAmbientLoadingProgress?.Invoke(loadingScene.progress);
+                yield return null;
+            }
+        } else {
             yield return null;
         }
+
 
         onAmbientLoadingProgress?.Invoke(1f);
         loadingScene = null;
 
-        yield return UnloadSceneCoroutine(lastScene);
+        if (!isSameAmbient)
+            yield return UnloadSceneCoroutine(lastScene);
 
         onAfterChangingAmbient?.Invoke(info);
 

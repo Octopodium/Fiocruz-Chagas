@@ -45,6 +45,7 @@ public class CameraController : MonoBehaviour {
     void OnAmbientUnloading(AmbientInfo ambient) {
         cameraStack.Clear();
         onCurrentCameraAreaChange?.Invoke(null);
+        CinemachineCore.CameraActivatedEvent.RemoveListener(SetDefaultCameraDelayed);
     }
 
     async void OnAmbientLoaded(AmbientInfo ambient) {
