@@ -1175,7 +1175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.6875
+      value: -56.375
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.4375
+      value: -13.124999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6148,7 +6148,28 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 11400000, guid: effcfadbbed41384ea7daafc069331e1, type: 2}
-  extraConditions: []
+  extraConditions:
+  - referenceType: 3
+    gameObjectReferenced: {fileID: 0}
+    componentType: inventory
+    functionName: 'InventoryContainsCollectable(Collectable, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089'
+    functionParameter:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: effcfadbbed41384ea7daafc069331e1, type: 2}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
   canRunAgain: 0
 --- !u!1001 &750162663
 PrefabInstance:
@@ -13601,7 +13622,28 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 11400000, guid: 14dfee4d793b81a45862a98aa1dc0a24, type: 2}
-  extraConditions: []
+  extraConditions:
+  - referenceType: 3
+    gameObjectReferenced: {fileID: 0}
+    componentType: inventory
+    functionName: 'InventoryContainsCollectable(Collectable, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null): System.Boolean, mscorlib, Version=4.0.0.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089'
+    functionParameter:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 14dfee4d793b81a45862a98aa1dc0a24, type: 2}
+    compareOptions: 0
+    compareValue:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
   canRunAgain: 0
 --- !u!114 &1779298239
 MonoBehaviour:
