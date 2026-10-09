@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioEmitter : MonoBehaviour
@@ -5,6 +6,10 @@ public class AudioEmitter : MonoBehaviour
     [SerializeField] private AudioEvent audioEvent;
 
     [SerializeField] private bool playOnStart = true;
+
+    [SerializeField] private bool playOnlyOnce = false;
+    // Temp fix
+    static HashSet<AudioEvent> alreadyPlayed = new HashSet<AudioEvent>();
 
     private AudioHandle handle;
 
@@ -16,7 +21,9 @@ public class AudioEmitter : MonoBehaviour
 
     public void Play()
     {
+        if (playOnlyOnce && alreadyPlayed.Contains(audioEvent)) return;
         handle = AudioService.Instance.Play(audioEvent);
+        if (playOnlyOnce) alreadyPlayed.Add(audioEvent);
     }
 
     public void Pause()

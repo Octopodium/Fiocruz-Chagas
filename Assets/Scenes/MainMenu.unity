@@ -9071,6 +9071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioEmitter
   audioEvent: {fileID: 11400000, guid: c562b937071c67847be3c3884b6d9ded, type: 2}
   playOnStart: 1
+  playOnlyOnce: 1
 --- !u!4 &1697866946
 Transform:
   m_ObjectHideFlags: 0
