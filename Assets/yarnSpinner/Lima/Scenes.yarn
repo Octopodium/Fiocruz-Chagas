@@ -4,7 +4,7 @@ position: 42,12
 -> Sua cama
     É a minha cama. O colchão é confortável e relativamente novo, apesar de pequeno.
     A mãe deve ter comprado pouco antes de eu chegar...
-    <<if $procurandoInsetos>>
+    <<if $procurando_insetos>>
         -> Investigar
             <<jump InvestigarCama>>
         -> Voltar
@@ -12,7 +12,7 @@ position: 42,12
     <<endif>>
 -> Cama da Dona Neusa
     É a cama da mãe. O colchão já tem uns furos e está até manchado... Vou comprar um novo para ela no Natal.
-    <<if $procurandoInsetos>>
+    <<if $procurando_insetos>>
         -> Investigar
             <<jump CamaDaDonaNeusaInvestigação>>
         -> Voltar
@@ -21,7 +21,7 @@ position: 42,12
 -> Parede lascada
     Lembro de brincar de esconder botões nos furinhos das paredes quando era pequeno, mas não me lembro de os buracos serem tão grandes.
     Pode ser que precise de manutenção...
-    <<if $procurandoInsetos>>
+    <<if $procurando_insetos>>
         -> Investigar
             ...
             <<wait 1>>
@@ -44,7 +44,7 @@ position: 42,12
 -> Retrato antigo
     Uma foto antiga da minha mãe.
     Meu pai dizia que ela era a mulher mais bonita de Bambuí.
-    <<if $procurandoInsetos and not $barbeiroDaCasa>>
+    <<if $procurando_insetos and not $barbeiroDaCasa>>
         -> Investigar <<if not $barbeiroDaCasa>>
             A moldura do retrato parece ter uma cavidade na parte de trás...
             <<wait 1>>
@@ -75,7 +75,7 @@ title: ParedeLascada
 ---
 Lembro de brincar de esconder botões nos furinhos das paredes quando era pequeno, mas não me lembro de os buracos serem tão grandes.
 Pode ser que precise de manutenção...
-<<if $procurandoInsetos>>
+<<if $procurando_insetos>>
     -> Investigar
         ...
         <<wait 1>>
@@ -107,7 +107,7 @@ title: RetratoAntigo
 ---
 Uma foto antiga da minha mãe.
 Meu pai dizia que ela era a mulher mais bonita de Bambuí.
-<<if $procurandoInsetos and not $barbeiroDaCasa>>
+<<if $procurando_insetos and not $barbeiroDaCasa>>
     -> Investigar <<if not $barbeiroDaCasa>>
         A moldura do retrato parece ter uma cavidade na parte de trás...
         <<wait 1>>
@@ -134,7 +134,7 @@ position: 330,267
 -> Porta de casa
     <<jump Casa>>
 -> Ervas-daninhas
-    <<if not $procurandoInsetos>>
+    <<if not $procurando_insetos>>
         Tem algumas ervas surgindo aqui.
         Vou podá-las mais tarde.
     <<else>>
@@ -174,14 +174,56 @@ position: 330,267
     <<endif>>
 -> Senhor Nelson <<if $descansando>>
     <<jump SenhorNelson>>
--> Cidade <<if $medicoDaCidade>>
-    <<if $procurandoInsetos and $insetosColetados < 5>>
+-> Cidade <<if $medico_da_cidade>>
+    <<if $procurando_insetos and $insetosColetados < 5>>
         É melhor eu procurar mais alguns insetos antes de falar com o doutor.
         <<jump ExteriorDaCasa>>
     <<endif>>
     <<wait 3>>
     <<jump Cidade>>
 <<jump ExteriorDaCasa>>
+===
+
+title: ErvaDaninha
+---
+<<if not $procurando_insetos>>
+    Tem algumas ervas surgindo aqui.
+    Vou podá-las mais tarde.
+<<else>>
+    Parecem só algumas ervas inofensivas.
+    -> Investigar <<if not $mariaFedida or not $percevejoAssassino>>
+        <<if not $mariaFedida>>
+            ...
+            <<wait 1>>
+            Tem algo no meio das folhas...
+            <<wait 1>>
+            Oh,
+            um percevejo-marrom em cima de uma folha.
+            -> Coletar com recipiente <<if $recipiente > 0>>
+                ...
+                <<wait 1>>
+                <<set $mariaFedida = true>>
+                <<set $recipiente -= 1>>
+                Pronto.
+                <<detour InsetoColetado>>
+            -> Voltar
+        <<endif>>
+        <<if not $percevejoAssassino>>
+            ?
+            Acho que tem mais alguma coisa aqui.
+            <<wait 2>>
+            Um percevejo-assassino escondido na folhagem...
+            -> Coletar com recipiente <<if $recipiente > 0>>
+                ...
+                <<wait 1>>
+                <<set $percevejoAssassino = true>>
+                <<set $recipiente -= 1>>
+                Pronto.
+                <<detour InsetoColetado>>
+            -> Voltar
+        <<endif>>
+    -> Voltar
+<<endif>>
 ===
 
 title: Galinheiro
@@ -196,7 +238,7 @@ Está escuro aqui dentro...
 Algumas galinhas estão cacarejando. 
 <<endonce>>
 -> Galinhas
-    <<if $procurandoInsetos>>
+    <<if $procurando_insetos>>
         As galinhas pareciam completamente normais mais cedo...
         -> Investigar
             ...
@@ -221,7 +263,7 @@ Algumas galinhas estão cacarejando.
         Pronto.
         As galinhas já estão se agrupando ao redor da comida.
         Melhor eu deixá-las comer em paz e avisar à minha mãe que está feito.
-    <<elseif $procurandoInsetos>>
+    <<elseif $procurando_insetos>>
         O comedouro já está quase vazio.
         -> Investigar
             ...
@@ -233,7 +275,7 @@ Algumas galinhas estão cacarejando.
     <<endif>>
     <<jump Galinheiro>>
 -> Ninhos
-    <<if $procurandoInsetos>>
+    <<if $procurando_insetos>>
         À primeira vista, nada de diferente nesses ninhos.
         -> Investigar <<if not $barbeiroGalinheiro>>
             ...
@@ -261,7 +303,7 @@ Algumas galinhas estão cacarejando.
 
 title: Cidade
 ---
-<<if $procurandoInsetos and $insetosColetados < 5>>
+<<if $procurando_insetos and $insetosColetados < 5>>
     É melhor eu procurar mais alguns insetos antes de falar com o doutor.
     <<stop>>
 <<endif>>
@@ -304,7 +346,7 @@ Doutor Torres: É você que procura por mim?
     -> Será um prazer
     -> Claro
     Doutor Torres: Perfeito. Vamos para o meu laboratório, então.
-    <<jump Laboratório>>
+    <<set $laboratorio = true>>
 <<endif>>
 ===
 

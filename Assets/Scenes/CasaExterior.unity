@@ -1708,6 +1708,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 167994237742680043, guid: d1777167ea3ec4c449df00c350fdad14, type: 3}
   m_PrefabInstance: {fileID: 204756369}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &219736018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1779298235}
+    m_Modifications:
+    - target: {fileID: 8431624567854715150, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_Name
+      value: Erva
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.099586114
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.10788496
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08298843
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99811345
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.061396994
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 7.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+--- !u!4 &219736019 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
+  m_PrefabInstance: {fileID: 219736018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &243544776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6491236
+      value: -1.453
       objectReference: {fileID: 0}
     - target: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2227,7 +2301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.686323
+      value: -6.045
       objectReference: {fileID: 0}
     - target: {fileID: 3610076367313083789, guid: cc85ba5e7f2820c4b9d29f8ff8d4a684, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7388,6 +7462,7 @@ Transform:
   - {fileID: 1718551629}
   - {fileID: 422724650}
   - {fileID: 2014700632}
+  - {fileID: 1779298235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &970577880
@@ -12417,6 +12492,7 @@ GameObject:
   - component: {fileID: 1685692963}
   - component: {fileID: 1685692964}
   - component: {fileID: 1685692965}
+  - component: {fileID: 1685692966}
   m_Layer: 0
   m_Name: "Transi\xE7\xE3o"
   m_TagString: Untagged
@@ -12584,6 +12660,43 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 0}
+  canRunAgain: 0
+--- !u!114 &1685692966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685692959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: laboratorio
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: navigation
+    name: 'GoTo(AmbientInfo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null):
+      System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 9f6a844fc120dff46a9eeee1a8916df4, type: 2}
   canRunAgain: 0
 --- !u!1001 &1699116452
 PrefabInstance:
@@ -13291,6 +13404,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9099792924406680500, guid: 4ce7aeaa6b1c7c34d94dacdc7686a5e4, type: 3}
   m_PrefabInstance: {fileID: 1767363190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1779298234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1779298235}
+  - component: {fileID: 1779298237}
+  - component: {fileID: 1779298236}
+  m_Layer: 0
+  m_Name: ErvaDaninha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1779298235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779298234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.225, y: 0.69629, z: -6.514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 219736019}
+  m_Father: {fileID: 970577879}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1779298236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779298234}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1779298237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779298234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787910217f67c674f8f6de7e2aa00db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenDialogue
+  conditions: []
+  extraActions: []
+  NPCName: Erva Daninha
+  startNode: ErvaDaninha
+  startAutomatic: 0
+  onDialogueFinished: []
 --- !u!1001 &1784695349
 PrefabInstance:
   m_ObjectHideFlags: 0

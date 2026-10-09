@@ -33,3 +33,7 @@ MonoBehaviour:
     type: 0
   - name: galinhas_alimentadas
     type: 0
+  - name: laboratorio
+    type: 0
+  - name: procurando_insetos
+    type: 0

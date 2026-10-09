@@ -19,7 +19,7 @@ title: Notas
 
 title: Flags
 ---
-<<declare $procurandoInsetos = false>>
+<<declare $procurando_insetos = false>>
 <<declare $suspeita = 0>>
 <<declare $conheceProboscide = false>>
 <<declare $conhecimento = 0>>
@@ -27,10 +27,11 @@ title: Flags
 <<declare $surpresa = false>>
 <<declare $galinhas_alimentadas = false>>
 <<declare $dona_neusa_descansando = false>>
+<<declare $laboratorio = false>>
 ===
 
 title: Inventário
 ---
 <<declare $recipiente = 0>>
-<<declare $insetosColetados = 0>>
+<<declare $insetosColetados = 5>>
 ===
