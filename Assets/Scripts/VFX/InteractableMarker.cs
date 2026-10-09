@@ -58,6 +58,16 @@ public class InteractableMarker : MonoBehaviour
         }
     }
 
+    void OnDestroy() {
+        if (this == null || gameObject == null) return;
+        interactables = transform.parent.GetComponents<IUnderMouse>();
+        foreach (IUnderMouse interactable in interactables) {
+            if (interactable == null) continue;
+            interactable.OnHover -= HandleInteractableHoverChanged;
+            interactable.OnInteracted -= HandleInteractableInteracted;
+        }
+    }
+
     public void RefreshVisibility(bool isInteractable) {
         foreach (IUnderMouse interactable in interactables) {
             if (!interactable.CanBeFound() || !interactable.CheckConditions() || !interactable.enabled || !GameManager.instance.player.CanInteract()) continue;
