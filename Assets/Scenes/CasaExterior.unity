@@ -6092,7 +6092,7 @@ MonoBehaviour:
   extraActions: []
   startingPhrase: 'Inspecionar '
   NPCName: galinheiro
-  startNode: Galinheiro
+  startNode: GalinheiroIntro
   startAutomatic: 0
   onDialogueFinished: []
 --- !u!114 &749383103

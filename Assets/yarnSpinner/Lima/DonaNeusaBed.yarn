@@ -17,7 +17,7 @@ title: CamaDaDonaNeusaInvestigação
     <<wait 1>>
     Nada aqui.
     <<jump CamaDaDonaNeusaInvestigação>>
--> Colchão <<if not $percevejoDeCama>>
+-> Colchão <<if not $percevejo_de_cama>>
     ...
     <<wait 1>>
     ?
@@ -26,7 +26,7 @@ title: CamaDaDonaNeusaInvestigação
     Um percevejo-de-cama.
     -> Coletar <<if $recipiente > 0>>
         <<wait 1>>
-        <<set $percevejoDeCama = true>>
+        <<set $percevejo_de_cama = true>>
         <<set $recipiente -= 1>>
         Pronto.
         <<detour InsetoColetado>>
