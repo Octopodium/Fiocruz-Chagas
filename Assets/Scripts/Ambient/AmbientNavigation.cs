@@ -41,6 +41,10 @@ public class AmbientNavigation : MonoBehaviour, ISaveable {
         StartCoroutine(GoToCoroutine(info, fadeOptions));
     }
 
+    public void GoTo(AmbientInfo info) {
+        StartCoroutine(GoToCoroutine(info, FadeController.FadeOptions.FadeInOut));
+    }
+
     /// <summary>
     /// Changes current ambient and unloads previous one.
     /// </summary>

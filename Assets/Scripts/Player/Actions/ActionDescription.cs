@@ -279,7 +279,6 @@ public class ActionDescriptionDrawer : PropertyDrawer {
 
         container.TrackPropertyValue(componentProperty, RebuildUI);
 
-
         return container;
     }
 
@@ -300,6 +299,7 @@ public class ActionDescriptionDrawer : PropertyDrawer {
             functionField = CreatePopup(property, functionProperty, data);
         } else {
             functionField = CreatePopup(property, functionProperty, new SortedDictionary<string, object> {{"No valid function", ""}});
+            functionProperty.stringValue = "";
             functionField.SetEnabled(false);
         }
 
@@ -359,7 +359,7 @@ public class ActionDescriptionDrawer : PropertyDrawer {
         int defaultIndex = Mathf.Max(0, choices.Values.ToList().FindIndex(x => object.Equals(x,property.boxedValue)));
         PopupField<string> dropdown = new PopupField<string>(
             choices: choices.Keys.ToList(),
-            defaultIndex: Mathf.Max(0, choices.Values.ToList().FindIndex(x => object.Equals(x,property.boxedValue)))
+            defaultIndex: defaultIndex
         );
 
         dropdown.RegisterValueChangedCallback(evt => {
