@@ -430,9 +430,17 @@ PrefabInstance:
       value: -134.759
       objectReference: {fileID: 0}
     - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
-      propertyPath: spriteLibrary.Array.data[1].sprite
+      propertyPath: spriteLibrary.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: spriteLibrary.Array.data[9].id
+      value: placeholder_character
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436450094204711078, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
+      propertyPath: spriteLibrary.Array.data[9].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d1df53853b71db442922b1ca4040e403, type: 3}
+      objectReference: {fileID: 21300000, guid: 0193ec93f48cfb34a97b97423cb0f2fe, type: 3}
     - target: {fileID: 3746195584026304087, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: field of view
       value: 60
@@ -6718,7 +6726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1831626101
 Transform:
   m_ObjectHideFlags: 0

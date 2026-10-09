@@ -3047,7 +3047,7 @@ MonoBehaviour:
   - id: background_placeholder
     sprite: {fileID: 21300000, guid: 1134b953967be5f42ab410d8643d2db7, type: 3}
   - id: dona_neusa
-    sprite: {fileID: 21300000, guid: 8b95241c9000c8740ab5a24c14b488ad, type: 3}
+    sprite: {fileID: 21300000, guid: d1df53853b71db442922b1ca4040e403, type: 3}
   - id: doutor_torres
     sprite: {fileID: 21300000, guid: 93ceac8b5fe80084cb3573c98b51c4d0, type: 3}
   - id: textBox
@@ -3059,7 +3059,7 @@ MonoBehaviour:
   - id: blank
     sprite: {fileID: 21300000, guid: 3a75fc1687c34b243843f06a3291c40c, type: 3}
   - id: hospital
-    sprite: {fileID: 21300000, guid: 1134b953967be5f42ab410d8643d2db7, type: 3}
+    sprite: {fileID: 21300000, guid: 9b0854ddb4540ff468b9c90cac4b6f76, type: 3}
   - id: recepcionista
     sprite: {fileID: 21300000, guid: d17009816d10c9c41b4f63508b92255b, type: 3}
   defaultBackgroundActive: 0

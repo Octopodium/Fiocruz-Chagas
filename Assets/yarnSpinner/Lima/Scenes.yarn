@@ -73,7 +73,7 @@ position: 42,12
 
 title: ParedeLascada
 ---
-Lembro de brincar de esconder botões nos furinhos das paredes quando era pequeno, mas não me lembro de os buracos serem tão grandes.
+Não me lembro de os buracos nas paredes serem tão grandes.
 Pode ser que precise de manutenção...
 <<if $procurando_insetos>>
     -> Investigar
@@ -321,10 +321,11 @@ Recepcionista: Boa tarde, senhor. Como posso ajudá-lo?
 Recepcionista: O Doutor Torres?
 Recepcionista: Isso pode ser um pouco complicado, ele acaba de receber um caso.
 Recepcionista: Ele disse que visitará o paciente em casa e não sabe quando retorna.
-<<set_characters true recepcionista doutor_torres>>
 Doutor Torres: Estão falando de mim?
 Recepcionista: Doutor!
 Recepcionista: Já está de saída?
+<<wait 1>>
+<<set_characters true blank doutor_torres>>
 Doutor Torres: Estou sim, mas ouvi meu nome e pensei em ver o que era.
 Doutor Torres: É você que procura por mim?
 <<jump DoutorTorres>>
@@ -337,8 +338,7 @@ Doutor Torres: É você que procura por mim?
     Vou aguardar.
     <<wait 3>>
     <<set_characters true blank doutor_torres>>
-    Doutor Torres: Finalmente.
-    Doutor Torres: Demorei bem mais do que esperava, e a estrada certamente não ajudou com a minha pressa.
+    Doutor Torres: Finalmente, estou de volta.
     Doutor Torres: Hm-
     Doutor Torres: Ah, vejo que você conseguiu coletar alguns espécimes diferentes.
     Doutor Torres: Excelente, podemos iniciar a análise imediatamente!
@@ -346,6 +346,7 @@ Doutor Torres: É você que procura por mim?
     -> Será um prazer
     -> Claro
     Doutor Torres: Perfeito. Vamos para o meu laboratório, então.
+    <<wait 1>>
     <<set $laboratorio = true>>
 <<endif>>
 ===
@@ -353,10 +354,13 @@ Doutor Torres: É você que procura por mim?
 title: Laboratório
 ---
 Doutor Torres: Certo. Antes de tudo, devemos fazer uma análise mais apurada de cada espécime.
-Doutor Torres: Dessa maneira, podemos observar características anatômicas que revelem informações cruciais sobre cada inseto.
-Doutor Torres: Muito sobre um animal pode ser aprendido através da análise morfológica.
-Doutor Torres: Isso vai facilitar a identificação do inseto e, no nosso caso, pode auxiliar na identificação de possíveis vetores.
-Doutor Torres: Tomei a liberdade de sedá-los, então não se preocupe, não existe risco de que eles fujam.
+Doutor Torres: Muito sobre um animal pode ser aprendido através da análise morfológica!
+Doutor Torres: Neste processo, nós avaliamos a forma física dos organismos vivos, buscando entender a funcionalidade e o desempenho de um animal com base na sua estrutura física.
+Doutor Torres: Dessa maneira, vamos observar características anatômicas que revelem informações cruciais sobre cada inseto.
+Doutor Torres: Isso vai facilitar a identificação do inseto e, no nosso caso, pode auxiliar na identificação dos provaveis vetores da infecção.
+Doutor Torres: Tomei a liberdade de sedá-los, então não se preocupe, não existe risco de que eles fujam ou se tornem agressivos.
 Doutor Torres: Vamos começar colocando os insetos, de maneira segura, na bancada, onde poderemos observá-los com calma.
+<<fade_bg_image 0 2>>
+<<wait 2>>
 <<jump AnaliseMorfologica>>
 ===

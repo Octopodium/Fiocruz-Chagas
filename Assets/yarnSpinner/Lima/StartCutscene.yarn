@@ -2,12 +2,12 @@ title: Despertar
 position: -561,-240
 ---
 <<set_background true black>>
-<<wait 4>>
+<<wait 2>>
 Grilos criquitam do lado de fora.
 Dona Neusa: Ah, você já acordou?
 -> Abrir os olhos
 Dona Neusa: Bom dia, querido!
-<<fade_bg_image 0.2 2>>
+<<fade_bg_image 0.3 2>>
 <<wait 2>>
 <<set_characters true blank dona_neusa>>
 Dona Neusa: Dormiu bem?

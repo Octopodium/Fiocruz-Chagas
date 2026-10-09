@@ -32,7 +32,7 @@ position: 227,-312
     <<wait 2>>
     <<set $dona_neusa_descansando = true>>
     <<wait 1>>
-    <<fade_bg_image 0 2>>
+    <<fade_bg_image 0.3 2>>
     <<wait 2>>
     <<set_characters false>>
     <<wait 1>>
@@ -67,9 +67,9 @@ position: 227,-312
 title: SenhorNelson
 ---
 <<set_background true black 0.3>>
-<<set_characters true blank doutor_torres>> // sprite placeholder, precisa ser trocado pelo senhor nelson assim que possivel.
-Senhor Nelson: Hm?
+<<set_characters true placeholder_character blank>> // sprite placeholder, precisa ser trocado pelo senhor nelson assim que possivel.
 <<once>>
+Senhor Nelson: Hm?
 Opa, Senhor Nelson?
 Senhor Nelson: Ah, menino, é você?
 Senhor Nelson: Mal te reconheci, você ficou tão grande!
@@ -110,9 +110,8 @@ title: DoutorTorres
 <<once>>
 <<set_characters true blank doutor_torres>>
 Gostaria da sua ajuda.
-Doutor Torres: Bom, como pode perceber, eu estou de saída. Se você precisa de atendimento médico, não poderei ajudar agora.
-Doutor Torres: Entretanto, posso te aconselhar ou indicar um colega que possa.
-Acho que minha mãe está doente. Neste momento ela está descansando, mas tem apresentado sintomas estranhos a manhã toda.
+Doutor Torres: Bom, como pode perceber, eu estou de saída. Mas posso ajudar se for coisa rápida.
+Acho que minha mãe está doente, ela tem apresentado sintomas estranhos a manhã toda.
 <<endonce>>
 -> Inchaço em um olho só <<once if $sinalDeRomana>>
     Doutor Torres: Houve alguma reclamação de dor no inchaço?
@@ -132,16 +131,15 @@ Acho que minha mãe está doente. Neste momento ela está descansando, mas tem a
     Doutor Torres: Observou mais alguma coisa?
     <<jump DoutorTorres>>
 <<endif>>
-Doutor Torres: Pelo que você me relatou, estes sintomas se assemelham aos da paciente que estou indo ver.
+Doutor Torres: Estes sintomas se assemelham aos da paciente que estou indo ver...
 Doutor Torres: Aonde fica a sua casa?
 Na direção de Luz e do Córrego Danta.
 Doutor Torres: Hmm...
 Doutor Torres: Será que...?
 Doutor Torres: Não, não posso dizer nada com certeza ainda.
-Doutor Torres: Veja bem, eu não posso visitar a sua mãe neste momento. Avisei à família que veria a filha deles ainda esta tarde.
-Doutor Torres: Contudo, existe algo que você pode fazer que pode ajudar a sua mãe, minha paciente e possivelmente toda Bambuí.
-Doutor Torres: Eu acredito que estamos lidando com uma infecção oriunda de insetos.
-Doutor Torres: Dada a proximidade de ambos os casos e a região de mata, além dos sintomas relatados, tenho motivos suficientes para considerar a existência de um vetor animal.
+Doutor Torres: Veja bem, eu não posso visitar a sua mãe neste momento.
+Doutor Torres: Avisei à família da garota que veria a filha deles ainda esta tarde.
+Doutor Torres: Dada a proximidade de ambos os casos da região de mata, e dos sintomas relatados, acredito ter motivos suficientes para considerar a existência de um vetor animal.
 Doutor Torres: Mas não quero tirar conclusões precipitadas.
 Doutor Torres: Eu teria de investigar os domicílios e procurar por sinais de insetos que possam ter entrado em contato com os pacientes...
 Doutor Torres: Mas não terei tempo de conduzir uma procura detalhada ainda hoje...
@@ -150,20 +148,24 @@ Doutor Torres: Mas não terei tempo de conduzir uma procura detalhada ainda hoje
 Doutor Torres: Oh!
 Doutor Torres: Hmm...
 Doutor Torres: Certo. Isso vai nos permitir reagir mais rapidamente a uma possível epidemia e prevenir que mais pessoas sejam infectadas.
+Doutor Torres: O foco da sua investigação deve ser a sua casa e os arredores imediatos, o peridomicílio.
 Doutor Torres: Eu preciso que você colete qualquer inseto que possa ter tido contato direto com sua mãe.
-Doutor Torres: O foco da sua investigação deve ser a sua casa e os arredores imediatos. Ambientes que sua mãe visita com frequência.
-Doutor Torres: Mas tome cuidado! Se os insetos encontrados podem de fato transmitir uma doença, você deve evitar contato direto com eles.
-Doutor Torres: Vou te dar alguns recipientes de vidro. Eles vão permitir que você colete os insetos para análise sem se pôr em risco.
+Doutor Torres: Mas tome cuidado!
+Doutor Torres: Se estamos de fato lidando com uma infecção transmitida por insetos, você deve evitar ao máximo contato direto com eles!
+Doutor Torres: Afinal de contas, a ultima coisa que nós precisamos é de um terceiro enfermo.
+Doutor Torres: Vou te dar alguns recipientes de vidro. Utilize eles para capturar os insetos vivos, de maneira segura.
+Doutor Torres: Você pode utilizar um pano, ou a propria tampa do recipiente, para realizar a captura.
+Doutor Torres: O importante é traser o inseto com vida para a identificação adequada em laboratório.
 <<set $recipiente = 5>>
 <<wait 1>>
-Doutor Torres: Espero retornar no final da tarde. Então traga os espécimes coletados para conduzirmos uma análise mais aprofundada.
+Doutor Torres: Espero estar de volta no fim da tarde. Assim que terminar sua procura, me aguarde com os recipientes aqui mesmo.
 -> Obrigado
     Doutor Torres: Eu que agradeço a sua disposição para ajudar. 
 -> Pode deixar comigo
     Doutor Torres: Seu esforço para ajudar é muito bem-vindo.
     Doutor Torres: Agradeço pela disposição. Sua mãe certamente tem muito orgulho de você.
-Doutor Torres: Bom, eu preciso tomar meu rumo agora.
-Doutor Torres: Até mais tarde!
+Doutor Torres: Bom, eu preciso tomar meu rumo.
+Doutor Torres: Até mais tarde e boa sorte!
 <<set_characters false>>
 <<wait 1>>
 É melhor eu voltar logo e começar a procurar...
