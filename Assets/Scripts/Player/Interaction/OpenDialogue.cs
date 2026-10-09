@@ -5,6 +5,7 @@ using Yarn.Unity;
 /// Interactable that triggers a dialogue when interacted.
 /// </summary>
 public class OpenDialogue : IInteractable {
+    [SerializeField] private string startingPhrase = "Conversar com "; //temp
     [SerializeField] private string NPCName = "Dona Neuza"; //temp
     [SerializeField] private string startNode = "TestAnaScript"; //temp
     [SerializeField] private bool startAutomatic = false;
@@ -18,7 +19,7 @@ public class OpenDialogue : IInteractable {
     }
 
     public override string GetHoverText() {
-        return "Conversar com " + NPCName;
+        return startingPhrase + NPCName;
     }
     
     public override void HandleInteract() => StartDialogue();

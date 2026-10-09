@@ -117,6 +117,7 @@ public class ItemInspectator : MonoBehaviour {
     /// </summary>
     void CheckForMovement() {
         if (!inspecting || !Mouse.current.leftButton.isPressed || currentInspectable == null) return;
+        if (GameManager.instance.dialogue.IsDialogueRunning) return;
         Vector2 delta = Mouse.current.delta.ReadValue();
 
         currentInspectable.transform.Rotate(-Camera.main.transform.up, delta.x * rotateSpeed, Space.World);
@@ -128,6 +129,7 @@ public class ItemInspectator : MonoBehaviour {
     /// If on the Inspectable, sets 'inspecting' as true. If on the leave trigger, calls currentInspectable 'SetBeingInspected' with false.
     /// </summary>
     void CheckIfClickOnInspectable() {
+        if (GameManager.instance.dialogue.IsDialogueRunning) return;
         GameObject underMouse = GameManager.instance.cam.CheckUnderMouse(out IUnderMouse _);
         inspecting = underMouse != null && IsPartOfInspectable(underMouse);
 

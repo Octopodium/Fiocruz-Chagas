@@ -50,7 +50,7 @@ public abstract class IUnderMouse: MonoBehaviour{
         Vector3 positionOffset = settings != null ? settings.positionOffset : Vector3.zero;
         positionOffset = transform.TransformVector(positionOffset);
 
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.yellow * new Color(1.0f, 1.0f, 1.0f, 0.25f);
         Gizmos.DrawSphere(transform.position + positionOffset, 0.5f * (settings != null ? settings.scale : 1));
     }
 }

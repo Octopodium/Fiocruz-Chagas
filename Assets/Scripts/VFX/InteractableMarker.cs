@@ -60,7 +60,7 @@ public class InteractableMarker : MonoBehaviour
 
     public void RefreshVisibility(bool isInteractable) {
         foreach (IUnderMouse interactable in interactables) {
-            if (!interactable.CanBeFound() || !interactable.CheckConditions() || !GameManager.instance.player.CanInteract()) continue;
+            if (!interactable.CanBeFound() || !interactable.CheckConditions() || !interactable.enabled || !GameManager.instance.player.CanInteract()) continue;
 
             if ((interactable is IInteractable && isInteractable) || !(interactable is IInteractable || isInteractable) ) {
                 SetVisibility(true);
