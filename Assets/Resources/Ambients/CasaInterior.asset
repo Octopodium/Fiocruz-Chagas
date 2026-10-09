@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6ee55abe08b314faa054e28f5bea93, type: 3}
   m_Name: CasaInterior
   m_EditorClassIdentifier: Assembly-CSharp::AmbientInfo
-  ambientName: Casa Interior
+  ambientName: interior da casa
   sceneAsset: {fileID: 102900000, guid: 5e2ee83f15af7b44e862cb629e9a175a, type: 3}
   sceneName: CasaInterna

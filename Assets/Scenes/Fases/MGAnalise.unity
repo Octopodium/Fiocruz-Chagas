@@ -4066,7 +4066,7 @@ GameObject:
   - component: {fileID: 553561136}
   - component: {fileID: 553561135}
   - component: {fileID: 553561134}
-  - component: {fileID: 553561139}
+  - component: {fileID: 553561137}
   m_Layer: 0
   m_Name: Proboscide
   m_TagString: Untagged
@@ -4083,7 +4083,7 @@ Transform:
   m_GameObject: {fileID: 553561132}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3783042, y: -0, z: -0, w: 0.92568135}
-  m_LocalPosition: {x: -0.024233459, y: 0.0812, z: 0.6507}
+  m_LocalPosition: {x: -0.024233459, y: 0.0801, z: 0.657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4149,8 +4149,8 @@ MonoBehaviour:
   startNode: Barbeiro_Proboscide
   startAutomatic: 0
   onDialogueFinished: []
---- !u!65 &553561139
-BoxCollider:
+--- !u!135 &553561137
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4168,8 +4168,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.01, z: 0.1}
-  m_Center: {x: 0, y: -0.00000018449202, z: 0.012036875}
+  m_Radius: 0.035
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &559525915
 GameObject:
   m_ObjectHideFlags: 0

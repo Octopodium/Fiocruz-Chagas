@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InteractableTooltip : MonoBehaviour {
-    public Text label;
+    public TMP_Text label;
 
     void Awake() {
         GameManager.instance.player.onHoverTextChange += HandleHoverChange;
