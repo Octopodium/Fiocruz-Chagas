@@ -25,4 +25,6 @@ public class UIManager : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    public void GoBackToMenu() => GameManager.instance.ReturnToMenu();
 }

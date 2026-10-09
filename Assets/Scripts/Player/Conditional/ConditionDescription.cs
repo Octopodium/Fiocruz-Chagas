@@ -514,7 +514,10 @@ public class ConditionDescriptionDrawer : PropertyDrawer {
         dropdown.AddToClassList(PopupField<string>.alignedFieldUssClassName);
         
         string choice = choices.Keys.ToList()[defaultIndex];
-        property.boxedValue = choices[choice];
+        if (!Equals(property.boxedValue, choices[choice])) {
+            property.boxedValue = choices[choice];
+            mainProperty.serializedObject.ApplyModifiedProperties();
+        }
 
         return dropdown;
     }

@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
 /// <summary>
@@ -19,6 +21,9 @@ public class GameManager : MonoBehaviour {
     public SaveManager saveManager;
     public NotebookManager notebook;
 
+    // Fields
+    public string menuSceneName;
+
     // Internal
     // ...
 
@@ -30,5 +35,24 @@ public class GameManager : MonoBehaviour {
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void ReturnToMenu() {
+        saveManager.OnSaved += CallbackGoToMenu;
+        saveManager.SaveData();
+    }
+
+    void CallbackGoToMenu(PlayerData data) {
+        saveManager.OnSaved -= CallbackGoToMenu;
+        StartCoroutine(CallbackGoToMenuCoroutine());
+    }
+
+    IEnumerator CallbackGoToMenuCoroutine() {
+        yield return UIManager.instance.fade.FadeToBlackCoroutine();
+
+        instance = null;
+        Destroy(gameObject);
+
+        SceneManager.LoadScene(menuSceneName);
     }
 }
