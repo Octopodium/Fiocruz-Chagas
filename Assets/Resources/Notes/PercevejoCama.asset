@@ -24,5 +24,5 @@ MonoBehaviour:
   - "Eu encontrei somente esse, mas \xE9 possivel que houvessem outros percevejos
     do mesmo tipo escondidos no coclh\xE3o... Vou investigar e trocar o colch\xE3o
     assim que poss\xEDvel."
-  noteImage: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  noteImage: {fileID: 21300000, guid: e0f0c1294e8865e40af2e006c901b81d, type: 3}
   preserveImageAspect: 1

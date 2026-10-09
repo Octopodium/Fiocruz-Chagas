@@ -20,5 +20,5 @@ MonoBehaviour:
   - "Um edema unilateral que se manifesta como um incha\xE7o em um dos olhos."
   - "Pele avermelhada e inflamada na regi\xE3o do incha\xE7o."
   - "N\xE3o h\xE1 reclama\xE7\xE3o a respeito de dor no local."
-  noteImage: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  noteImage: {fileID: 21300000, guid: d1df53853b71db442922b1ca4040e403, type: 3}
   preserveImageAspect: 1

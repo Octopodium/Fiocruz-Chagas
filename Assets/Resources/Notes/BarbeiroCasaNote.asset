@@ -18,5 +18,5 @@ MonoBehaviour:
   bulletPoints:
   - "Econtrei um barbeiro na parte de tr\xE1s do porta-retrato, dentro de casa."
   - "\xC9 bem poss\xEDvel que existam outros barbeiro escondidos dentro de casa."
-  noteImage: {fileID: 21300000, guid: 0515909bcedcf89419a175b63516da13, type: 3}
+  noteImage: {fileID: 21300000, guid: 133718bd8018fe84c9cea3a2b9b4c395, type: 3}
   preserveImageAspect: 1

@@ -6132,6 +6132,23 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 11400000, guid: 0db8c78be1913ba4791546709b8d2672, type: 2}
+  - type: 3
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: inventory
+    name: 'AddCollectable(Collectable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: effcfadbbed41384ea7daafc069331e1, type: 2}
+  extraConditions: []
   canRunAgain: 0
 --- !u!1001 &750162663
 PrefabInstance:
@@ -12709,6 +12726,7 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 0}
+  extraConditions: []
   canRunAgain: 0
 --- !u!114 &1685692966
 MonoBehaviour:
@@ -12746,6 +12764,7 @@ MonoBehaviour:
       stringValue: 
       boolValue: 0
       objectRefValue: {fileID: 11400000, guid: 9f6a844fc120dff46a9eeee1a8916df4, type: 2}
+  extraConditions: []
   canRunAgain: 0
 --- !u!1001 &1699116452
 PrefabInstance:
@@ -13464,6 +13483,8 @@ GameObject:
   - component: {fileID: 1779298235}
   - component: {fileID: 1779298237}
   - component: {fileID: 1779298236}
+  - component: {fileID: 1779298238}
+  - component: {fileID: 1779298239}
   m_Layer: 0
   m_Name: ErvaDaninha
   m_TagString: Untagged
@@ -13527,6 +13548,100 @@ MonoBehaviour:
   startNode: ErvaDaninha
   startAutomatic: 0
   onDialogueFinished: []
+--- !u!114 &1779298238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779298234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: ouviu_percevejo_marrom
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: notebook
+    name: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 722a33d9eaa80b34d980b7f5b53eb264, type: 2}
+  - type: 3
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: inventory
+    name: 'AddCollectable(Collectable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 14dfee4d793b81a45862a98aa1dc0a24, type: 2}
+  extraConditions: []
+  canRunAgain: 0
+--- !u!114 &1779298239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779298234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: percevejo_assassino
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: notebook
+    name: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 14a72d1e24fc52e41a4f67385dec38ad, type: 2}
+  extraConditions: []
+  canRunAgain: 0
 --- !u!1001 &1784695349
 PrefabInstance:
   m_ObjectHideFlags: 0

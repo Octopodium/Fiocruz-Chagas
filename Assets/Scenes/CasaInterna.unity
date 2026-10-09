@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376791453090496871, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.375
+      value: -56.6875
       objectReference: {fileID: 0}
     - target: {fileID: 4914731046851317867, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220615227898891186, guid: 7e11b616cf8002f47976c0c1ffb9606b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.124999
+      value: -13.4375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3075,6 +3075,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1388253236656376919, guid: 48fbbcce42cff614dbbfda33e30b3513, type: 3}
       insertIndex: -1
       addedObject: {fileID: 896270797}
+    - targetCorrespondingSourceObject: {fileID: 1388253236656376919, guid: 48fbbcce42cff614dbbfda33e30b3513, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 896270798}
   m_SourcePrefab: {fileID: 100100000, guid: 48fbbcce42cff614dbbfda33e30b3513, type: 3}
 --- !u!4 &896270794 stripped
 Transform:
@@ -3126,6 +3129,61 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: -0.48, y: 0.31, z: 0.03}
+--- !u!114 &896270798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896270795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: percevejo_de_cama
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 2
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: notebook
+    name: 'UnlockNote(NoteData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 69b96693146c8f5419f41fd630846e38, type: 2}
+  - type: 3
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    componentType: inventory
+    name: 'AddCollectable(Collectable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null): System.Void, mscorlib, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089'
+    assignOption: 0
+    value:
+      type: 5
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 11400000, guid: 1468b33ccf8033942bdc62a0642623a0, type: 2}
+  extraConditions: []
+  canRunAgain: 0
 --- !u!1 &899967137
 GameObject:
   m_ObjectHideFlags: 0
@@ -8541,7 +8599,7 @@ MonoBehaviour:
     intValue: 0
     floatValue: 0
     stringValue: 
-    boolValue: 0
+    boolValue: 1
     objectRefValue: {fileID: 0}
   actions:
   - type: 2
