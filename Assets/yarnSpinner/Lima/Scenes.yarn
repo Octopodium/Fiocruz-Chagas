@@ -261,11 +261,15 @@ Algumas galinhas estão cacarejando.
 
 title: Cidade
 ---
-<<once>>
+<<if $procurandoInsetos and $insetosColetados < 5>>
+    É melhor eu procurar mais alguns insetos antes de falar com o doutor.
+    <<stop>>
+<<endif>>
+<<set_characters false>>
 <<set_background true hospital 0>>
 <<fade_bg_image 1 2>>
 <<wait 2>>
-<<set_characters false>>
+<<once>>
 O hospital deve ser aquele prédio novo.
 O Senhor Nelson disse para procurar o Doutor Torres.
 <<wait 2>>
@@ -289,7 +293,8 @@ Doutor Torres: É você que procura por mim?
     <<wait 1>>
     Parece que ele ainda não chegou.
     Vou aguardar.
-    <<wait 5>>
+    <<wait 3>>
+    <<set_characters true blank doutor_torres>>
     Doutor Torres: Finalmente.
     Doutor Torres: Demorei bem mais do que esperava, e a estrada certamente não ajudou com a minha pressa.
     Doutor Torres: Hm-

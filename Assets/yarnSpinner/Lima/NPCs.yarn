@@ -107,6 +107,7 @@ Eu também...
 title: DoutorTorres
 ---
 <<once>>
+<<set_characters true blank doutor_torres>>
 Gostaria da sua ajuda.
 Doutor Torres: Bom, como pode perceber, eu estou de saída. Se você precisa de atendimento médico, não poderei ajudar agora.
 Doutor Torres: Entretanto, posso te aconselhar ou indicar um colega que possa.
@@ -162,7 +163,10 @@ Doutor Torres: Espero retornar no final da tarde. Então traga os espécimes col
     Doutor Torres: Agradeço pela disposição. Sua mãe certamente tem muito orgulho de você.
 Doutor Torres: Bom, eu preciso tomar meu rumo agora.
 Doutor Torres: Até mais tarde!
+<<set_characters false>>
+<<wait 1>>
 É melhor eu voltar logo e começar a procurar...
 <<set $procurandoInsetos = true>>
-<<jump ExteriorDaCasa>>
+<<fade_bg_image 0 2>>
+<<wait 2>>
 ===

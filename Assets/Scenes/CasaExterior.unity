@@ -12416,6 +12416,7 @@ GameObject:
   - component: {fileID: 1685692962}
   - component: {fileID: 1685692963}
   - component: {fileID: 1685692964}
+  - component: {fileID: 1685692965}
   m_Layer: 0
   m_Name: "Transi\xE7\xE3o"
   m_TagString: Untagged
@@ -12536,6 +12537,54 @@ MonoBehaviour:
   startNode: Cidade
   startAutomatic: 0
   onDialogueFinished: []
+--- !u!114 &1685692965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685692959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8c074945993d4cb6a7139cc686d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckFlagChanged
+  flag: medico_da_cidade
+  value:
+    type: 4
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    objectRefValue: {fileID: 0}
+  actions:
+  - type: 1
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1685692959}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    componentType: 
+    name: medico_da_cidade
+    assignOption: 0
+    value:
+      type: 4
+      intValue: 0
+      floatValue: 0
+      stringValue: 
+      boolValue: 0
+      objectRefValue: {fileID: 0}
+  canRunAgain: 0
 --- !u!1001 &1699116452
 PrefabInstance:
   m_ObjectHideFlags: 0
